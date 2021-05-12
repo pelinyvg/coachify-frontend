@@ -14,6 +14,7 @@ import { HomeComponent } from './home/home.component';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 import { FooterComponent } from './footer/footer.component';
 import { RegisterComponent } from './register/register.component';
+import { ProfileCoacheeComponent } from './users/profile-coachee/profile-coachee.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -27,7 +28,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     HomeComponent,
     NavigationBarComponent,
     FooterComponent,
-    RegisterComponent
+    RegisterComponent,
+    ProfileCoacheeComponent
   ],
   imports: [
     BrowserModule,

@@ -25,11 +25,10 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(): void {
-    // TODO delete this console.log
-    console.log('test');
     this.userService.addUser(this.registerForm.value).subscribe(() => {
       alert('User has been registered');
-      this.router.navigate(['']);
+      // todo change this path in story 3 or 34
+      this.router.navigate(['/users/blank-profile']);
     });
   }
 }
