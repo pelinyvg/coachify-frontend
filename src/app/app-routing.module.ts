@@ -14,7 +14,7 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'register', component: RegisterComponent},
   // todo change this path in story 3 or 34
-  {path: 'users/blank-profile', component: ProfileCoacheeComponent},
+  {path: 'users/:id', component: ProfileCoacheeComponent},
   {path: 'become-a-coach', component : BecomeACoachComponent}
 ];
 
