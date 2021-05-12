@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Coach} from '../coach';
+import {Coach} from '../../model/coach';
 import {CoachService} from '../../services/coach.service';
 
 @Component({

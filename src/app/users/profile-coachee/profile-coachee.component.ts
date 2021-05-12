@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {User} from '../../model/user';
+import {Coachee} from '../../model/coachee';
 import {ActivatedRoute, Router} from '@angular/router';
-import {UserService} from '../../services/user.service';
+import {CoacheeService} from '../../services/coachee.service';
 import {Observable} from 'rxjs';
 
 @Component({
@@ -11,11 +11,11 @@ import {Observable} from 'rxjs';
 })
 export class ProfileCoacheeComponent implements OnInit {
 
-  private coachee: User;
+  coachee: Coachee;
 
   constructor(
     private route: ActivatedRoute,
-    private service: UserService,
+    private service: CoacheeService,
     private router: Router
   ) { }
 

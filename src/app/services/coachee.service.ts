@@ -2,23 +2,23 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {Observable} from 'rxjs';
-import {User} from '../model/user';
+import {Coachee} from '../model/coachee';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class CoacheeService {
 
   private root = `${environment.backendUrl}/users`;
 
   constructor(private http: HttpClient) {
   }
 
-  addUser(user: User): Observable<User> {
-    return this.http.post<User>(this.root, user);
+  addCoachee(user: Coachee): Observable<Coachee> {
+    return this.http.post<Coachee>(this.root, user);
   }
 
-  getUser(id: number): Observable<User> {
-    return this.http.get<User>(`${this.root}/${id}`);
+  getUser(id: number): Observable<Coachee> {
+    return this.http.get<Coachee>(`${this.root}/${id}`);
   }
 }

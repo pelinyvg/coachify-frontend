@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs';
-import {User} from '../model/user';
-import {Coach} from '../users/coach';
+import {Coachee} from '../model/coachee';
+import {Coach} from '../model/coach';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 
