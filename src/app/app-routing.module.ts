@@ -5,7 +5,7 @@ import {HelloWorldComponent} from './hello-world/hello-world.component';
 import {HomeComponent} from './home/home.component';
 import {RegisterComponent} from './register/register.component';
 import {ProfileCoacheeComponent} from './users/profile-coachee/profile-coachee.component';
-import {OverviewCoachesComponent} from './users/overview-coaches/overview-coaches.component';
+import {BecomeACoachComponent} from './become-a-coach/become-a-coach.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -15,7 +15,7 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   // todo change this path in story 3 or 34
   {path: 'users/blank-profile', component: ProfileCoacheeComponent},
-  {path: 'overview-coaches', component: OverviewCoachesComponent}
+  {path: 'become-a-coach', component : BecomeACoachComponent}
 ];
 
 @NgModule({
