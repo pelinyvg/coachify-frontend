@@ -6,7 +6,7 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./become-a-coach.component.css']
 })
 export class BecomeACoachComponent implements OnInit {
-  emailString = 'mailto:xyz@example.com?Subject=Hello';
+  emailString = 'mailto:xyz@example.com?Subject=Become-a-coach';
 
   constructor() {
   }
