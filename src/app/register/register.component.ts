@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder} from '@angular/forms';
-import {UserService} from '../services/user.service';
+import {CoacheeService} from '../services/coachee.service';
 import {Router} from '@angular/router';
 
 @Component({
@@ -18,15 +18,15 @@ export class RegisterComponent implements OnInit {
     }
   );
 
-  constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router) {
+  constructor(private formBuilder: FormBuilder, private coacheeService: CoacheeService, private router: Router) {
   }
 
   ngOnInit(): void {
   }
 
   onSubmit(): void {
-    this.userService.addUser(this.registerForm.value).subscribe(() => {
-      alert('User has been registered');
+    this.coacheeService.addCoachee(this.registerForm.value).subscribe(() => {
+      alert('Coachee has been registered');
       // todo change this path in story 3 or 34
       this.router.navigate(['/users/blank-profile']);
     });
