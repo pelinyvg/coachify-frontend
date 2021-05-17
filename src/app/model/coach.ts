@@ -4,6 +4,9 @@ import {Topic} from './topic';
 export interface Coach {
   id: number;
   description: string;
-  topics: Topic[];
-  user: Coachee;
+  topicsByCoach: Topic[];
+  coachee: Coachee;
+  firstName: string;
+  lastName: string;
+  image: string;
 }

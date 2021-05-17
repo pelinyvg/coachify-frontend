@@ -1,5 +1,6 @@
 export interface Topic {
-  id: number;
-  name: string;
-  experience: boolean[];
+  topicName: string;
+  grade1: boolean;
+  grade2: boolean;
+  grade3: boolean;
 }

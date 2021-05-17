@@ -43,10 +43,10 @@
 
             <div class="col l3 m4 s12">
               <div *ngFor="let coach of coaches">
-                <h5 class="header">{{coach.user.firstName}} {{coach.user.lastName}}</h5>
+                <h5 class="header">{{coach.firstName}} {{coach.lastName}}</h5>
                 <div class="card horizontal">
                   <div class="card-image">
-                    <img src="assets/images/profile-picture.png">
+                    <img [src]="coach.image">
 
                   </div>
                   <div class="card-stacked">
@@ -54,10 +54,12 @@
                       <!-- todo: here add ngFor for the topics -->
                       <table class="highlight responsive-table">
                         <tbody>
-                        <div *ngFor="let topic of coach.topics">
+                        <div *ngFor="let topic of coach.topicsByCoach">
                           <tr>
-                            <td><strong>{{topic.name}}</strong></td>
-                            <td>{{topic.experience}}</td>
+                            <td><strong>{{topic.topicName}}</strong></td>
+                              <td *ngIf="topic.grade1">AVERAGE</td>
+                              <td *ngIf="topic.grade2">MEDIUM</td>
+                              <td *ngIf="topic.grade3">EXPERT</td>
                           </tr>
                         </div>
                         </tbody>

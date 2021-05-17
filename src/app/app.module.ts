@@ -32,7 +32,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     FooterComponent,
     RegisterComponent,
     ProfileCoacheeComponent,
-    BecomeACoachComponent
+    BecomeACoachComponent,
+    OverviewCoachesComponent
   ],
   imports: [
     BrowserModule,
