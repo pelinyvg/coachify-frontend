@@ -21,7 +21,7 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {path: 'coachees/:id/profile-coachee', component: ProfileCoacheeComponent},
-  {path: 'coachees/:id/become-a-coach', component: BecomeACoachComponent}
+  {path: 'coachees/:id/become-a-coach', component: BecomeACoachComponent},
 ];
 
 @NgModule({

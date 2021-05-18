@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AuthenticationService} from '../authentication/authentication.service';
-import { TranslateService } from '@ngx-translate/core';
+import {TranslateService} from '@ngx-translate/core';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-navigation-bar',
@@ -25,6 +26,7 @@ export class NavigationBarComponent implements OnInit {
     this.translate.use(language);
     this.language = language;
   }
+
   currentLanguage() {
     return this.language;
   }
