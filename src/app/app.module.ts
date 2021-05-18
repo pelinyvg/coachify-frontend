@@ -17,6 +17,7 @@ import { RegisterComponent } from './register/register.component';
 import { ProfileCoacheeComponent } from './users/profile-coachee/profile-coachee.component';
 import { OverviewCoachesComponent } from './users/overview-coaches/overview-coaches.component';
 import { BecomeACoachComponent } from './become-a-coach/become-a-coach.component';
+import { CoacheeNavbarComponent } from './users/coachee-navbar/coachee-navbar.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -33,7 +34,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     RegisterComponent,
     ProfileCoacheeComponent,
     BecomeACoachComponent,
-    OverviewCoachesComponent
+    OverviewCoachesComponent,
+    CoacheeNavbarComponent
   ],
   imports: [
     BrowserModule,

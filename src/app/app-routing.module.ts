@@ -15,9 +15,13 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'coaches', component: OverviewCoachesComponent},
-  // todo change this path in story 3 or 34
-  {path: 'coachees/:id', component: ProfileCoacheeComponent},
-  {path: 'become-a-coach', component : BecomeACoachComponent}
+  {
+    path: 'coachees/:id',
+    redirectTo: '/coachees/:id/profile-coachee',
+    pathMatch: 'full'
+  },
+  {path: 'coachees/:id/profile-coachee', component: ProfileCoacheeComponent},
+  {path: 'coachees/:id/become-a-coach', component: BecomeACoachComponent}
 ];
 
 @NgModule({
