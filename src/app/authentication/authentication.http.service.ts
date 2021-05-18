@@ -8,13 +8,13 @@ import {environment} from '../../environments/environment';
   providedIn: 'root'
 })
 export class AuthenticationHttpService {
-  private url = `${environment.backendUrl}/login`;
+  private url = `${environment.backendUrl}/security/login`;
 
   constructor(private http: HttpClient) {
   }
 
   login(loginData): Observable<any> {
-    return this.http.post<any>(this.url, loginData, {observe: 'response'}).pipe(
+    return this.http.post<any>(this.url, loginData).pipe(
       catchError(this.handleError('login'))
     );
   }

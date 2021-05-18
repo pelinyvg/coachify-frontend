@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {InitMaterializeComponent} from '../init-materialize.component';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {InitService} from '../materialize/init.service';
 
 
 @Component({
@@ -7,10 +7,14 @@ import {InitMaterializeComponent} from '../init-materialize.component';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent extends InitMaterializeComponent {
+export class HomeComponent implements OnInit, AfterViewInit {
 
-  constructor() {
-    super();
+  constructor(private initService: InitService) { }
+
+  ngOnInit(): void {
   }
 
+  ngAfterViewInit(): void {
+    this.initService.initParalax();
+  }
 }
