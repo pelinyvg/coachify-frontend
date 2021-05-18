@@ -14,7 +14,7 @@ const routes: Routes = [
   {path: 'hello-world', component: HelloWorldComponent},
   {path: 'home', component: HomeComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'coaches', component: OverviewCoachesComponent},
+  {path: 'coachees/:id/coaches', component: OverviewCoachesComponent},
   {
     path: 'coachees/:id',
     redirectTo: '/coachees/:id/profile-coachee',
