@@ -12,29 +12,51 @@
             <form class="col s12" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
               <div class="row">
                 <div class="input-field col s6">
-                  <input id="first_name" type="text" class="validate" formControlName="firstName">
+                  <input id="first_name" type="text" class="validate" formControlName="firstName" required
+                         minlength="2" >
+                  <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="alert alert-danger">
+                    <div *ngIf="firstName.errors.required">first name is required</div>
+                    <div *ngIf="firstName.errors.minLength">first name must be at least two characters long</div>
+                  </div>
                   <label for="first_name">First Name</label>
                 </div>
                 <div class="input-field col s6">
-                  <input id="last_name" type="text" class="validate" formControlName="lastName">
+                  <input id="last_name" type="text" class="validate" formControlName="lastName" required minlength="2">
+                  <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="alert alert-danger">
+                  <div *ngIf="lastName.errors.required">last name is required</div>
+                  <div *ngIf="lastName.errors.minLength">last name must be at least two characters long</div>
+                </div>
                   <label for="last_name">Last Name</label>
                 </div>
               </div>
               <div class="row">
                 <div class="input-field col s12">
-                  <input id="email" type="email" class="validate" formControlName="email">
+                  <input id="email" type="email" class="validate" formControlName="email" required email>
+                  <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+                    <div *ngIf="email.errors.required">email is required</div>
+                    <div *ngIf="email.errors.email"> This is not a valid email address</div>
+                  </div>
                   <label for="email">Email</label>
                 </div>
               </div>
               <div class="row">
                 <div class="input-field col s12">
-                  <input id="password" type="password" class="validate" formControlName="password">
+                  <input id="password" type="password" class="validate" formControlName="password" required minlength="8">
+                  <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+                    <div *ngIf="password.errors.required">password is required</div>
+                    <div *ngIf="password.errors.minLength">The password must be at least 8 characters long</div>
+                  </div>
                   <label for="password">Password</label>
                 </div>
               </div>
               <div class="row">
                 <div class="input-field col s12">
-                  <input id="passwordVerification" type="password" class="validate">
+                  <input id="passwordVerification" type="password" class="validate" required formControlName="passwordVerification">
+                  <div *ngIf="passwordVerification.touched && passwordVerification.invalid" class="alert alert-danger">
+                    <div *ngIf="passwordVerification.errors.required">Password is required.</div>
+                    <div *ngIf="passwordVerification.errors.confirmedValidator">Password and Confirm Password must match.</div>
+                  </div>
+
                   <label for="passwordVerification">Password (again)</label>
                 </div>
               </div>
