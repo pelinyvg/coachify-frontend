@@ -24,7 +24,7 @@ const routes: Routes = [
   },
   {path: 'coachees/:id/profile-coachee', component: ProfileCoacheeComponent, canActivate: [LoginGuard]},
   {path: 'coachees/:id/become-a-coach', component: BecomeACoachComponent, canActivate: [LoginGuard]},
-  {path: 'coachees/:id/coaches/:idcoach', component: CoacheeDetailOfACoachComponent}
+  {path: 'coachees/:id/coaches/:idcoach', component: CoacheeDetailOfACoachComponent},
   // leave the path: ** always at the end
   {path: '**', redirectTo: '/home', pathMatch: 'full'}
 ];
