@@ -19,6 +19,7 @@ import { OverviewCoachesComponent } from './users/overview-coaches/overview-coac
 import { BecomeACoachComponent } from './become-a-coach/become-a-coach.component';
 import { CoacheeNavbarComponent } from './users/coachee-navbar/coachee-navbar.component';
 import { CoacheeNavbarTopComponent } from './users/coachee-navbar-top/coachee-navbar-top.component';
+import { CoacheeDetailOfACoachComponent } from './users/coachee-detail-of-a-coach/coachee-detail-of-a-coach.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -37,7 +38,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     BecomeACoachComponent,
     OverviewCoachesComponent,
     CoacheeNavbarComponent,
-    CoacheeNavbarTopComponent
+    CoacheeNavbarTopComponent,
+    CoacheeDetailOfACoachComponent
   ],
   imports: [
     BrowserModule,

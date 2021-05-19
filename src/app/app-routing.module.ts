@@ -7,6 +7,7 @@ import {RegisterComponent} from './register/register.component';
 import {ProfileCoacheeComponent} from './users/profile-coachee/profile-coachee.component';
 import {BecomeACoachComponent} from './become-a-coach/become-a-coach.component';
 import {OverviewCoachesComponent} from './users/overview-coaches/overview-coaches.component';
+import {CoacheeDetailOfACoachComponent} from './users/coachee-detail-of-a-coach/coachee-detail-of-a-coach.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -22,6 +23,7 @@ const routes: Routes = [
   },
   {path: 'coachees/:id/profile-coachee', component: ProfileCoacheeComponent},
   {path: 'coachees/:id/become-a-coach', component: BecomeACoachComponent},
+  {path: 'coachees/:id/coaches/:idcoach', component: CoacheeDetailOfACoachComponent}
 ];
 
 @NgModule({

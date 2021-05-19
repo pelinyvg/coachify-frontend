@@ -1,6 +1,5 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
-import {Coachee} from '../model/coachee';
 import {Coach} from '../model/coach';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
@@ -11,9 +10,14 @@ import {environment} from '../../environments/environment';
 export class CoachService {
   root = `${environment.backendUrl}/coaches`;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   getCoaches(): Observable<Coach[]> {
     return this.http.get<Coach[]>(this.root);
+  }
+
+  getCoach(id: number): Observable<Coach> {
+    return this.http.get<Coach>(this.root + `/${id}`);
   }
 }

@@ -3,10 +3,12 @@ import {Topic} from './topic';
 
 export interface Coach {
   id: number;
-  description: string;
+  introduction: string;
+  availability: string;
   topicsByCoach: Topic[];
   coachee: Coachee;
   firstName: string;
   lastName: string;
   image: string;
+  email: string;
 }

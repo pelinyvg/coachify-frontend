@@ -16,9 +16,9 @@ export class OverviewCoachesComponent implements OnInit {
     this.getCoaches();
   }
 
-  // todo: add navigate to the profile page of the coach
-  selectedCoach(coach: Coach): void {
 
+  selectedCoach(coach: Coach): void {
+    
   }
 
   getCoaches(): void {
