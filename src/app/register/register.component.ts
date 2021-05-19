@@ -14,7 +14,8 @@ export class RegisterComponent implements OnInit {
     {
       firstName: '',
       lastName: '',
-      email: ''
+      email: '',
+      password: ''
     }
   );
 
@@ -28,7 +29,7 @@ export class RegisterComponent implements OnInit {
     this.coacheeService.addCoachee(this.registerForm.value).subscribe(() => {
       alert('Coachee has been registered');
       // todo change this path in story 3 or 34
-      this.router.navigate(['/users/blank-profile']);
+      this.router.navigate(['coachees/:id/coaches']);
     });
   }
 }

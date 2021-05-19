@@ -7,6 +7,7 @@ import {RegisterComponent} from './register/register.component';
 import {ProfileCoacheeComponent} from './users/profile-coachee/profile-coachee.component';
 import {BecomeACoachComponent} from './become-a-coach/become-a-coach.component';
 import {OverviewCoachesComponent} from './users/overview-coaches/overview-coaches.component';
+import {LoginGuard} from './authentication/guards/login.guard';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -20,8 +21,10 @@ const routes: Routes = [
     redirectTo: '/coachees/:id/profile-coachee',
     pathMatch: 'full'
   },
-  {path: 'coachees/:id/profile-coachee', component: ProfileCoacheeComponent},
-  {path: 'coachees/:id/become-a-coach', component: BecomeACoachComponent},
+  {path: 'coachees/:id/profile-coachee', component: ProfileCoacheeComponent, canActivate: [LoginGuard]},
+  {path: 'coachees/:id/become-a-coach', component: BecomeACoachComponent, canActivate: [LoginGuard]},
+  // leave the path: ** always at the end
+  {path: '**', redirectTo: '/home', pathMatch: 'full'}
 ];
 
 @NgModule({

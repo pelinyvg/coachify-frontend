@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  backendUrl: 'https://coachify-backend.herokuapp.com/'
+  backendUrl: 'http://localhost:8080'
 };

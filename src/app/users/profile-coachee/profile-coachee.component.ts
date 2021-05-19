@@ -12,6 +12,7 @@ import {Observable} from 'rxjs';
 export class ProfileCoacheeComponent implements OnInit {
 
   coachee: Coachee;
+  id: number;
 
   constructor(
     private route: ActivatedRoute,
@@ -20,7 +21,8 @@ export class ProfileCoacheeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getUser(this.route.snapshot.params.id);
+    this.id = this.route.snapshot.params.id;
+    this.getUser(this.id);
   }
 
   getUser(id: number): void {
