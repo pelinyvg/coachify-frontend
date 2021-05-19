@@ -9,6 +9,7 @@ import {BecomeACoachComponent} from './become-a-coach/become-a-coach.component';
 import {OverviewCoachesComponent} from './users/overview-coaches/overview-coaches.component';
 import {CoacheeDetailOfACoachComponent} from './users/coachee-detail-of-a-coach/coachee-detail-of-a-coach.component';
 import {LoginGuard} from './authentication/guards/login.guard';
+import {RequestASessionComponent} from './session/request-a-session/request-a-session.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -25,6 +26,7 @@ const routes: Routes = [
   {path: 'coachees/:id/profile-coachee', component: ProfileCoacheeComponent, canActivate: [LoginGuard]},
   {path: 'coachees/:id/become-a-coach', component: BecomeACoachComponent, canActivate: [LoginGuard]},
   {path: 'coachees/:id/coaches/:idcoach', component: CoacheeDetailOfACoachComponent},
+  {path: 'coachees/:id/coaches/:idcoach/request-a-session', component: RequestASessionComponent},
   // leave the path: ** always at the end
   {path: '**', redirectTo: '/home', pathMatch: 'full'}
 ];

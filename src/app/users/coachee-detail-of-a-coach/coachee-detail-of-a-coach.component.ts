@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Coach} from '../../model/coach';
-import {Coachee} from '../../model/coachee';
 import {ActivatedRoute} from '@angular/router';
 import {CoachService} from '../../services/coach.service';
 
