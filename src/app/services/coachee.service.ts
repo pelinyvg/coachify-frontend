@@ -9,7 +9,7 @@ import {Coachee} from '../model/coachee';
 })
 export class CoacheeService {
 
-  private root = `${environment.backendUrl}/users`;
+  private root = `${environment.backendUrl}/security/account`;
 
   constructor(private http: HttpClient) {
   }
@@ -19,6 +19,6 @@ export class CoacheeService {
   }
 
   getUser(id: number): Observable<Coachee> {
-    return this.http.get<Coachee>(`${this.root}/${id}`);
+    return this.http.get<Coachee>(`${environment.backendUrl}/users/${id}`);
   }
 }
