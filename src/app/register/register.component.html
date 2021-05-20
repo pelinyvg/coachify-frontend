@@ -13,7 +13,7 @@
               <div class="row">
                 <div class="input-field col s6">
                   <input id="first_name" type="text" class="validate" formControlName="firstName" required
-                         minlength="2" >
+                         minlength="2">
                   <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="alert alert-danger">
                     <div *ngIf="firstName.errors.required">first name is required</div>
                     <div *ngIf="firstName.errors.minLength">first name must be at least two characters long</div>
@@ -23,9 +23,9 @@
                 <div class="input-field col s6">
                   <input id="last_name" type="text" class="validate" formControlName="lastName" required minlength="2">
                   <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="alert alert-danger">
-                  <div *ngIf="lastName.errors.required">last name is required</div>
-                  <div *ngIf="lastName.errors.minLength">last name must be at least two characters long</div>
-                </div>
+                    <div *ngIf="lastName.errors.required">last name is required</div>
+                    <div *ngIf="lastName.errors.minLength">last name must be at least two characters long</div>
+                  </div>
                   <label for="last_name">Last Name</label>
                 </div>
               </div>
@@ -43,8 +43,8 @@
                 <div class="input-field col s12">
                   <input id="password" type="password" formControlName="password" required  class="validate" >
                   <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
-                    <div *ngIf="password.errors.required" >password is required</div>
-                    <div *ngIf="password.errors.pattern" >The password must have an uppercase, a lowercase, a number and minimum 8 characters.</div>
+                    <div *ngIf="password.errors.required">password is required</div>
+                    <div *ngIf="password.errors.minLength">The password must be at least 8 characters long</div>
                   </div>
                   <label for="password">Password</label>
                 </div>
@@ -62,7 +62,7 @@
               </div>
 
               <div class="row right-align">
-                <button class="waves-effect waves-light yellow darken-2 btn-large black-text" type="submit" [disabled]="registerForm.invalid">Register<i
+                <button class="waves-effect waves-light yellow darken-2 btn-large black-text" type="submit">Register<i
                   class="material-icons right">send</i></button>
               </div>
             </form>
