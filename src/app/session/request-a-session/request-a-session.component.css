@@ -1,0 +1,10 @@
+.timepicker-icon {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+
+.row-of-time-and-date {
+  display: flex;
+  align-items: flex-end;
+}

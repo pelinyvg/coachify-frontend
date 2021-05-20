@@ -22,10 +22,11 @@ import {CoacheeNavbarTopComponent} from './users/coachee-navbar-top/coachee-navb
 import {CoacheeDetailOfACoachComponent} from './users/coachee-detail-of-a-coach/coachee-detail-of-a-coach.component';
 import {RequestASessionComponent} from './session/request-a-session/request-a-session.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatNativeDateModule} from '@angular/material/core';
+import {MAT_DATE_LOCALE, MatNativeDateModule} from '@angular/material/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -66,10 +67,12 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatNativeDateModule,
     BrowserAnimationsModule,
     MatInputModule,
-    MatIconModule
+    MatIconModule,
+    NgxMaterialTimepickerModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthenticationInterceptor, multi: true},
+    {provide: MAT_DATE_LOCALE, useValue: 'en-GB'},
     MatDatepickerModule,
     MatNativeDateModule
   ],
