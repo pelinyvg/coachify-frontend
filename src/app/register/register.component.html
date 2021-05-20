@@ -41,10 +41,10 @@
               </div>
               <div class="row">
                 <div class="input-field col s12">
-                  <input id="password" type="password" class="validate" formControlName="password" required minlength="8">
+                  <input id="password" type="password" formControlName="password" required  class="validate" >
                   <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
-                    <div *ngIf="password.errors.required">password is required</div>
-                    <div *ngIf="password.errors.minLength">The password must be at least 8 characters long</div>
+                    <div *ngIf="password.errors.required" >password is required</div>
+                    <div *ngIf="password.errors.pattern" >The password must have an uppercase, a lowercase, a number and minimum 8 characters.</div>
                   </div>
                   <label for="password">Password</label>
                 </div>
@@ -52,7 +52,7 @@
               <div class="row">
                 <div class="input-field col s12">
                   <input id="passwordVerification" type="password" class="validate" required formControlName="passwordVerification">
-                  <div *ngIf="passwordVerification.touched && passwordVerification.invalid" class="alert alert-danger">
+                  <div *ngIf="(passwordVerification.touched || passwordVerification.dirty) && passwordVerification.invalid" class="alert alert-danger">
                     <div *ngIf="passwordVerification.errors.required">Password is required.</div>
                     <div *ngIf="passwordVerification.errors.confirmedValidator">Password and Confirm Password must match.</div>
                   </div>
@@ -62,7 +62,7 @@
               </div>
 
               <div class="row right-align">
-                <button class="waves-effect waves-light yellow darken-2 btn-large black-text" type="submit">Register<i
+                <button class="waves-effect waves-light yellow darken-2 btn-large black-text" type="submit" [disabled]="registerForm.invalid">Register<i
                   class="material-icons right">send</i></button>
               </div>
             </form>
