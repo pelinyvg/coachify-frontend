@@ -12,6 +12,8 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class RequestASessionComponent implements OnInit {
 
+  minDate: Date;
+
   sessionForm = this.formBuilder.group(
     {
       subject: '',
@@ -28,6 +30,13 @@ export class RequestASessionComponent implements OnInit {
               private coachService: CoachService,
               private coacheeService: CoacheeService,
               private route: ActivatedRoute) {
+    const currentYear = new Date().getFullYear();
+    const currentMonth = new Date().getMonth();
+    const currentDay = new Date().getDay();
+    console.log(currentYear);
+    console.log(currentMonth);
+    console.log(currentDay);
+    this.minDate = new Date(currentYear, currentMonth, currentDay);
   }
 
   ngOnInit(): void {

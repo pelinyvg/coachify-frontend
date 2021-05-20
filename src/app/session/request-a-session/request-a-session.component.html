@@ -23,30 +23,32 @@
                 <div class="input-field col s6">
                   <mat-form-field appearance="fill">
                     <mat-label>Choose a date</mat-label>
-                    <input matInput [matDatepicker]="picker" class="datepicker" formControlName="date">
+                    <input matInput [min]="minDate" [matDatepicker]="picker" class="datepicker" formControlName="date">
                     <mat-datepicker-toggle matSuffix [for]="picker">
                     </mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
                   </mat-form-field>
                 </div>
                 <div class="timepicker-icon input-field col s6">
-                  <input placeholder="time" [ngxTimepicker]="toggleTimepicker" [disableClick]="true" [format]="24" readonly formControlName="time">
+                  <!-- add this to the next line to set a minimum: [min]="'08:00'"   -->
+                  <input placeholder="time" [ngxTimepicker]="toggleTimepicker" [disableClick]="false" [format]="24"
+                         readonly formControlName="time">
                   <ngx-material-timepicker-toggle [for]="toggleTimepicker"></ngx-material-timepicker-toggle>
-                  <ngx-material-timepicker #toggleTimepicker></ngx-material-timepicker>
+                  <ngx-material-timepicker #toggleTimepicker [minutesGap]="5"></ngx-material-timepicker>
                 </div>
               </div>
 
 
-<!--              <div class="row">-->
-<!--                <div class="input-field col s6">-->
-<!--                  <input id="date" type="text" class="datepicker">-->
-<!--                  <label for="date">Date</label>-->
-<!--                </div>-->
-<!--                <div class="input-field col s6">-->
-<!--                  <input id="timepicker" type="text" class="timepicker" >-->
-<!--                  <label for="timepicker">Time</label>-->
-<!--                </div>-->
-<!--              </div>-->
+              <!--              <div class="row">-->
+              <!--                <div class="input-field col s6">-->
+              <!--                  <input id="date" type="text" class="datepicker">-->
+              <!--                  <label for="date">Date</label>-->
+              <!--                </div>-->
+              <!--                <div class="input-field col s6">-->
+              <!--                  <input id="timepicker" type="text" class="timepicker" >-->
+              <!--                  <label for="timepicker">Time</label>-->
+              <!--                </div>-->
+              <!--              </div>-->
 
 
               <div class="row">

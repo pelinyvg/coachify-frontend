@@ -22,7 +22,7 @@ import {CoacheeNavbarTopComponent} from './users/coachee-navbar-top/coachee-navb
 import {CoacheeDetailOfACoachComponent} from './users/coachee-detail-of-a-coach/coachee-detail-of-a-coach.component';
 import {RequestASessionComponent} from './session/request-a-session/request-a-session.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatNativeDateModule} from '@angular/material/core';
+import {MAT_DATE_LOCALE, MatNativeDateModule} from '@angular/material/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
@@ -72,6 +72,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthenticationInterceptor, multi: true},
+    {provide: MAT_DATE_LOCALE, useValue: 'en-GB'},
     MatDatepickerModule,
     MatNativeDateModule
   ],
