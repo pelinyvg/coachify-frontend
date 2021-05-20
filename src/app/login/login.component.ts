@@ -68,4 +68,8 @@ export class LoginComponent implements OnInit {
   logout() {
     this.authenticationService.logout();
   }
+
+  contactAdmin(): void {
+    alert('Please contact the admin!');
+  }
 }

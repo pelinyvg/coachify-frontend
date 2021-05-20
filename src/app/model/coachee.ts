@@ -4,4 +4,5 @@ export interface Coachee {
   lastName: string;
   email: string;
   password: string;
+  authorities: string[];
 }
