@@ -10,17 +10,22 @@ import {HelloWorldComponent} from './hello-world/hello-world.component';
 import {AuthenticationInterceptor} from './authentication/authentication.interceptor';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import { HomeComponent } from './home/home.component';
-import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
-import { FooterComponent } from './footer/footer.component';
-import { RegisterComponent } from './register/register.component';
-import { ProfileCoacheeComponent } from './users/profile-coachee/profile-coachee.component';
-import { OverviewCoachesComponent } from './users/overview-coaches/overview-coaches.component';
-import { BecomeACoachComponent } from './become-a-coach/become-a-coach.component';
-import { CoacheeNavbarComponent } from './users/coachee-navbar/coachee-navbar.component';
-import { CoacheeNavbarTopComponent } from './users/coachee-navbar-top/coachee-navbar-top.component';
-import { CoacheeDetailOfACoachComponent } from './users/coachee-detail-of-a-coach/coachee-detail-of-a-coach.component';
-import { RequestASessionComponent } from './session/request-a-session/request-a-session.component';
+import {HomeComponent} from './home/home.component';
+import {NavigationBarComponent} from './navigation-bar/navigation-bar.component';
+import {FooterComponent} from './footer/footer.component';
+import {RegisterComponent} from './register/register.component';
+import {ProfileCoacheeComponent} from './users/profile-coachee/profile-coachee.component';
+import {OverviewCoachesComponent} from './users/overview-coaches/overview-coaches.component';
+import {BecomeACoachComponent} from './become-a-coach/become-a-coach.component';
+import {CoacheeNavbarComponent} from './users/coachee-navbar/coachee-navbar.component';
+import {CoacheeNavbarTopComponent} from './users/coachee-navbar-top/coachee-navbar-top.component';
+import {CoacheeDetailOfACoachComponent} from './users/coachee-detail-of-a-coach/coachee-detail-of-a-coach.component';
+import {RequestASessionComponent} from './session/request-a-session/request-a-session.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatInputModule} from '@angular/material/input';
+import {MatIconModule} from '@angular/material/icon';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -56,10 +61,17 @@ export function HttpLoaderFactory(http: HttpClient) {
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       }
-    })
+    }),
+    MatDatepickerModule,
+    MatNativeDateModule,
+    BrowserAnimationsModule,
+    MatInputModule,
+    MatIconModule
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: AuthenticationInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: AuthenticationInterceptor, multi: true},
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   bootstrap: [AppComponent]
 })
