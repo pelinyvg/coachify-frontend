@@ -65,7 +65,7 @@ export class RegisterComponent implements OnInit {
       alert('Coachee has been registered');
       this._registerForm.reset();
       // todo change this path in story 3 or 34
-      this.router.navigate([`coachees/${this._coachee.id}/coaches`]);
+      this.router.navigate([`login`]);
     });
   }
 }
