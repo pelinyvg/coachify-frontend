@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
   loginForm;
   title = 'You-Coach | Sign in';
   jwt;
+  id: number;
   private redirectUrl: string;
   private fragment: string;
 
@@ -48,7 +49,8 @@ export class LoginComponent implements OnInit {
         (_ => {
           this.success = true;
           this.initService.initDropdowns();
-          this.router.navigateByUrl('/hello-world');
+          this.id = this.authenticationService.getUserId();
+          this.router.navigateByUrl(`/coachees/${this.id}/profile-coachee`);
         }),
         (fault => {
           console.log('test');

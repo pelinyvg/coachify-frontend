@@ -67,7 +67,7 @@ export class RegisterComponent implements OnInit {
       alert('Coachee has been registered');
       this._registerForm.reset();
       this.router.navigate([`login`]);
-    }, (errorResponse: HttpErrorResponse) => {console.error('error'); });
+    }, (errorResponse: HttpErrorResponse) => {alert('This email is already used'); });
   }
 }
 
