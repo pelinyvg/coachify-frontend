@@ -38,6 +38,8 @@ export class RequestASessionComponent implements OnInit {
   }
 
   onSubmit() {
-    this.sessionService.addSession(this.sessionForm.value).subscribe(session => console.log(session));
+    this.sessionService.addSession(this.sessionForm.value).subscribe(session => {
+      console.log(session);
+    });
   }
 }
