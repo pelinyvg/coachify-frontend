@@ -19,7 +19,7 @@
                   <label for="topic">On which topic/subject would you like to have a coaching session?</label>
                 </div>
               </div>
-              <div class="row">
+              <div class="row-of-time-and-date row">
                 <div class="input-field col s6">
                   <mat-form-field appearance="fill">
                     <mat-label>Choose a date</mat-label>
@@ -29,7 +29,7 @@
                     <mat-datepicker #picker></mat-datepicker>
                   </mat-form-field>
                 </div>
-                <div class="input-field col s6">
+                <div class="timepicker-icon input-field col s6">
                   <input placeholder="time" [ngxTimepicker]="toggleTimepicker" [disableClick]="true" [format]="24" readonly formControlName="time">
                   <ngx-material-timepicker-toggle [for]="toggleTimepicker"></ngx-material-timepicker-toggle>
                   <ngx-material-timepicker #toggleTimepicker></ngx-material-timepicker>
