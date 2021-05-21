@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder} from '@angular/forms';
+import {FormBuilder, Validators} from '@angular/forms';
 import {SessionService} from '../../services/session.service';
 import {CoachService} from '../../services/coach.service';
 import {CoacheeService} from '../../services/coachee.service';
 import {ActivatedRoute} from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-request-a-session',
@@ -16,10 +17,10 @@ export class RequestASessionComponent implements OnInit {
 
   sessionForm = this.formBuilder.group(
     {
-      subject: '',
+      subject: ['', [Validators.required]],
       date: '',
-      time: '',
-      location: '',
+      time: ['', [Validators.required]],
+      location: ['', [Validators.required]],
       remarks: '',
       coachId: this.route.snapshot.params.idcoach,
       coacheeId: this.route.snapshot.params.id
@@ -29,17 +30,17 @@ export class RequestASessionComponent implements OnInit {
               private sessionService: SessionService,
               private coachService: CoachService,
               private coacheeService: CoacheeService,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private location: Location) {
     this.minDate = new Date();
   }
 
   ngOnInit(): void {
-
   }
 
-  onSubmit() {
-    this.sessionService.addSession(this.sessionForm.value).subscribe(session => {
-      console.log(session);
+  onSubmit(): void {
+    this.sessionService.addSession(this.sessionForm.value).subscribe(() => {
+      this.location.back()
     });
   }
 }
