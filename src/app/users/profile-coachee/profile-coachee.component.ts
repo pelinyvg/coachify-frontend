@@ -13,7 +13,6 @@ export class ProfileCoacheeComponent implements OnInit {
 
   coachee: Coachee;
   id: number;
-  // role = 'Coachee';
 
   constructor(
     private route: ActivatedRoute,
@@ -25,10 +24,6 @@ export class ProfileCoacheeComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params.id;
-
-    /*if (this.authenticationService.isAdmin() && this.authenticationService.getUserId() == this.id) {
-      this.role = 'Admin';
-    }*/
 
     if (this.authenticationService.getUserId() == this.id || this.authenticationService.isAdmin()) {
       this.getUser(this.id);
