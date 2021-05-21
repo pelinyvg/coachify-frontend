@@ -12,15 +12,14 @@ import {MatDialog} from '@angular/material/dialog';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  private _coachee: Coachee;
+  private ecoachee: Coachee;
 
-
-  private _registerForm = this.formBuilder.group(
+  private eregisterForm = this.formBuilder.group(
     {
       firstName: ['', [Validators.required, Validators.minLength(2)]],
       lastName: ['', [Validators.required, Validators.minLength(2)]],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(8), Validators.pattern('(?=.*[0-9])(?=.*[A-Z])(?=\\S+$).{8,}')]],
+      password: ['', [Validators.required, Validators.pattern('(?=.*[0-9])(?=.*[A-Z])(?=\\S+$).{8,}')]],
       passwordVerification: ['', [Validators.required]]
     }, {validator: ConfirmedValidator('password', 'passwordVerification')}
   );
@@ -30,44 +29,46 @@ export class RegisterComponent implements OnInit {
 
 
   get coachee(): Coachee {
-    return this._coachee;
+    return this.ecoachee;
   }
 
   get registerForm(): FormGroup {
-    return this._registerForm;
+    return this.eregisterForm;
   }
 
   get firstName() {
-    return this._registerForm.get('firstName');
+    return this.eregisterForm.get('firstName');
   }
 
   get lastName() {
-    return this._registerForm.get('lastName');
+    return this.eregisterForm.get('lastName');
   }
 
   get email() {
-    return this._registerForm.get('email');
+    return this.eregisterForm.get('email');
   }
 
   get password() {
-    return this._registerForm.get('password');
+    return this.eregisterForm.get('password');
   }
 
   get passwordVerification() {
-    return this._registerForm.get('passwordVerification');
+    return this.eregisterForm.get('passwordVerification');
   }
 
   ngOnInit(): void {
-    this._registerForm.reset();
+    this.eregisterForm.reset();
   }
 
   onSubmit(): void {
-    this._coachee = this._registerForm.value;
-    this.coacheeService.addCoachee(this._registerForm.value).subscribe(() => {
+    this.ecoachee = this.eregisterForm.value;
+    this.coacheeService.addCoachee(this.eregisterForm.value).subscribe(() => {
       alert('Coachee has been registered');
-      this._registerForm.reset();
+      this.eregisterForm.reset();
       this.router.navigate([`login`]);
-    }, (errorResponse: HttpErrorResponse) => {alert('This email is already used'); });
+    }, (errorResponse: HttpErrorResponse) => {
+      alert('This email is already used');
+    });
   }
 }
 
@@ -85,29 +86,3 @@ export function ConfirmedValidator(controlName: string, matchingControlName: str
     }
   };
 }
-
-//
-// this.restaurantService.getRestaurant(Number(this.activatedRoute.snapshot.paramMap.get('id')))
-//   .subscribe((restaurant: Restaurant) => {
-//       this.restaurant = restaurant;
-//     }, (errorResponse: HttpErrorResponse) => {
-//       if (errorResponse.error instanceof ErrorEvent) {
-//         console.error('Error event');
-//       } else {
-//         switch (errorResponse.status) {
-//           case 403:
-//             this.router.navigateByUrl('/error/403');
-//             break;
-//           case 401:
-//             this.router.navigateByUrl('/login');
-//             break;
-//           case 404:
-//             this.router.navigate(['**']);
-//             break;
-//           case 500:
-//             this.router.navigateByUrl('/error/500');
-//         }
-//       }
-//       console.log(errorResponse.error.message);
-//     }
-//   );
