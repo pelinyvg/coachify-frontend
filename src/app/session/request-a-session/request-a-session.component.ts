@@ -4,7 +4,7 @@ import {SessionService} from '../../services/session.service';
 import {CoachService} from '../../services/coach.service';
 import {CoacheeService} from '../../services/coachee.service';
 import {ActivatedRoute} from '@angular/router';
-import { Location } from '@angular/common';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-request-a-session',
@@ -40,7 +40,7 @@ export class RequestASessionComponent implements OnInit {
 
   onSubmit(): void {
     this.sessionService.addSession(this.sessionForm.value).subscribe(() => {
-      this.location.back()
+      this.location.back();
     });
   }
 }
