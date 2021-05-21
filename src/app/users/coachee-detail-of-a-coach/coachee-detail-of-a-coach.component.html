@@ -27,15 +27,15 @@
                     <tbody>
                     <tr>
                       <td><strong>First name</strong></td>
-                      <td>{{coach.firstName}}</td>
+                      <td>{{coach?.firstName}}</td>
                     </tr>
                     <tr>
                       <td><strong>Last name</strong></td>
-                      <td>{{coach.lastName}}</td>
+                      <td>{{coach?.lastName}}</td>
                     </tr>
                     <tr>
                       <td><strong>Email</strong></td>
-                      <td>{{coach.email}}</td>
+                      <td>{{coach?.email}}</td>
                     </tr>
                     </tbody>
                   </table>
@@ -54,12 +54,12 @@
                     <tbody>
                     <tr>
                       <td><strong>Introduction</strong></td>
-                      <td>{{coach.introduction}}
+                      <td>{{coach?.introduction}}
                       </td>
                     </tr>
                     <tr>
                       <td><strong>Availability</strong></td>
-                      <td>{{coach.availability}}
+                      <td>{{coach?.availability}}
                       </td>
                     </tr>
                     </tbody>
@@ -77,25 +77,25 @@
                 <div class="col s12">
                   <table class="highlight">
                     <tbody>
-                    <tr *ngFor="let topic of coach.topicsByCoach">
-                      <td><strong>{{topic.topicName}}</strong></td>
+                    <tr *ngFor="let topic of coach?.topicsByCoach">
+                      <td><strong>{{topic?.topicName}}</strong></td>
                       <td>
                         <div class="center">
-                          <a class="btn-floating yellow darken-2" *ngIf="topic.grade1; else gray1"><i
+                          <a class="btn-floating yellow darken-2" *ngIf="topic?.grade1; else gray1"><i
                             class="material-icons">filter_1</i></a>
 
                           <ng-template #gray1>
                             <a class="btn-floating disabled"><i class="material-icons">filter_1</i></a>
                           </ng-template>
 
-                          <a class="btn-floating yellow darken-2" *ngIf="topic.grade2; else gray2"><i
+                          <a class="btn-floating yellow darken-2" *ngIf="topic?.grade2; else gray2"><i
                             class="material-icons">filter_2</i></a>
 
                           <ng-template #gray2>
                             <a class="btn-floating disabled"><i class="material-icons">filter_2</i></a>
                           </ng-template>
 
-                          <a class="btn-floating yellow darken-2" *ngIf="topic.grade3; else gray3"><i
+                          <a class="btn-floating yellow darken-2" *ngIf="topic?.grade3; else gray3"><i
                             class="material-icons">filter_3</i></a>
 
                           <ng-template #gray3>
