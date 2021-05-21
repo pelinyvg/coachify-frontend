@@ -48,7 +48,8 @@
               </div>
 
               <div class="row right-align">
-                <button class="waves-effect waves-light yellow darken-2 btn-large black-text" type="submit">Request
+                <button class="waves-effect waves-light yellow darken-2 btn-large black-text" type="submit" [disabled]="sessionForm.invalid"
+                >Request
                   session<i
                     class="material-icons right">send</i></button>
               </div>
