@@ -25,13 +25,12 @@ export class ProfileCoacheeComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.route.snapshot.params.id;
 
+    // tslint:disable-next-line:triple-equals
     if (this.authenticationService.getUserId() == this.id || this.authenticationService.isAdmin()) {
       this.getUser(this.id);
     } else {
-      window.location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
+      this.router.navigate([`coachees/${this.authenticationService.getUserId()}/not-authorized`]);
     }
-
-
   }
 
   getUser(id: number): void {
