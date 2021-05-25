@@ -37,4 +37,23 @@ export class ProfileCoacheeComponent implements OnInit {
     this.service.getUser(id).subscribe(coachee => this.coachee = coachee);
   }
 
+
+  toOutputString(): string {
+    let output = '';
+    for (const authority of this.coachee.authorities) {
+      output += this.toLowerCase(authority) + ', ';
+    }
+    return output.substr(0, output.length - 2);
+  }
+
+  toLowerCase(authority: string): string {
+    switch (authority) {
+      case 'COACH':
+        return 'Coach';
+      case 'COACHEE':
+        return 'Coachee';
+      case 'ADMIN':
+        return 'Admin';
+    }
+  }
 }
