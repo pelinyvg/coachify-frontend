@@ -27,6 +27,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { NotAuthorizedUserComponent } from './errors/not-authorized-user/not-authorized-user.component';
+import { SessionOverviewCoacheeComponent } from './session/session-overview-coachee/session-overview-coachee.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -47,7 +48,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     CoacheeNavbarTopComponent,
     CoacheeDetailOfACoachComponent,
     RequestASessionComponent,
-    NotAuthorizedUserComponent
+    NotAuthorizedUserComponent,
+    SessionOverviewCoacheeComponent
   ],
   imports: [
     BrowserModule,

@@ -10,6 +10,7 @@ import {CoacheeDetailOfACoachComponent} from './users/coachee-detail-of-a-coach/
 import {LoginGuard} from './authentication/guards/login.guard';
 import {RequestASessionComponent} from './session/request-a-session/request-a-session.component';
 import {NotAuthorizedUserComponent} from './errors/not-authorized-user/not-authorized-user.component';
+import {SessionOverviewCoacheeComponent} from './session/session-overview-coachee/session-overview-coachee.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -27,6 +28,7 @@ const routes: Routes = [
   {path: 'coachees/:id/coaches/:idcoach', component: CoacheeDetailOfACoachComponent},
   {path: 'coachees/:id/coaches/:idcoach/request-a-session', component: RequestASessionComponent},
   {path: 'coachees/:id/not-authorized', component: NotAuthorizedUserComponent},
+  {path: 'coachees/:id/sessions', component: SessionOverviewCoacheeComponent},
   // leave the path: ** always at the end
   {path: '**', redirectTo: '/home', pathMatch: 'full'}
 ];
