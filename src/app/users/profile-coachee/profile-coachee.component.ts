@@ -39,6 +39,9 @@ export class ProfileCoacheeComponent implements OnInit {
 
 
   toOutputString(): string {
+    if (!this.coachee) {
+      return '';
+    }
     let output = '';
     for (const authority of this.coachee.authorities) {
       output += this.toLowerCase(authority) + ', ';
