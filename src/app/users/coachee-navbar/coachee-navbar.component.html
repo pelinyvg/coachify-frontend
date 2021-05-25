@@ -2,11 +2,14 @@
   <div class="content-container">
     <h6>My Profile</h6>
     <div class="collection">
-      <a href="coachees/{{id}}/profile-coachee" class="collection-item black-text active yellow darken-2">Profile
+      <a routerLink="/coachees/{{id}}/profile-coachee" routerLinkActive #rla1="routerLinkActive"
+         [ngClass]="rla1.isActive ? 'black-text yellow darken-2' : 'grey-text text-darken-2'" class="collection-item">Profile
         Information</a>
-      <a href="#!" class="collection-item grey-text text-darken-2">Coaching sessions</a>
-      <a href="coachees/{{id}}/become-a-coach" class="collection-item grey-text text-darken-2">Apply to become a
-        coach</a>
+      <!--        <a routerLink="#!" routerLinkActive #rla2="routerLinkActive"
+         [ngClass]="rla2.isActive ? 'black-text yellow darken-2' : 'grey-text text-darken-2'" class="collection-item">Coaching sessions</a>-->
+      <a routerLink="/coachees/{{id}}/become-a-coach" routerLinkActive #rla3="routerLinkActive"
+         [ngClass]="rla3.isActive ? 'black-text yellow darken-2' : 'grey-text text-darken-2'" class="collection-item">Apply
+        to become a coach</a>
     </div>
   </div>
 </div>

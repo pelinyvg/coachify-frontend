@@ -52,15 +52,14 @@
                   </div>
                   <div class="card-stacked">
                     <div class="card-content">
-                      <!-- todo: here add ngFor for the topics -->
                       <table class="highlight responsive-table">
                         <tbody>
                         <div *ngFor="let topic of coach.topicsByCoach">
                           <tr>
                             <td><strong>{{topic.topicName}}</strong></td>
-                              <td *ngIf="topic.grade1">INTERMEDIATE</td>
-                              <td *ngIf="topic.grade2">MEDIUM</td>
-                              <td *ngIf="topic.grade3">EXPERT</td>
+                              <td *ngIf="topic.grade1">Intermediate</td>
+                              <td *ngIf="topic.grade2">Medium</td>
+                              <td *ngIf="topic.grade3">Expert</td>
                           </tr>
                         </div>
                         </tbody>
