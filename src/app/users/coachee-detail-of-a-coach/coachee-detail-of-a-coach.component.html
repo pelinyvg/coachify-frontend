@@ -12,7 +12,8 @@
 
             <section class="card-panel grey lighten-5">
               <div class="right">
-                <a class="waves-effect waves-light btn-large btn-floating yellow darken-2" routerLink="./request-a-session"><i
+                <a class="waves-effect waves-light btn-large btn-floating yellow darken-2"
+                   routerLink="./request-a-session"><i
                   class="material-icons left">date_range</i>Request a session</a>
               </div>
               <h5>Profile Information</h5>
@@ -81,26 +82,29 @@
                       <td><strong>{{topic?.topicName}}</strong></td>
                       <td>
                         <div class="center">
-                          <a class="btn-floating yellow darken-2" *ngIf="topic?.grade1; else gray1"><i
-                            class="material-icons">filter_1</i></a>
+                          <div class="center expertise-order">
+                            <div *ngIf="topic.grade1; else gray1"><img src="assets/images/intermediate_yellow.png"
+                                                                       height="40"></div>
 
-                          <ng-template #gray1>
-                            <a class="btn-floating disabled"><i class="material-icons">filter_1</i></a>
-                          </ng-template>
+                            <ng-template #gray1>
+                              <div class="expertise-img"><img src="assets/images/intermediate_grey.png" height="40">
+                              </div>
+                            </ng-template>
 
-                          <a class="btn-floating yellow darken-2" *ngIf="topic?.grade2; else gray2"><i
-                            class="material-icons">filter_2</i></a>
+                            <div *ngIf="topic.grade2; else gray2"><img src="assets/images/medium_yellow.png"
+                                                                       height="40"></div>
 
-                          <ng-template #gray2>
-                            <a class="btn-floating disabled"><i class="material-icons">filter_2</i></a>
-                          </ng-template>
+                            <ng-template #gray2>
+                              <div class="expertise-img"><img src="assets/images/medium_grey.png" height="40"></div>
+                            </ng-template>
 
-                          <a class="btn-floating yellow darken-2" *ngIf="topic?.grade3; else gray3"><i
-                            class="material-icons">filter_3</i></a>
+                            <div *ngIf="topic.grade3; else gray3"><img src="assets/images/expert_yellow.png"
+                                                                       height="40"></div>
 
-                          <ng-template #gray3>
-                            <a class="btn-floating disabled"><i class="material-icons">filter_3</i></a>
-                          </ng-template>
+                            <ng-template #gray3>
+                              <div class="expertise-img"><img src="assets/images/expert_gray.png" height="40"></div>
+                            </ng-template>
+                          </div>
                         </div>
                       </td>
                     </tr>
