@@ -17,7 +17,7 @@
                 <li><a class="waves-light red lighten-2 white-text" routerLink="/home" *ngIf="authenticationService.isLoggedIn()" (click)="logout()" translate>menu.button.log-out<i class="material-icons">power_settings_new</i></a></li>
               </ul>
             </li>
-            <li><a class="waves-light yellow darken-2 btn black-text" routerlink="/login" *ngIf="!authenticationService.isLoggedIn()" translate>menu.button.sign-in<i class="material-icons right">person</i></a></li>
+            <li><a class="waves-light yellow darken-2 btn black-text" routerLink="/login" *ngIf="!authenticationService.isLoggedIn()" translate>menu.button.sign-in<i class="material-icons right">person</i></a></li>
             <li><a class="waves-effect waves-light teal lighten-3 btn black-text" routerLink="/register">Register</a></li>
           </ul>
         </div>
