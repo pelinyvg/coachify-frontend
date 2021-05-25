@@ -20,7 +20,7 @@ export class NavigationBarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.translate.use(this.translate.getBrowserLang());
+    // this.translate.use(this.translate.getBrowserLang());
 
     if (this.authenticationService.getUserId()) {
       this.username = this.authenticationService.getUsername();
@@ -33,6 +33,7 @@ export class NavigationBarComponent implements OnInit {
       .subscribe(profile => this.username = this.authenticationService.getUsername());
   }
 
+  // tslint:disable-next-line:use-lifecycle-interface
   ngAfterViewInit(): void {
     this.initService.initDropdowns();
     this.initService.initSidenav();

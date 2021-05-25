@@ -25,17 +25,35 @@ export class ProfileCoacheeComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.route.snapshot.params.id;
 
+    // tslint:disable-next-line:triple-equals
     if (this.authenticationService.getUserId() == this.id || this.authenticationService.isAdmin()) {
       this.getUser(this.id);
     } else {
-      window.location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
+      this.router.navigate([`coachees/${this.authenticationService.getUserId()}/not-authorized`]);
     }
-
-
   }
 
   getUser(id: number): void {
     this.service.getUser(id).subscribe(coachee => this.coachee = coachee);
   }
 
+
+  toOutputString(): string {
+    let output = '';
+    for (const authority of this.coachee.authorities) {
+      output += this.toLowerCase(authority) + ', ';
+    }
+    return output.substr(0, output.length - 2);
+  }
+
+  toLowerCase(authority: string): string {
+    switch (authority) {
+      case 'COACH':
+        return 'Coach';
+      case 'COACHEE':
+        return 'Coachee';
+      case 'ADMIN':
+        return 'Admin';
+    }
+  }
 }
