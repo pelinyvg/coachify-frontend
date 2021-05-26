@@ -23,7 +23,8 @@ export class RequestASessionComponent implements OnInit {
       location: ['', [Validators.required]],
       remarks: '',
       coachId: this.route.snapshot.params.idcoach,
-      coacheeId: this.route.snapshot.params.id
+      coacheeId: this.route.snapshot.params.id,
+      status: 'Requested'
     });
 
   constructor(private formBuilder: FormBuilder,
