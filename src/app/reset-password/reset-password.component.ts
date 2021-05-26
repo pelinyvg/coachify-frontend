@@ -1,9 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {CoacheeService} from '../services/coachee.service';
-import {ActivatedRoute, Router} from '@angular/router';
-import {Coachee} from '../model/coachee';
-import {HttpErrorResponse} from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {CoacheeService} from "../services/coachee.service";
+import {ActivatedRoute, Router} from "@angular/router";
+import {Coachee} from "../model/coachee";
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-reset-password',
@@ -16,7 +16,7 @@ export class ResetPasswordComponent implements OnInit {
 
   private resetPasswordForm = this.formBuilder.group(
     {
-      resetPasswordId: this.resetPasswordId,
+      resetPasswordId: '',
       email: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.pattern('(?=.*[0-9])(?=.*[A-Z])(?=\\S+$).{8,}')]],
       passwordVerification: ['', [Validators.required]]
@@ -29,8 +29,7 @@ export class ResetPasswordComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute) {
     this.activatedRoute.queryParams.subscribe(params => {
-      this.resetPasswordId = params.token;
-      console.log(this.resetPasswordId);
+      this.resetPasswordId = params['token'];
     });
   }
 
@@ -51,23 +50,22 @@ export class ResetPasswordComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (!this.coacheeService.resetPasswordIdExist(this.resetPasswordId)) {
-      console.log('working');
-      this.router.navigateByUrl(`/home`);
-    } else {
-      console.log('not working');
-    }
-
+    this.coacheeService.resetPasswordIdExist(this.resetPasswordId).subscribe(boolean => {
+      if (!boolean) {
+        this.router.navigateByUrl(`/home`);
+      }
+    })
     this.resetPasswordForm.reset();
   }
 
   onSubmit(): void {
+    this.resetPasswordForm.controls['resetPasswordId'].setValue(this.resetPasswordId);
     this.coacheeService.changePassword(this.resetPasswordForm.value).subscribe(() => {
       alert('Password has been changed');
       this.resetPasswordForm.reset();
       this.router.navigate([`login`]);
     }, (errorResponse: HttpErrorResponse) => {
-      alert('exception');
+      alert('Server was unable to answer your request');
     });
   }
 }
