@@ -63,12 +63,13 @@ export class ResetPasswordComponent implements OnInit {
   }
 
   onSubmit(): void {
+    console.log('loggin the form: ' + this.resetPasswordForm.get('resetPasswordId'));
     this.coacheeService.changePassword(this.resetPasswordForm.value).subscribe(() => {
       alert('Password has been changed');
       this.resetPasswordForm.reset();
       this.router.navigate([`login`]);
     }, (errorResponse: HttpErrorResponse) => {
-      alert('exception');
+      alert('Server was unable to answer your request');
     });
   }
 }
