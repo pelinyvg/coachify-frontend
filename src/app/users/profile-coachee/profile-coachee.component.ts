@@ -39,6 +39,9 @@ export class ProfileCoacheeComponent implements OnInit {
 
 
   toOutputString(): string {
+    if (!this.coachee) {
+      return '';
+    }
     let output = '';
 
     const array = this.coachee?.authorities;

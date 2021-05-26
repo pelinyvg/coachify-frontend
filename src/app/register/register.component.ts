@@ -27,7 +27,6 @@ export class RegisterComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private coacheeService: CoacheeService, private router: Router) {
   }
 
-
   get coachee(): Coachee {
     return this.ecoachee;
   }

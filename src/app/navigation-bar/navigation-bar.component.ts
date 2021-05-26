@@ -9,7 +9,7 @@ import {InitService} from '../materialize/init.service';
   templateUrl: './navigation-bar.component.html',
   styleUrls: ['./navigation-bar.component.css']
 })
-export class NavigationBarComponent implements OnInit {
+export class NavigationBarComponent implements OnInit, AfterViewInit{
   username;
   language = 'en';
 

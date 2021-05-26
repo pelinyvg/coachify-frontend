@@ -11,11 +11,13 @@ import {LoginGuard} from './authentication/guards/login.guard';
 import {RequestASessionComponent} from './session/request-a-session/request-a-session.component';
 import {NotAuthorizedUserComponent} from './errors/not-authorized-user/not-authorized-user.component';
 import {SessionOverviewCoacheeComponent} from './session/session-overview-coachee/session-overview-coachee.component';
+import {ResetPasswordComponent} from "./reset-password/reset-password.component";
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
   {path: 'home', component: HomeComponent},
+  {path: 'reset-password', component: ResetPasswordComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'coachees/:id/coaches', component: OverviewCoachesComponent},
   {

@@ -18,7 +18,7 @@
               </ul>
             </li>
             <li><a class="waves-light yellow darken-2 btn black-text" routerLink="/login" *ngIf="!authenticationService.isLoggedIn()" translate>menu.button.sign-in<i class="material-icons right">person</i></a></li>
-            <li><a class="waves-effect waves-light teal lighten-3 btn black-text" routerLink="/register">Register</a></li>
+            <li><a class="waves-effect waves-light teal lighten-3 btn black-text" routerLink="/register" *ngIf="!authenticationService.isLoggedIn()">Register</a></li>
           </ul>
         </div>
 
@@ -29,7 +29,7 @@
             </ul>
           </li>
           <li><a class="waves-light yellow darken-2 btn black-text" routerLink="/login" *ngIf="!authenticationService.isLoggedIn()" translate>menu.button.sign-in<i class="material-icons right">person</i></a></li>
-          <li><a class="waves-effect waves-light teal lighten-3 btn black-text" routerLink="/register">Register</a></li>
+          <li><a class="waves-effect waves-light teal lighten-3 btn black-text" routerLink="/register" *ngIf="!authenticationService.isLoggedIn()">Register</a></li>
         </ul>
       </div>
     </div>
