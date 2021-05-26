@@ -14,78 +14,6 @@
           <div class="divider"></div>
           <div class="row">
             <div class="col l12 s12">
-              <table class="highlight responsive-table" *ngFor="let coachingSession of sessionsUpcoming">
-                <thead>
-                <tr>
-                  <th>Coach</th>
-                  <th>Subject</th>
-                  <th>Date</th>
-                  <th>Time</th>
-                  <th>Location</th>
-                  <th>Status</th>
-                  <th>Actions</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                  <td>{{coachingSession.coachId}}</td>
-                  <td>Biology of the cell: difference between prokaryotic and eukaryotic cells</td>
-                  <td>16/05/2020</td>
-                  <td>16:00</td>
-                  <td>Coaching room</td>
-                  <td>Requested</td>
-                  <td><a class="waves-effect waves-light  grey lighten-2 btn black-text">Cancel<i
-                    class="material-icons right">cancel</i></a></td>
-                </tr>
-                <tr>
-                  <td>Sofie Dumoulin</td>
-                  <td>I have a hard time grasping derived functions and I have an upcoming exam</td>
-                  <td>17/05/2020</td>
-                  <td>12:00</td>
-                  <td>Coaching room</td>
-                  <td>Accepted</td>
-                  <td><a class="waves-effect waves-light  grey lighten-2 btn black-text">Cancel<i
-                    class="material-icons right">cancel</i></a></td>
-                </tr>
-                <tr>
-                  <td>Sofie Dumoulin</td>
-                  <td>I have a hard time grasping derived functions and I have an upcoming exam</td>
-                  <td>17/05/2020</td>
-                  <td>12:00</td>
-                  <td>Coaching room</td>
-                  <td>Declined</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>Sofie Dumoulin</td>
-                  <td>I have a hard time grasping derived functions and I have an upcoming exam</td>
-                  <td>17/05/2020</td>
-                  <td>12:00</td>
-                  <td>Coaching room</td>
-                  <td>Cancelled<br/>(by coach)</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>Sofie Dumoulin</td>
-                  <td>I have a hard time grasping derived functions and I have an upcoming exam</td>
-                  <td>17/05/2020</td>
-                  <td>12:00</td>
-                  <td>Coaching room</td>
-                  <td>Cancelled<br/>(by you)</td>
-                  <td></td>
-                </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-        </section>
-
-        <section class="card-panel grey lighten-5">
-          <h5>Waiting for feedback</h5>
-          <div class="divider"></div>
-          <div class="row">
-            <div class="col l12 s12">
               <table class="highlight responsive-table">
                 <thead>
                 <tr>
@@ -98,31 +26,22 @@
                   <th>Actions</th>
                 </tr>
                 </thead>
-                <tbody>
+                <tbody *ngFor="let coachingSession of sessionsUpcoming">
                 <tr>
-                  <td>Antoine Leroy</td>
-                  <td>Biology of the cell: difference between prokaryotic and eukaryotic cells</td>
-                  <td>16/05/2019</td>
-                  <td>16:00</td>
-                  <td>Coaching room</td>
-                  <td>Done</td>
-                  <td><a class="waves-effect waves-light  grey lighten-2 btn black-text">Give feedback<i
-                    class="material-icons right">feedback</i></a></td>
+                  <td>{{coachingSession.coachFirstName}} {{coachingSession.coachLastName}}</td>
+                  <td>{{coachingSession.subject}}</td>
+                  <td>{{coachingSession.date}}</td>
+                  <td>{{coachingSession.time}}</td>
+                  <td>{{coachingSession.location}}</td>
+                  <td>{{coachingSession.status}}</td>
+                  <td><a class="waves-effect waves-light  grey lighten-2 btn black-text" *ngIf="statusCheck(coachingSession)">Cancel<i
+                    class="material-icons right">cancel</i></a></td>
                 </tr>
-                <tr>
-                  <td>Sofie Dumoulin</td>
-                  <td>I have a hard time grasping derived functions and I have an upcoming exam</td>
-                  <td>17/05/2019</td>
-                  <td>12:00</td>
-                  <td>Coaching room</td>
-                  <td>Done</td>
-                  <td></td>
-                </tr>
+
                 </tbody>
               </table>
             </div>
           </div>
-
         </section>
 
         <section class="card-panel grey lighten-5">
@@ -139,54 +58,16 @@
                   <th>Time</th>
                   <th>Location</th>
                   <th>Status</th>
-                  <th>Actions</th>
                 </tr>
                 </thead>
-                <tbody>
+                <tbody *ngFor="let coachingSession of sessionsArchive">
                 <tr>
-                  <td>Antoine Leroy</td>
-                  <td>Biology of the cell: introduction</td>
-                  <td>16/05/2020</td>
-                  <td>16:00</td>
-                  <td>Coaching room</td>
-                  <td>Feedback provided</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>Antoine Leroy</td>
-                  <td>Biology of the cell: introduction</td>
-                  <td>16/05/2020</td>
-                  <td>16:00</td>
-                  <td>Coaching room</td>
-                  <td>Automatically closed</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>Antoine Leroy</td>
-                  <td>Biology of the cell: introduction</td>
-                  <td>16/05/2020</td>
-                  <td>16:00</td>
-                  <td>Coaching room</td>
-                  <td>Declined</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>Antoine Leroy</td>
-                  <td>Biology of the cell: introduction</td>
-                  <td>16/05/2020</td>
-                  <td>16:00</td>
-                  <td>Coaching room</td>
-                  <td>Cancelled<br/>(by you)</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>Antoine Leroy</td>
-                  <td>Biology of the cell: introduction</td>
-                  <td>16/05/2020</td>
-                  <td>16:00</td>
-                  <td>Coaching room</td>
-                  <td>Cancelled<br/>(by coach)</td>
-                  <td></td>
+                  <td>{{coachingSession.coachFirstName}} {{coachingSession.coachLastName}}</td>
+                  <td>{{coachingSession.subject}}</td>
+                  <td>{{coachingSession.date}}</td>
+                  <td>{{coachingSession.time}}</td>
+                  <td>{{coachingSession.location}}</td>
+                  <td>{{coachingSession.status}}</td>
                 </tr>
                 </tbody>
               </table>

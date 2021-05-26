@@ -42,4 +42,7 @@ export class SessionOverviewCoacheeComponent implements OnInit {
     );
   }
 
+  statusCheck(session: CoachingSession): boolean {
+    return session.status === 'Accepted' || session.status === 'Requested';
+  }
 }
