@@ -23,11 +23,12 @@ export class CoacheeService {
     return this.http.get<Coachee>(`${environment.backendUrl}/users/${id}`);
   }
 
-  resetPasswordIdExist(resetPasswordId: string): Observable<Boolean> {
-    return this.http.get<Boolean>(`${environment.backendUrl}/users/reset-password/${resetPasswordId}`);
-  }
-
   changePassword(resetPassword: ResetPassword): Observable<ResetPassword> {
     return this.http.post<ResetPassword>(`${environment.backendUrl}/users/reset-password`, resetPassword);
+  }
+
+  resetPasswordIdExist(resetPasswordId: string): Observable<boolean> {
+    console.log(`${environment.backendUrl}/users/reset-password/${resetPasswordId}`);
+    return this.http.get<boolean>(`${environment.backendUrl}/users/reset-password/${resetPasswordId}`);
   }
 }

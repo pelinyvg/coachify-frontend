@@ -17,7 +17,7 @@ export class ResetPasswordComponent implements OnInit {
   private resetPasswordForm = this.formBuilder.group(
     {
       resetPasswordId: this.resetPasswordId,
-      email: ['', [Validators.required, Validators.email]],
+      email: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.pattern('(?=.*[0-9])(?=.*[A-Z])(?=\\S+$).{8,}')]],
       passwordVerification: ['', [Validators.required]]
     }, {validator: ConfirmedValidator('password', 'passwordVerification')}
@@ -52,8 +52,12 @@ export class ResetPasswordComponent implements OnInit {
 
   ngOnInit(): void {
     if(!this.coacheeService.resetPasswordIdExist(this.resetPasswordId)) {
+      console.log('working');
       this.router.navigateByUrl(`/home`);
+    } else {
+      console.log('not working');
     }
+
     this.resetPasswordForm.reset();
   }
 
@@ -63,7 +67,7 @@ export class ResetPasswordComponent implements OnInit {
       this.resetPasswordForm.reset();
       this.router.navigate([`login`]);
     }, (errorResponse: HttpErrorResponse) => {
-      alert('This email is already used');
+      alert('exception');
     });
   }
 }
