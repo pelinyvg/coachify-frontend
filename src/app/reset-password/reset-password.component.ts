@@ -66,6 +66,7 @@ export class ResetPasswordComponent implements OnInit {
       this.router.navigate([`login`]);
     }, (errorResponse: HttpErrorResponse) => {
       alert('Server was unable to answer your request');
+      this.router.navigate([`/home`]);
     });
   }
 }
