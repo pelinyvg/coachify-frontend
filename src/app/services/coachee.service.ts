@@ -4,6 +4,7 @@ import {environment} from '../../environments/environment';
 import {Observable} from 'rxjs';
 import {Coachee} from '../model/coachee';
 import {ResetPassword} from "../model/reset-password";
+import {ResetPasswordAnswer} from "../model/reset-password-answer";
 
 @Injectable({
   providedIn: 'root'
@@ -27,8 +28,8 @@ export class CoacheeService {
     return this.http.post<ResetPassword>(`${environment.backendUrl}/users/reset-password`, resetPassword);
   }
 
-  resetPasswordIdExist(resetPasswordId: string): Observable<boolean> {
+  resetPasswordIdExist(resetPasswordId: string): Observable<Boolean> {
     console.log(`${environment.backendUrl}/users/reset-password/${resetPasswordId}`);
-    return this.http.get<boolean>(`${environment.backendUrl}/users/reset-password/${resetPasswordId}`);
+    return this.http.get<Boolean>(`${environment.backendUrl}/users/reset-password/${resetPasswordId}`);
   }
 }

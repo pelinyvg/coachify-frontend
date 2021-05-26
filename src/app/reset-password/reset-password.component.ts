@@ -51,13 +51,14 @@ export class ResetPasswordComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if(!this.coacheeService.resetPasswordIdExist(this.resetPasswordId)) {
-      console.log('working');
-      this.router.navigateByUrl(`/home`);
-    } else {
-      console.log('not working');
-    }
-
+    this.coacheeService.resetPasswordIdExist(this.resetPasswordId).subscribe(boolean => {
+      if (!boolean) {
+        console.log('working');
+        this.router.navigateByUrl(`/home`);
+      } else {
+        console.log('not working');
+      }
+    })
     this.resetPasswordForm.reset();
   }
 
