@@ -4,7 +4,7 @@ import {environment} from '../../environments/environment';
 import {Observable} from 'rxjs';
 import {Coachee} from '../model/coachee';
 import {ResetPassword} from "../model/reset-password";
-import {ResetPasswordAnswer} from "../model/reset-password-answer";
+
 
 @Injectable({
   providedIn: 'root'

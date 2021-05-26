@@ -16,7 +16,7 @@ export class ResetPasswordComponent implements OnInit {
 
   private resetPasswordForm = this.formBuilder.group(
     {
-      resetPasswordId: this.resetPasswordId,
+      resetPasswordId: '',
       email: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.pattern('(?=.*[0-9])(?=.*[A-Z])(?=\\S+$).{8,}')]],
       passwordVerification: ['', [Validators.required]]
@@ -30,7 +30,6 @@ export class ResetPasswordComponent implements OnInit {
     private activatedRoute: ActivatedRoute) {
     this.activatedRoute.queryParams.subscribe(params => {
       this.resetPasswordId = params['token'];
-      console.log(this.resetPasswordId);
     });
   }
 
@@ -53,17 +52,17 @@ export class ResetPasswordComponent implements OnInit {
   ngOnInit(): void {
     this.coacheeService.resetPasswordIdExist(this.resetPasswordId).subscribe(boolean => {
       if (!boolean) {
-        console.log('working');
-        this.router.navigateByUrl(`/home`);
+        // this.router.navigateByUrl(`/home`);
+        console.log('token does not exist');
       } else {
-        console.log('not working');
+        console.log('token does exist');
       }
     })
     this.resetPasswordForm.reset();
   }
 
   onSubmit(): void {
-    console.log('loggin the form: ' + this.resetPasswordForm.get('resetPasswordId'));
+    this.resetPasswordForm.controls['resetPasswordId'].setValue(this.resetPasswordId);
     this.coacheeService.changePassword(this.resetPasswordForm.value).subscribe(() => {
       alert('Password has been changed');
       this.resetPasswordForm.reset();
