@@ -1,19 +1,12 @@
 <main>
 
+  <app-coachee-navbar-top></app-coachee-navbar-top>
+
   <div class="row">
 
-    <div class="col s12 m2">
-      <div class="content-container">
-        <h6>My Profile</h6>
-        <div class="collection">
-          <a href="#!" class="collection-item grey-text text-darken-2">Profile Information</a>
-          <a href="#!" class="collection-item black-text active yellow darken-2">Coaching sessions</a>
-          <a href="#!" class="collection-item grey-text text-darken-2">Apply to become a coach</a>
-        </div>
-      </div>
-    </div>
+    <app-coachee-navbar></app-coachee-navbar>
 
-    <div class="col s12 m12">
+    <div class="col s10 m10">
       <div class="content-container">
 
         <section class="card-panel grey lighten-5">
@@ -21,7 +14,7 @@
           <div class="divider"></div>
           <div class="row">
             <div class="col l12 s12">
-              <table class="highlight responsive-table">
+              <table class="highlight responsive-table" *ngFor="let coachingSession of sessionsUpcoming">
                 <thead>
                 <tr>
                   <th>Coach</th>
@@ -35,7 +28,7 @@
                 </thead>
                 <tbody>
                 <tr>
-                  <td>Antoine Leroy</td>
+                  <td>{{coachingSession.coachId}}</td>
                   <td>Biology of the cell: difference between prokaryotic and eukaryotic cells</td>
                   <td>16/05/2020</td>
                   <td>16:00</td>
