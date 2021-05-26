@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {CoacheeService} from "../services/coachee.service";
-import {ActivatedRoute, Router} from "@angular/router";
-import {Coachee} from "../model/coachee";
-import {HttpErrorResponse} from "@angular/common/http";
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {CoacheeService} from '../services/coachee.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Coachee} from '../model/coachee';
+import {HttpErrorResponse} from '@angular/common/http';
 
 @Component({
   selector: 'app-reset-password',
@@ -29,7 +29,7 @@ export class ResetPasswordComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute) {
     this.activatedRoute.queryParams.subscribe(params => {
-      this.resetPasswordId = params['token'];
+      this.resetPasswordId = params.token;
       console.log(this.resetPasswordId);
     });
   }
@@ -51,7 +51,7 @@ export class ResetPasswordComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if(!this.coacheeService.resetPasswordIdExist(this.resetPasswordId)) {
+    if (!this.coacheeService.resetPasswordIdExist(this.resetPasswordId)) {
       console.log('working');
       this.router.navigateByUrl(`/home`);
     } else {

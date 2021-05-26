@@ -51,7 +51,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     RequestASessionComponent,
     NotAuthorizedUserComponent,
     SessionOverviewCoacheeComponent,
-    NotAuthorizedUserComponent
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,
