@@ -23,7 +23,7 @@ export class OverviewCoachesComponent implements OnInit, AfterViewInit {
     this.experience = '';
     this.searchText = '';
     this.placeHolderTopicName = 'Filter By Topic';
-    this.placeHolderExperience = 'Filter By Experience'
+    this.placeHolderExperience = 'Filter By Experience';
   }
 
   ngOnInit(): void {
@@ -65,5 +65,4 @@ export class OverviewCoachesComponent implements OnInit, AfterViewInit {
       this.placeHolderExperience = exp;
     }
   }
-
 }
