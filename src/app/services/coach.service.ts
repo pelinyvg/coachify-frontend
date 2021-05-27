@@ -24,4 +24,8 @@ export class CoachService {
   getCoachIdbyCoacheeId(id: number): Observable<number> {
     return this.http.get<number>(this.root + `/users/${id}/coach`);
   }
+
+  getTopics() {
+    return this.http.get<string[]>(this.root + `/topicNames`);
+  }
 }
