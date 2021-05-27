@@ -20,4 +20,8 @@ export class CoachService {
   getCoach(id: number): Observable<Coach> {
     return this.http.get<Coach>(this.root + `/${id}`);
   }
+
+  getTopics() {
+    return this.http.get<string[]>(this.root + `/topicNames`);
+  }
 }

@@ -12,14 +12,27 @@
           <header>
             <div class="row">
               <div class="input-field col l3 m6 s12">
+                <a class='dropdown-trigger btn yellow darken-3' data-target='dropdown1'>Filter By Topic</a>
+                <ul id='dropdown1' class='dropdown-content'>
+                  <div *ngFor="let topicName of topicNames">
+                    <li><a href="#!">{{topicName}}</a></li>
+                  </div>
+                </ul>
                   <a class='dropdown-trigger btn yellow darken-3' href='#' data-target='dropdown1'>Filter By Topic</a>
                   <ul id='dropdown1' class='dropdown-content'>
                     <li><a href="#!">one</a></li>
                   </ul>
               </div>
+
+
+              <!--                <select *ngFor="let topicName of topicNames">-->
+              <!--                  <option value="Choose topic">Choose topic</option>-->
+              <!--                  <option>{{topicName}}</option>-->
+              <!--                </select>-->
+              <!--                <label>Filter by Topic</label>-->
               <div class="input-field col l3 m6 s12">
-                <select multiple>
-                  <option value="" disabled selected>Choose year</option>
+                <select name="level" id="level" multiple>
+                  <option value="">Choose year</option>
                   <option value="1">year 1</option>
                   <option value="2">year 2</option>
                   <option value="3">year 3</option>
@@ -41,28 +54,29 @@
           <div class="row">
             <div class="col l5 m4 s5" *ngFor="let coach of coaches">
 
-                <h5 class="header">{{coach.firstName}} {{coach.lastName}}</h5>
-                <div class="card horizontal">
-                  <div class="card-image">
-                    <img [src]="coach.image">
+              <h5 class="header">{{coach.firstName}} {{coach.lastName}}</h5>
+              <div class="card horizontal">
+                <div class="card-image">
+                  <img [src]="coach.image">
 
-                  </div>
-                  <div class="card-stacked">
-                    <div class="card-content">
-                      <table class="highlight responsive-table">
-                        <tbody>
-                        <div *ngFor="let topic of coach.topicsByCoach">
-                          <tr>
-                            <td><strong>{{topic.topicName}}</strong></td>
-                              <td *ngIf="topic.grade1">Intermediate</td>
-                              <td *ngIf="topic.grade2">Medium</td>
-                              <td *ngIf="topic.grade3">Expert</td>
-                          </tr>
-                        </div>
-                        </tbody>
-                      </table>
+                </div>
+                <div class="card-stacked">
+                  <div class="card-content">
+                    <table class="highlight responsive-table">
+                      <tbody>
+                      <div *ngFor="let topic of coach.topicsByCoach">
+                        <tr>
+                          <td><strong>{{topic.topicName}}</strong></td>
+                          <td *ngIf="topic.grade1">Intermediate</td>
+                          <td *ngIf="topic.grade2">Medium</td>
+                          <td *ngIf="topic.grade3">Expert</td>
+                        </tr>
+                      </div>
+                      </tbody>
+                    </table>
 
-                    <a class="btn-floating halfway-fab waves-effect waves-light yellow darken-2 btn-large" routerLink="./{{coach.id}}"><i
+                    <a class="btn-floating halfway-fab waves-effect waves-light yellow darken-2 btn-large"
+                       routerLink="./{{coach.id}}"><i
                       class="material-icons">send</i></a>
                   </div>
                 </div>

@@ -18,7 +18,7 @@ export class RequestASessionComponent implements OnInit {
   sessionForm = this.formBuilder.group(
     {
       subject: ['', [Validators.required]],
-      date: '',
+      date: ['', [Validators.required]],
       time: ['', [Validators.required]],
       location: ['', [Validators.required]],
       remarks: '',
