@@ -1,0 +1,101 @@
+<main>
+
+  <app-coachee-navbar-top></app-coachee-navbar-top>
+
+  <div class="row">
+
+    <app-coach-navbar-side></app-coach-navbar-side>
+
+    <div class="col s10 m10">
+      <div class="content-container">
+
+        <section class="card-panel grey lighten-5">
+          <h5>My upcoming sessions</h5>
+          <div class="divider"></div>
+          <div class="row">
+            <div class="col l12 s12">
+              <table class="highlight responsive-table">
+                <thead>
+                <tr>
+                  <th>Coachee</th>
+                  <th>Subject</th>
+                  <th>Date</th>
+                  <th>Time</th>
+                  <th>Location</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody *ngFor="let coachingSession of sessionsUpcoming">
+                <tr>
+                  <td>change this</td>
+                  <td>{{coachingSession.subject}}</td>
+                  <td>{{coachingSession.date}}</td>
+                  <td>{{coachingSession.time}}</td>
+                  <td>{{coachingSession.location}}</td>
+                  <td>{{coachingSession.status}}</td>
+                  <td>
+                    <a class="waves-effect waves-light  grey lighten-2 btn black-text"
+                       *ngIf="statusRequested(coachingSession)">Accept<i
+                      class="material-icons right">assignment_turned_in</i></a>
+                    <a class="waves-effect waves-light  grey lighten-2 btn black-text"
+                       *ngIf="statusRequested(coachingSession)">Decline<i
+                      class="material-icons right">cancel</i></a>
+                    <a class="waves-effect waves-light  grey lighten-2 btn black-text"
+                       *ngIf="statusAccepted(coachingSession)">Cancel<i
+                      class="material-icons right">cancel</i></a>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </section>
+
+        <section class="card-panel grey lighten-5">
+          <h5>Archive</h5>
+          <div class="divider"></div>
+          <div class="row">
+            <div class="col l12 s12">
+              <table class="highlight responsive-table">
+                <thead>
+                <tr>
+                  <th>Coach</th>
+                  <th>Subject</th>
+                  <th>Date</th>
+                  <th>Time</th>
+                  <th>Location</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody *ngFor="let coachingSession of sessionsArchive">
+                <!--                <tr>-->
+                <!--                  <td>No archived sessions</td>-->
+                <!--                  <td></td>-->
+                <!--                  <td></td>-->
+                <!--                  <td></td>-->
+                <!--                  <td></td>-->
+                <!--                  <td></td>-->
+                <!--                  <td></td>-->
+                <!--                </tr>-->
+                <tr>
+                  <td>change this</td>
+                  <td>{{coachingSession.subject}}</td>
+                  <td>{{coachingSession.date}}</td>
+                  <td>{{coachingSession.time}}</td>
+                  <td>{{coachingSession.location}}</td>
+                  <td>{{coachingSession.status}}</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </div>
+
+</main>

@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
+import {CoachService} from '../../services/coach.service';
+import {AuthenticationService} from '../../authentication/authentication.service';
 
 @Component({
   selector: 'app-coachee-navbar-top',
@@ -9,12 +11,15 @@ import {ActivatedRoute} from '@angular/router';
 export class CoacheeNavbarTopComponent implements OnInit {
 
   id: number;
+  coachId: number;
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute, private coachService: CoachService, private authService: AuthenticationService) {
   }
 
   ngOnInit(): void {
-    this.id = this.route.snapshot.params.id;
+    this.id = this.authService.getUserId();
+    this.coachService.getCoachIdbyCoacheeId(this.id).subscribe(coachId => this.coachId = coachId);
   }
+
 
 }

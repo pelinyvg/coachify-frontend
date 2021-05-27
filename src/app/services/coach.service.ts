@@ -8,17 +8,21 @@ import {environment} from '../../environments/environment';
   providedIn: 'root'
 })
 export class CoachService {
-  root = `${environment.backendUrl}/coaches`;
+  root = environment.backendUrl;
 
   constructor(private http: HttpClient) {
   }
 
   getCoaches(): Observable<Coach[]> {
-    return this.http.get<Coach[]>(this.root);
+    return this.http.get<Coach[]>(this.root + '/coaches');
   }
 
   getCoach(id: number): Observable<Coach> {
-    return this.http.get<Coach>(this.root + `/${id}`);
+    return this.http.get<Coach>(this.root + `/coaches/${id}`);
+  }
+
+  getCoachIdbyCoacheeId(id: number): Observable<number> {
+    return this.http.get<number>(this.root + `/users/${id}/coach`);
   }
 
   getTopics() {

@@ -1,7 +1,6 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {Coach} from '../../model/coach';
 import {CoachService} from '../../services/coach.service';
-import {Topic} from '../../model/topic';
 import {InitService} from '../../materialize/init.service';
 
 @Component({
@@ -13,9 +12,18 @@ export class OverviewCoachesComponent implements OnInit, AfterViewInit {
   coaches: Coach[];
   topicNames: string[];
   filteredTopic: string;
+  experience: string;
+  searchText: string;
+  placeHolderTopicName: string;
+  placeHolderExperience: string;
+
 
   constructor(private coachService: CoachService, private initService: InitService) {
     this.filteredTopic = '';
+    this.experience = '';
+    this.searchText = '';
+    this.placeHolderTopicName = 'Filter By Topic';
+    this.placeHolderExperience = 'Filter By Experience'
   }
 
   ngOnInit(): void {
@@ -42,6 +50,20 @@ export class OverviewCoachesComponent implements OnInit, AfterViewInit {
 
   filterByTopicName(topicName: string): void {
     this.filteredTopic = topicName;
+    if(topicName === '') {
+      this.placeHolderTopicName = 'Filter By Topic';
+    } else {
+      this.placeHolderTopicName = topicName;
+    }
+  }
+
+  filterByExperience(exp: string): void {
+    this.experience = exp;
+    if(exp === '') {
+      this.placeHolderExperience = 'Filter By Experience';
+    } else {
+      this.placeHolderExperience = exp;
+    }
   }
 
 }
