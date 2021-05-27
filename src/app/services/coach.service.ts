@@ -22,6 +22,6 @@ export class CoachService {
   }
 
   getTopics() {
-    return this.http.get<string[]>(this.root + `/topicNames`);
+    return this.http.get<string[]>(this.root + `/coaches/topicNames`);
   }
 }
