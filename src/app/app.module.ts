@@ -29,6 +29,9 @@ import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { NotAuthorizedUserComponent } from './errors/not-authorized-user/not-authorized-user.component';
 import { SessionOverviewCoacheeComponent } from './session/session-overview-coachee/session-overview-coachee.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { ProfileCoachComponent } from './users/profile-coach/profile-coach.component';
+import { SessionOverviewCoachComponent } from './session/session-overview-coach/session-overview-coach.component';
+import { CoachNavbarSideComponent } from './users/coach-navbar-side/coach-navbar-side.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -51,7 +54,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     RequestASessionComponent,
     NotAuthorizedUserComponent,
     SessionOverviewCoacheeComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    ProfileCoachComponent,
+    SessionOverviewCoachComponent,
+    CoachNavbarSideComponent
   ],
   imports: [
     BrowserModule,

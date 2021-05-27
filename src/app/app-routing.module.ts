@@ -11,7 +11,9 @@ import {LoginGuard} from './authentication/guards/login.guard';
 import {RequestASessionComponent} from './session/request-a-session/request-a-session.component';
 import {NotAuthorizedUserComponent} from './errors/not-authorized-user/not-authorized-user.component';
 import {SessionOverviewCoacheeComponent} from './session/session-overview-coachee/session-overview-coachee.component';
-import {ResetPasswordComponent} from "./reset-password/reset-password.component";
+import {ResetPasswordComponent} from './reset-password/reset-password.component';
+import {ProfileCoachComponent} from './users/profile-coach/profile-coach.component';
+import {SessionOverviewCoachComponent} from './session/session-overview-coach/session-overview-coach.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -31,6 +33,13 @@ const routes: Routes = [
   {path: 'coachees/:id/coaches/:idcoach/request-a-session', component: RequestASessionComponent},
   {path: 'coachees/:id/not-authorized', component: NotAuthorizedUserComponent},
   {path: 'coachees/:id/sessions', component: SessionOverviewCoacheeComponent},
+
+
+  // {path: 'coaches/:id', redirectTo: '/coaches/:id/profile-coach', pathMatch: 'full'},
+  // {path: 'coaches/:id/profile-coach', component: ProfileCoachComponent, canActivate: [LoginGuard]},
+  {path: 'coaches/:id/sessions', component: SessionOverviewCoachComponent},
+
+
   // leave the path: ** always at the end
   {path: '**', redirectTo: '/home', pathMatch: 'full'}
 ];
