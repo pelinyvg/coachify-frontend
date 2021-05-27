@@ -3,8 +3,7 @@ import {CoachingSession} from '../model/coaching-session';
 import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
-import {filter, map} from 'rxjs/operators';
-import {response} from 'express';
+import {map} from 'rxjs/operators';
 import {DatePipe} from '@angular/common';
 
 
@@ -39,9 +38,7 @@ export class SessionService {
         // tslint:disable-next-line:no-shadowed-variable
         map(response => response.filter(
           s => datepipe.transform(s.date, 'yyyy-MM-dd') >= currentDate
-          )
-        )
-      );
+        )));
   }
 
   getSessionsArchive(id: number): Observable<CoachingSession[]> {

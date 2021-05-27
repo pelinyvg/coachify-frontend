@@ -4,9 +4,11 @@
       <ul class="tabs tabs-transparent">
         <li class="tab"><a routerLink="/coachees/{{id}}/profile-coachee" routerLinkActive #rla1="routerLinkActive"
                            [ngClass]="rla1.isActive ? 'black-text' : 'grey-text text-darken-2'">My Profile</a></li>
-        <li class="tab"><a class="black-text" routerLink="/coachees/{{id}}/coaches" routerLinkActive #rla2="routerLinkActive"
+        <li class="tab"><a routerLink="/coachees/{{id}}/coaches" routerLinkActive #rla2="routerLinkActive"
                            [ngClass]="rla2.isActive ? 'black-text' : 'grey-text text-darken-2'">Find a coach</a></li>
       </ul>
     </div>
   </div>
 </nav>
+
+<!--<div [ngClass]="rla2.isActive ? 'nav-content yellow darken-2' : 'nav-content green darken-2'">-->
