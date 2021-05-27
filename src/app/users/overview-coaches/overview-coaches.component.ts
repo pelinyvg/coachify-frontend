@@ -23,7 +23,7 @@ export class OverviewCoachesComponent implements OnInit, AfterViewInit {
     this.experience = '';
     this.searchText = '';
     this.placeHolderTopicName = 'Filter By Topic';
-    this.placeHolderExperience = 'Filter By Experience'
+    this.placeHolderExperience = 'Filter By Experience';
   }
 
   ngOnInit(): void {
@@ -50,7 +50,7 @@ export class OverviewCoachesComponent implements OnInit, AfterViewInit {
 
   filterByTopicName(topicName: string): void {
     this.filteredTopic = topicName;
-    if(topicName === '') {
+    if (topicName === '') {
       this.placeHolderTopicName = 'Filter By Topic';
     } else {
       this.placeHolderTopicName = topicName;
@@ -59,7 +59,7 @@ export class OverviewCoachesComponent implements OnInit, AfterViewInit {
 
   filterByExperience(exp: string): void {
     this.experience = exp;
-    if(exp === '') {
+    if (exp === '') {
       this.placeHolderExperience = 'Filter By Experience';
     } else {
       this.placeHolderExperience = exp;
