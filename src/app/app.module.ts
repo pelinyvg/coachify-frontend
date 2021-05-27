@@ -33,6 +33,9 @@ import { TopicNameFilterPipe } from './pipes/topic-name-filter.pipe';
 import { ExperienceFilterPipe } from './pipes/experience-filter.pipe';
 import { TextSearchPipe } from './pipes/text-search.pipe';
 import { ExperienceCoachPipe } from './pipes/experience-coach.pipe';
+import { ProfileCoachComponent } from './users/profile-coach/profile-coach.component';
+import { SessionOverviewCoachComponent } from './session/session-overview-coach/session-overview-coach.component';
+import { CoachNavbarSideComponent } from './users/coach-navbar-side/coach-navbar-side.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -59,7 +62,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     TopicNameFilterPipe,
     ExperienceFilterPipe,
     TextSearchPipe,
-    ExperienceCoachPipe
+    ExperienceCoachPipe,
+    ProfileCoachComponent,
+    SessionOverviewCoachComponent,
+    CoachNavbarSideComponent
   ],
   imports: [
     BrowserModule,
