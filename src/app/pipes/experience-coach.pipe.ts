@@ -1,5 +1,4 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import {Topic} from "../model/topic";
 import {Coach} from "../model/coach";
 
 @Pipe({
@@ -11,11 +10,11 @@ export class ExperienceCoachPipe implements PipeTransform {
     if (experience === '') {
       return coaches;
     }
-    if (experience==='int') {
+    if (experience==='Intermediate') {
       return coaches.filter(coach => coach.topicsByCoach.map(topic => topic.grade1).includes(true));
-    } else if (experience==='med') {
+    } else if (experience==='Medium') {
       return coaches.filter(coach => coach.topicsByCoach.map(topic => topic.grade2).includes(true));
-    } else if (experience==='exp') {
+    } else if (experience==='Expert') {
       return coaches.filter(coach => coach.topicsByCoach.map(topic => topic.grade3).includes(true));
     } else {
       return coaches;
