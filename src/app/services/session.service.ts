@@ -28,7 +28,7 @@ export class SessionService {
     return this.http.get<CoachingSession[]>(`${this.route}/coachees/${id}/sessions`);
   }
 
-  getSessionsUpcoming(id: number): Observable<CoachingSession[]> {
+  getSessionsUpcomingCoachee(id: number): Observable<CoachingSession[]> {
     const datepipe: DatePipe = new DatePipe('en-US');
 
     const currentDate = datepipe.transform(this.currentDate, 'yyyy-MM-dd');
@@ -41,12 +41,40 @@ export class SessionService {
         )));
   }
 
-  getSessionsArchive(id: number): Observable<CoachingSession[]> {
+  getSessionsArchiveCoachee(id: number): Observable<CoachingSession[]> {
     const datepipe: DatePipe = new DatePipe('en-US');
 
     const currentDate = datepipe.transform(this.currentDate, 'yyyy-MM-dd');
     console.log(currentDate);
     return this.http.get<CoachingSession[]>(`${this.route}/coachees/${id}/sessions`)
+      .pipe(
+        // tslint:disable-next-line:no-shadowed-variable
+        map(response => response.filter(
+          s => datepipe.transform(s.date, 'yyyy-MM-dd') < currentDate
+          )
+        )
+      );
+  }
+
+  getSessionsUpcomingCoach(id: number): Observable<CoachingSession[]> {
+    const datepipe: DatePipe = new DatePipe('en-US');
+
+    const currentDate = datepipe.transform(this.currentDate, 'yyyy-MM-dd');
+    console.log(currentDate);
+    return this.http.get<CoachingSession[]>(`${this.route}/coaches/${id}/sessions`)
+      .pipe(
+        // tslint:disable-next-line:no-shadowed-variable
+        map(response => response.filter(
+          s => datepipe.transform(s.date, 'yyyy-MM-dd') >= currentDate
+        )));
+  }
+
+  getSessionsArchiveCoach(id: number): Observable<CoachingSession[]> {
+    const datepipe: DatePipe = new DatePipe('en-US');
+
+    const currentDate = datepipe.transform(this.currentDate, 'yyyy-MM-dd');
+    console.log(currentDate);
+    return this.http.get<CoachingSession[]>(`${this.route}/coaches/${id}/sessions`)
       .pipe(
         // tslint:disable-next-line:no-shadowed-variable
         map(response => response.filter(

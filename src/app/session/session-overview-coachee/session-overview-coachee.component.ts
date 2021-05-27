@@ -25,19 +25,17 @@ export class SessionOverviewCoacheeComponent implements OnInit {
   }
 
   getUpcomingSessions(): void {
-    this.sessionService.getSessionsUpcoming(this.id).subscribe(
+    this.sessionService.getSessionsUpcomingCoachee(this.id).subscribe(
       sessions => {
         this.sessionsUpcoming = sessions;
-        console.log(this.sessionsUpcoming);
       }
     );
   }
 
   getArchiveSessions(): void {
-    this.sessionService.getSessionsArchive(this.id).subscribe(
+    this.sessionService.getSessionsArchiveCoachee(this.id).subscribe(
       sessions => {
         this.sessionsArchive = sessions;
-        console.log(this.sessionsArchive);
       }
     );
   }
