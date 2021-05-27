@@ -75,7 +75,7 @@ export class LoginComponent implements OnInit {
   passwordReset(): void {
     console.log(this.loginForm.controls[('username')].value + ' : is the email address we received');
     this.coacheeService.createResetPasswordToken(this.loginForm.controls[('username')].value).subscribe(() => {
-      alert('A verification email has been sent to this email address : ' + this.loginForm.controls[('username')].value);
+      alert('If the email exists in our system then a verification email has been sent to this email address : ' + this.loginForm.controls[('username')].value);
       this.router.navigateByUrl(`/home`);
     }, (errorResponse: HttpErrorResponse) => {
       alert('The server could not process your email. Make sure there is not a typo.');
