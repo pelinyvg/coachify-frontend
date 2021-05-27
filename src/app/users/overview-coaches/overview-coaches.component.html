@@ -12,15 +12,11 @@
           <header>
             <div class="row">
               <div class="input-field col l3 m6 s12">
-                <a class='dropdown-trigger btn yellow darken-3' data-target='dropdown1'>Filter By Topic</a>
-                <ul id='dropdown1' class='dropdown-content'>
-                  <div *ngFor="let topicName of topicNames">
-                    <li><a href="#!">{{topicName}}</a></li>
-                  </div>
-                </ul>
-                  <a class='dropdown-trigger btn yellow darken-3' href='#' data-target='dropdown1'>Filter By Topic</a>
+                  <a hover="true" class='dropdown-trigger btn yellow darken-3' data-target='dropdown1'>Filter By Topic</a>
                   <ul id='dropdown1' class='dropdown-content'>
-                    <li><a href="#!">one</a></li>
+                    <div *ngFor="let topicName of topicNames" class="darken-1 text-darken-1">
+                    <li><a href="#!">{{topicName}}</a></li>
+                    </div>
                   </ul>
               </div>
 
