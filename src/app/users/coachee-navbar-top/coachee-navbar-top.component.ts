@@ -14,6 +14,7 @@ export class CoacheeNavbarTopComponent implements OnInit {
   coachId: number;
 
   constructor(private route: ActivatedRoute, private coachService: CoachService, private authService: AuthenticationService) {
+    this.coachId = 0;
   }
 
   ngOnInit(): void {
