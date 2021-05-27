@@ -13,9 +13,13 @@ export class OverviewCoachesComponent implements OnInit, AfterViewInit {
   coaches: Coach[];
   topicNames: string[];
   filteredTopic: string;
+  experience: string;
+  searchText: string;
 
   constructor(private coachService: CoachService, private initService: InitService) {
     this.filteredTopic = '';
+    this.experience = '';
+    this.searchText = '';
   }
 
   ngOnInit(): void {
@@ -42,6 +46,10 @@ export class OverviewCoachesComponent implements OnInit, AfterViewInit {
 
   filterByTopicName(topicName: string): void {
     this.filteredTopic = topicName;
+  }
+
+  filterByExperience(exp: string): void {
+    this.experience = exp;
   }
 
 }

@@ -30,6 +30,9 @@ import { NotAuthorizedUserComponent } from './errors/not-authorized-user/not-aut
 import { SessionOverviewCoacheeComponent } from './session/session-overview-coachee/session-overview-coachee.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { TopicNameFilterPipe } from './pipes/topic-name-filter.pipe';
+import { ExperienceFilterPipe } from './pipes/experience-filter.pipe';
+import { TextSearchPipe } from './pipes/text-search.pipe';
+import { ExperienceCoachPipe } from './pipes/experience-coach.pipe';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -53,7 +56,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     NotAuthorizedUserComponent,
     SessionOverviewCoacheeComponent,
     ResetPasswordComponent,
-    TopicNameFilterPipe
+    TopicNameFilterPipe,
+    ExperienceFilterPipe,
+    TextSearchPipe,
+    ExperienceCoachPipe
   ],
   imports: [
     BrowserModule,
