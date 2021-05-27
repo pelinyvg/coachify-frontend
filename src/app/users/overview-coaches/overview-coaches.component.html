@@ -12,10 +12,10 @@
           <header>
             <div class="row">
               <div class="input-field col l3 m6 s12">
-                <a class='dropdown-trigger btn yellow darken-3' href="#!" data-target='dropdown1'>Filter By Topic</a>
+                <a class='dropdown-trigger btn yellow darken-3' data-target='dropdown1'>Filter By Topic</a>
                 <ul id='dropdown1' class='dropdown-content'>
                   <div *ngFor="let topicName of topicNames">
-                    <li><a href="#!">{{topicName}}</a></li>
+                    <li><a (click)=filterByTopicName(topicName)>{{topicName}}</a></li>
                   </div>
                 </ul>
               </div>
@@ -48,7 +48,7 @@
           </header>
 
           <div class="row">
-            <div class="col l5 m4 s5" *ngFor="let coach of coaches">
+            <div class="col l5 m4 s5" *ngFor="let coach of coaches | topicNameFilter:filteredTopic">
 
               <h5 class="header">{{coach.firstName}} {{coach.lastName}}</h5>
               <div class="card horizontal">

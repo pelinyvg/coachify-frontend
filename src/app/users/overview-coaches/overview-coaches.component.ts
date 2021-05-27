@@ -12,8 +12,10 @@ import {InitService} from '../../materialize/init.service';
 export class OverviewCoachesComponent implements OnInit, AfterViewInit {
   coaches: Coach[];
   topicNames: string[];
+  filteredTopic: string;
 
   constructor(private coachService: CoachService, private initService: InitService) {
+    this.filteredTopic = '';
   }
 
   ngOnInit(): void {
@@ -36,6 +38,10 @@ export class OverviewCoachesComponent implements OnInit, AfterViewInit {
     this.coachService.getTopics().subscribe(topicNames => {
       this.topicNames = topicNames;
     });
+  }
+
+  filterByTopicName(topicName: string): void {
+    this.filteredTopic = topicName;
   }
 
 }
