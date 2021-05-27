@@ -1,6 +1,6 @@
 <nav class="white nav-extended" role="navigation">
-  //todo change this
-  <div class="nav-content yellow darken-2">
+  <div [ngClass]="rla1.isActive || rla2.isActive ? 'nav-content yellow darken-2' : 'nav-content teal lighten-3'">
+    <!--  <div class="nav-content yellow darken-2">-->
     <div class="container">
       <ul class="tabs tabs-transparent">
         <li class="tab"><a routerLink="/coachees/{{id}}/profile-coachee" routerLinkActive #rla1="routerLinkActive"
@@ -12,10 +12,11 @@
         <!--        info: the ng-cloak on the "My coach profile" prevents the browser to quickly show this LI when the component -->
         <!--        is loaded (so when switching between "my profile" and "find a coach" when you are not a coach yourself). -->
         <!--        There is CSS attached to this ng-cloak, which you find in the specific CSS from this component-->
-        <li class="tab"><a *ngIf="coachId !== 0" routerLink="/coaches/{{coachId}}/sessions"
+        <li class="tab"><a [ngClass]="rla3.isActive ? 'black-text' : 'grey-text text-darken-2'"
+                           *ngIf="coachId !== 0" routerLink="/coaches/{{coachId}}/sessions"
                            routerLinkActive
                            #rla3="routerLinkActive"
-                           [ngClass]="rla3.isActive ? 'black-text' : 'grey-text text-darken-2'">My Coach Profile</a>
+        >My Coach Profile</a>
         </li>
       </ul>
     </div>
