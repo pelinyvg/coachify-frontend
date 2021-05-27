@@ -3,6 +3,8 @@ import {FormBuilder} from '@angular/forms';
 import {AuthenticationService} from '../authentication/authentication.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {InitService} from '../materialize/init.service';
+import {CoacheeService} from '../services/coachee.service';
+import {HttpErrorResponse} from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -26,7 +28,8 @@ export class LoginComponent implements OnInit {
               private authenticationService: AuthenticationService,
               private router: Router,
               private route: ActivatedRoute,
-              private initService: InitService
+              private initService: InitService,
+              private coacheeService: CoacheeService
   ) {
     this.loginForm = this.formBuilder.group({
       username: '',
@@ -69,7 +72,13 @@ export class LoginComponent implements OnInit {
     this.authenticationService.logout();
   }
 
-  contactAdmin(): void {
-    alert('Please contact the admin!');
+  passwordReset(): void {
+    console.log(this.loginForm.controls[('username')].value + ' : is the email address we received');
+    this.coacheeService.createResetPasswordToken(this.loginForm.controls[('username')].value).subscribe(() => {
+      alert('A verification email has been sent to this email address : ' + this.loginForm.controls[('username')].value);
+      this.router.navigateByUrl(`/home`);
+    }, (errorResponse: HttpErrorResponse) => {
+      alert('The server could not process your email. Make sure there is not a typo.');
+    });
   }
 }

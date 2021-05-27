@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {Observable} from 'rxjs';
 import {Coachee} from '../model/coachee';
-import {ResetPassword} from "../model/reset-password";
+import {ResetPassword} from '../model/reset-password';
 
 
 @Injectable({
@@ -28,8 +28,13 @@ export class CoacheeService {
     return this.http.post<ResetPassword>(`${environment.backendUrl}/users/reset-password`, resetPassword);
   }
 
-  resetPasswordIdExist(resetPasswordId: string): Observable<Boolean> {
+  resetPasswordIdExist(resetPasswordId: string): Observable<boolean> {
     console.log(`${environment.backendUrl}/users/reset-password/${resetPasswordId}`);
-    return this.http.get<Boolean>(`${environment.backendUrl}/users/reset-password/${resetPasswordId}`);
+    return this.http.get<boolean>(`${environment.backendUrl}/users/reset-password/${resetPasswordId}`);
+  }
+
+  createResetPasswordToken(email): Observable<boolean> {
+    console.log('trying to send a password link to this email address :' + email);
+    return this.http.post<boolean>(`${environment.backendUrl}/users/reset-password/create-token/${email}`, email);
   }
 }
