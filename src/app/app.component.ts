@@ -1,4 +1,7 @@
 import {Component} from '@angular/core';
+import {HttpClient} from "@angular/common/http";
+import {FooterComponent} from "./footer/footer.component";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',

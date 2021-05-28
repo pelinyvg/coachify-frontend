@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute, Router} from "@angular/router";
+import {CoachService} from "../services/coach.service";
 
 @Component({
   selector: 'app-footer',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  constructor() { }
+  color:string;
 
-  ngOnInit(): void {
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router
+  ) {
+    this.color = 'yellow darken-2';
   }
 
+  ngOnInit(): void {
+    setTimeout(() => { this.ngOnInit() }, 100)
+    if (this.router.url.indexOf('/coaches/')  === 0) {
+      this.color = 'teal lighten-3';
+    } else {
+      this.color = 'yellow darken-2';
+    }
+  }
 }

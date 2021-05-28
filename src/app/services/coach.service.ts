@@ -4,13 +4,16 @@ import {Coach} from '../model/coach';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class CoachService {
   root = environment.backendUrl;
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient
+  ) {
   }
 
   getCoaches(): Observable<Coach[]> {
