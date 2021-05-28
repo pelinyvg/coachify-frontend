@@ -12,6 +12,7 @@ export class CoacheeNavbarTopComponent implements OnInit {
 
   id: number;
   coachId: number;
+  isLoaded: boolean;
 
   constructor(private route: ActivatedRoute, private coachService: CoachService, private authService: AuthenticationService) {
     this.coachId = 0;
@@ -19,8 +20,11 @@ export class CoacheeNavbarTopComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.authService.getUserId();
-    this.coachService.getCoachIdbyCoacheeId(this.id).subscribe(coachId => this.coachId = coachId);
+    this.coachService.getCoachIdbyCoacheeId(this.id)
+      .subscribe(coachId => {
+        this.coachId = coachId;
+        this.isLoaded = true;
+      });
   }
-
 
 }
