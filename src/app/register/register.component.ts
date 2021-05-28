@@ -62,7 +62,7 @@ export class RegisterComponent implements OnInit {
   onSubmit(): void {
     this.ecoachee = this.eregisterForm.value;
     this.coacheeService.addCoachee(this.eregisterForm.value).subscribe(() => {
-      alert('Coachee has been registered');
+      alert('Your account has been registered. You will be redirected to the login page.');
       this.eregisterForm.reset();
       this.router.navigate([`login`]);
     }, (errorResponse: HttpErrorResponse) => {
