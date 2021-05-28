@@ -6,6 +6,8 @@ export interface CoachingSession {
   coachId: number;
   coachFirstName: string;
   coachLastName: string;
+  coacheeFirstName: string;
+  coacheeLastName: string;
   subject: string;
   date: Date;
   time: Time;
