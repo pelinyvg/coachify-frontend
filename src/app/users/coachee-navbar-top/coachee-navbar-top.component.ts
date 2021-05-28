@@ -13,7 +13,6 @@ export class CoacheeNavbarTopComponent implements OnInit {
   id: number;
   coachId: number;
   color: string;
-  indexOfCoaches:number;
   isLoaded: boolean;
 
   constructor(
@@ -30,15 +29,10 @@ export class CoacheeNavbarTopComponent implements OnInit {
     this.id = this.authService.getUserId();
     this.coachService.getCoachIdbyCoacheeId(this.id).subscribe(coachId => {
       this.coachId = coachId;
+      this.isLoaded = true;
     });
-    this.indexOfCoaches = this.router.url.indexOf('/coaches/');
     if (this.router.url.indexOf('/coaches/') === 0) {
       this.color = 'teal lighten-3';
     }
-    this.coachService.getCoachIdbyCoacheeId(this.id)
-      .subscribe(coachId => {
-        this.coachId = coachId;
-        this.isLoaded = true;
-      });
   }
 }
