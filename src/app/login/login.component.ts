@@ -44,6 +44,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(loginData) {
+    loginData.username = loginData.username.toLowerCase();
     this.sending = true;
     this.error = false;
     this.success = false;
