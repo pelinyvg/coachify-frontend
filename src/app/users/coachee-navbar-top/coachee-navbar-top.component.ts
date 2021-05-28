@@ -14,6 +14,7 @@ export class CoacheeNavbarTopComponent implements OnInit {
   coachId: number;
   color: string;
   indexOfCoaches:number;
+  isLoaded: boolean;
 
   constructor(
     private route: ActivatedRoute,
@@ -34,5 +35,10 @@ export class CoacheeNavbarTopComponent implements OnInit {
     if (this.router.url.indexOf('/coaches/') === 0) {
       this.color = 'teal lighten-3';
     }
+    this.coachService.getCoachIdbyCoacheeId(this.id)
+      .subscribe(coachId => {
+        this.coachId = coachId;
+        this.isLoaded = true;
+      });
   }
 }
