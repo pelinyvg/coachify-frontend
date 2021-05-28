@@ -3,6 +3,7 @@ import {AuthenticationService} from '../authentication/authentication.service';
 import {TranslateService} from '@ngx-translate/core';
 import {filter} from 'rxjs/operators';
 import {InitService} from '../materialize/init.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-navigation-bar',
@@ -12,11 +13,14 @@ import {InitService} from '../materialize/init.service';
 export class NavigationBarComponent implements OnInit, AfterViewInit {
   username;
   language = 'en';
+  isCoach: boolean;
 
   constructor(public authenticationService: AuthenticationService,
               private translate: TranslateService,
-              private initService: InitService
+              private initService: InitService,
+              private router: Router
   ) {
+    this.isCoach = false;
   }
 
   ngOnInit(): void {
@@ -31,6 +35,12 @@ export class NavigationBarComponent implements OnInit, AfterViewInit {
         filter(loggedIn => loggedIn === true),
       )
       .subscribe(profile => this.username = this.authenticationService.getUsername());
+    setTimeout(() => { this.ngOnInit() }, 100)
+    if (this.router.url.indexOf('/coaches/')  === 0) {
+      this.isCoach = true;
+    } else {
+      this.isCoach = false;
+    }
   }
 
   // tslint:disable-next-line:use-lifecycle-interface

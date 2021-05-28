@@ -9,7 +9,15 @@
 <!--          <a id="logo-container2" routerLink="/home"><img src="/assets/images/logo.png" width=60></a>-->
           <a id="logo-container" routerLink="/home" class="brand-logo">
             <div class="row">
-            <div class="col s4 m4 l4"><img src="/assets/images/logo.png" width=60></div>
+            <div class="col s4 m4 l4">
+
+              <div *ngIf="isCoach; else gray1"><img src="/assets/images/logo_green.png" width=60></div>
+
+              <ng-template #gray1>
+                <div class="expertise-img"><img src="/assets/images/logo_yellow.png" width=60></div>
+              </ng-template>
+
+            </div>
             <div class="col s4 m4 l4">Coachify</div>
             </div>
           </a>
