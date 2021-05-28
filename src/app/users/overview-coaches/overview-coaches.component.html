@@ -12,7 +12,7 @@
           <header>
             <div class="row">
               <div class="input-field col l3 m6 s12">
-                <a class='dropdown-trigger btn yellow darken-3' data-target='dropdown1'>{{placeHolderTopicName}}</a>
+                <a class='dropdown-trigger btn yellow darken-2' data-target='dropdown1'>{{placeHolderTopicName}}</a>
                 <ul id='dropdown1' class='dropdown-content'>
                   <div *ngFor="let topicName of topicNames">
                     <li><a (click)=filterByTopicName(topicName)>{{topicName}}</a></li>
@@ -21,7 +21,7 @@
                 </ul>
               </div>
               <div class="input-field col l3 m6 s12">
-                <a class='dropdown-trigger btn yellow darken-3' data-target='dropdown2'>{{placeHolderExperience}}</a>
+                <a class='dropdown-trigger btn yellow darken-2' data-target='dropdown2'>{{placeHolderExperience}}</a>
                 <ul id='dropdown2' class='dropdown-content'>
                     <li><a (click)="filterByExperience('Intermediate')">Intermediate</a></li>
                     <li><a (click)="filterByExperience('Medium')">Medium</a></li>
