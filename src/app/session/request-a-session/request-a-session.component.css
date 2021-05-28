@@ -6,5 +6,5 @@
 
 .row-of-time-and-date {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
 }
