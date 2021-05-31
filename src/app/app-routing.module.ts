@@ -14,12 +14,14 @@ import {SessionOverviewCoacheeComponent} from './session/session-overview-coache
 import {ResetPasswordComponent} from './reset-password/reset-password.component';
 import {ProfileCoachComponent} from './users/profile-coach/profile-coach.component';
 import {SessionOverviewCoachComponent} from './session/session-overview-coach/session-overview-coach.component';
+import {WrongResetTokenComponent} from './errors/wrong-reset-token/wrong-reset-token.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
   {path: 'home', component: HomeComponent},
   {path: 'reset-password', component: ResetPasswordComponent},
+  {path: 'wrongResetToken', component: WrongResetTokenComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'coachees/:id/coaches', component: OverviewCoachesComponent},
   {

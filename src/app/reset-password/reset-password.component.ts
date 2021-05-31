@@ -12,6 +12,7 @@ import {HttpErrorResponse} from '@angular/common/http';
 export class ResetPasswordComponent implements OnInit {
 
   resetPasswordId: string;
+  doesTokenExist = false;
 
   private resetPasswordForm = this.formBuilder.group(
     {
@@ -50,8 +51,9 @@ export class ResetPasswordComponent implements OnInit {
 
   ngOnInit(): void {
     this.coacheeService.resetPasswordIdExist(this.resetPasswordId).subscribe(boo => {
-      if (!boo) {
-        this.router.navigateByUrl(`/home`);
+      this.doesTokenExist = boo;
+      if (!this.doesTokenExist) {
+        this.router.navigate(['wrongResetToken']);
       }
     });
     this.resetPasswordForm.reset();
@@ -64,8 +66,8 @@ export class ResetPasswordComponent implements OnInit {
       this.resetPasswordForm.reset();
       this.router.navigate([`login`]);
     }, (errorResponse: HttpErrorResponse) => {
-      alert('Server was unable to answer your request');
-      this.router.navigate([`/home`]);
+      // alert('Server was unable to answer your request');
+      this.router.navigate([`wrongResetToken`]);
     });
   }
 }
