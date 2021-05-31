@@ -8,9 +8,9 @@
       <a routerLink="/coachees/{{id}}/sessions" routerLinkActive #rla2="routerLinkActive"
          [ngClass]="rla2.isActive ? 'black-text yellow darken-2' : 'grey-text text-darken-2'" class="collection-item">Coaching
         sessions</a>
-      <a routerLink="/coachees/{{id}}/become-a-coach" routerLinkActive #rla3="routerLinkActive"
+      <div *ngIf="isNotCoach"><a routerLink="/coachees/{{id}}/become-a-coach" routerLinkActive #rla3="routerLinkActive"
          [ngClass]="rla3.isActive ? 'black-text yellow darken-2' : 'grey-text text-darken-2'" class="collection-item">Apply
-        to become a coach</a>
+        to become a coach</a></div>
     </div>
   </div>
 </div>
