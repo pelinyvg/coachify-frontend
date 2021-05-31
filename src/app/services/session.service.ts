@@ -5,6 +5,7 @@ import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {map} from 'rxjs/operators';
 import {DatePipe} from '@angular/common';
+import {SessionStatus} from '../model/session-status';
 
 
 @Injectable({
@@ -82,5 +83,9 @@ export class SessionService {
           )
         )
       );
+  }
+
+  acceptRequestedSessionAsCoach(sessionStatus: SessionStatus): Observable<CoachingSession> {
+    return this.http.post<CoachingSession>(this.route + `/sessions/${sessionStatus.id}/set-status`, sessionStatus);
   }
 }
