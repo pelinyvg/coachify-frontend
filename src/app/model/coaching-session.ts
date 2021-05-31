@@ -13,5 +13,5 @@ export interface CoachingSession {
   time: Time;
   location: string;
   remarks: string;
-  status: string;
+  status?: string;
 }

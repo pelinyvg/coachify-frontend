@@ -69,7 +69,7 @@ export class SessionService {
           s => datepipe.transform(s.date, 'yyyy-MM-dd') >= currentDate
         )));
   }
-
+  // map(response => response.filter(s => s.status.toLowerCase().includes('feedback')))
   getSessionsArchiveCoach(id: number): Observable<CoachingSession[]> {
     const datepipe: DatePipe = new DatePipe('en-US');
 
@@ -80,12 +80,19 @@ export class SessionService {
         // tslint:disable-next-line:no-shadowed-variable
         map(response => response.filter(
           s => datepipe.transform(s.date, 'yyyy-MM-dd') < currentDate
-          )
+          ).filter(s => s.status.toLowerCase().includes('feedback'))
         )
       );
   }
 
   acceptRequestedSessionAsCoach(sessionStatus: SessionStatus): Observable<CoachingSession> {
     return this.http.post<CoachingSession>(this.route + `/sessions/${sessionStatus.id}/set-status`, sessionStatus);
+  }
+
+  getSessionsFeedbackCoach(id: number) {
+    return this.http.get<CoachingSession[]>(`${this.route}/coaches/${id}/sessions`)
+      .pipe(
+        // tslint:disable-next-line:no-shadowed-variable
+        map(response => response.filter(s => s.status.toLowerCase().includes('feedback'))))
   }
 }

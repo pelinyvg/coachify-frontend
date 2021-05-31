@@ -15,6 +15,7 @@ export class SessionOverviewCoachComponent implements OnInit {
   coachId: number;
   sessionsUpcoming: CoachingSession[];
   sessionsArchive: CoachingSession[];
+  sessionsFeedback: CoachingSession[];
   sessionStatus: SessionStatus;
 
   constructor(private route: ActivatedRoute, private sessionService: SessionService) {
@@ -24,6 +25,11 @@ export class SessionOverviewCoachComponent implements OnInit {
     this.coachId = this.route.snapshot.params.id;
     this.getUpcomingSessions();
     this.getArchiveSessions();
+    this.getFeedbackSessions();
+  }
+
+  getFeedbackSessions(): void {
+    this.sessionService.getSessionsFeedbackCoach(this.coachId).subscribe(sessions => this.sessionsFeedback = sessions);
   }
 
   getUpcomingSessions(): void {
