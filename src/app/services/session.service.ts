@@ -80,7 +80,7 @@ export class SessionService {
         // tslint:disable-next-line:no-shadowed-variable
         map(response => response.filter(
           s => datepipe.transform(s.date, 'yyyy-MM-dd') < currentDate
-          ).filter(s => s.status.toLowerCase().includes('feedback'))
+          )
         )
       );
   }
