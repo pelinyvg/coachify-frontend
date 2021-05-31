@@ -14,6 +14,7 @@ import {Location} from '@angular/common';
 export class RequestASessionComponent implements OnInit {
 
   minDate: Date;
+  timeCorrect = true;
 
   sessionForm = this.formBuilder.group(
     {
@@ -36,11 +37,18 @@ export class RequestASessionComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log(this.minDate);
   }
 
   onSubmit(): void {
-    this.sessionService.addSession(this.sessionForm.value).subscribe(() => {
-      this.location.back();
-    });
+    // tslint:disable-next-line:triple-equals
+    if (this.sessionForm.value.date == new Date() && this.sessionForm.value.time < new Date().getTime()) {
+      this.sessionService.addSession(this.sessionForm.value).subscribe(() => {
+        console.log(this.sessionForm.value.date);
+        this.location.back();
+      });
+    } else {
+      this.timeCorrect = false;
+    }
   }
 }

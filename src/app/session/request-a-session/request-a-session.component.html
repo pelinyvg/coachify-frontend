@@ -32,6 +32,7 @@
                          readonly formControlName="time">
                   <ngx-material-timepicker-toggle [for]="toggleTimepicker"></ngx-material-timepicker-toggle>
                   <ngx-material-timepicker #toggleTimepicker [minutesGap]="5"></ngx-material-timepicker>
+                  <div *ngIf="!timeCorrect" style="color: red">The time cannot be in past!</div>
                 </div>
               </div>
               <div class="row">
