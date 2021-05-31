@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {CoacheeService} from '../services/coachee.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Coachee} from '../model/coachee';
 import {HttpErrorResponse} from '@angular/common/http';
 
 @Component({
@@ -30,7 +29,7 @@ export class ResetPasswordComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute) {
     this.activatedRoute.queryParams.subscribe(params => {
-      this.resetPasswordId = params['token'];
+      this.resetPasswordId = params.token;
     });
   }
 
@@ -61,7 +60,7 @@ export class ResetPasswordComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.resetPasswordForm.controls['resetPasswordId'].setValue(this.resetPasswordId);
+    this.resetPasswordForm.controls.resetPasswordId.setValue(this.resetPasswordId);
     this.coacheeService.changePassword(this.resetPasswordForm.value).subscribe(() => {
       alert('Password has been changed');
       this.resetPasswordForm.reset();
