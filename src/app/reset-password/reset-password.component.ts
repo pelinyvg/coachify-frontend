@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {CoacheeService} from "../services/coachee.service";
-import {ActivatedRoute, Router} from "@angular/router";
-import {Coachee} from "../model/coachee";
-import {HttpErrorResponse} from "@angular/common/http";
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {CoacheeService} from '../services/coachee.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {HttpErrorResponse} from '@angular/common/http';
 
 @Component({
   selector: 'app-reset-password',
@@ -13,6 +12,7 @@ import {HttpErrorResponse} from "@angular/common/http";
 export class ResetPasswordComponent implements OnInit {
 
   resetPasswordId: string;
+  doesTokenExist = false;
 
   private resetPasswordForm = this.formBuilder.group(
     {
@@ -29,7 +29,7 @@ export class ResetPasswordComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute) {
     this.activatedRoute.queryParams.subscribe(params => {
-      this.resetPasswordId = params['token'];
+      this.resetPasswordId = params.token;
     });
   }
 
@@ -50,23 +50,24 @@ export class ResetPasswordComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.coacheeService.resetPasswordIdExist(this.resetPasswordId).subscribe(boolean => {
-      if (!boolean) {
-        this.router.navigateByUrl(`/home`);
+    this.coacheeService.resetPasswordIdExist(this.resetPasswordId).subscribe(boo => {
+      this.doesTokenExist = boo;
+      if (!this.doesTokenExist) {
+        this.router.navigate(['wrongResetToken']);
       }
-    })
+    });
     this.resetPasswordForm.reset();
   }
 
   onSubmit(): void {
-    this.resetPasswordForm.controls['resetPasswordId'].setValue(this.resetPasswordId);
+    this.resetPasswordForm.controls.resetPasswordId.setValue(this.resetPasswordId);
     this.coacheeService.changePassword(this.resetPasswordForm.value).subscribe(() => {
       alert('Password has been changed');
       this.resetPasswordForm.reset();
       this.router.navigate([`login`]);
     }, (errorResponse: HttpErrorResponse) => {
-      alert('Server was unable to answer your request');
-      this.router.navigate([`/home`]);
+      // alert('Server was unable to answer your request');
+      this.router.navigate([`wrongResetToken`]);
     });
   }
 }

@@ -14,12 +14,15 @@ import {SessionOverviewCoacheeComponent} from './session/session-overview-coache
 import {ResetPasswordComponent} from './reset-password/reset-password.component';
 import {ProfileCoachComponent} from './users/profile-coach/profile-coach.component';
 import {SessionOverviewCoachComponent} from './session/session-overview-coach/session-overview-coach.component';
+import {WrongResetTokenComponent} from './errors/wrong-reset-token/wrong-reset-token.component';
+import {CoachProfileChangeComponent} from './users/coach-profile-change/coach-profile-change.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
   {path: 'home', component: HomeComponent},
   {path: 'reset-password', component: ResetPasswordComponent},
+  {path: 'wrongResetToken', component: WrongResetTokenComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'coachees/:id/coaches', component: OverviewCoachesComponent},
   {
@@ -34,10 +37,10 @@ const routes: Routes = [
   {path: 'coachees/:id/not-authorized', component: NotAuthorizedUserComponent},
   {path: 'coachees/:id/sessions', component: SessionOverviewCoacheeComponent},
 
-
   // {path: 'coaches/:id', redirectTo: '/coaches/:id/profile-coach', pathMatch: 'full'},
   // {path: 'coaches/:id/profile-coach', component: ProfileCoachComponent, canActivate: [LoginGuard]},
   {path: 'coaches/:id/sessions', component: SessionOverviewCoachComponent},
+  {path: 'coaches/:id/profileChange', component: CoachProfileChangeComponent},
 
 
   // leave the path: ** always at the end

@@ -3,7 +3,10 @@
     <h6>My Profile</h6>
     <div class="collection">
 <!--      <a routerLink="#!" class="collection-item grey-text text-darken-2">Profile Information</a>-->
-      <a routerLink="/coaches/{{id}}}/sessions" class="collection-item black-text active teal lighten-3">Coaching sessions</a>
+      <a routerLink="/coaches/{{coachId}}/sessions" class="collection-item" routerLinkActive #rla1="routerLinkActive"
+         [ngClass]="rla1.isActive ? 'black-text teal lighten-3' : 'grey-text text-darken-2'">Coaching sessions</a>
+      <a routerLink="/coaches/{{coachId}}/profileChange" class="collection-item" routerLinkActive #rla2="routerLinkActive"
+         [ngClass]="rla2.isActive ? 'black-text teal lighten-3' : 'grey-text text-darken-2'">Request a profile change</a>
     </div>
   </div>
 </div>
