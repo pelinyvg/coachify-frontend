@@ -6,6 +6,7 @@ import {environment} from '../../environments/environment';
 import {map} from 'rxjs/operators';
 import {DatePipe} from '@angular/common';
 import {SessionStatus} from '../model/session-status';
+import {response} from 'express';
 
 
 @Injectable({
@@ -58,17 +59,16 @@ export class SessionService {
   }
 
   getSessionsUpcomingCoach(id: number): Observable<CoachingSession[]> {
-    const datepipe: DatePipe = new DatePipe('en-US');
+    const dateTimePipe: DatePipe = new DatePipe('en-US');
+    const currentDateTime = dateTimePipe.transform(this.currentDate, 'yyyy-MM-dd HH:mm:ss');
 
-    const currentDate = datepipe.transform(this.currentDate, 'yyyy-MM-dd');
-    console.log(currentDate);
     return this.http.get<CoachingSession[]>(`${this.route}/coaches/${id}/sessions`)
       .pipe(
         // tslint:disable-next-line:no-shadowed-variable
-        map(response => response.filter(
-          s => datepipe.transform(s.date, 'yyyy-MM-dd') >= currentDate
-        )));
+        map(response => response.filter(s => dateTimePipe.transform(s.date, 'yyyy-MM-dd HH:mm:ss') >= currentDateTime))
+      );
   }
+
   // map(response => response.filter(s => s.status.toLowerCase().includes('feedback')))
   getSessionsArchiveCoach(id: number): Observable<CoachingSession[]> {
     const datepipe: DatePipe = new DatePipe('en-US');
@@ -79,9 +79,9 @@ export class SessionService {
       .pipe(
         // tslint:disable-next-line:no-shadowed-variable
         map(response => response.filter(
-          s => datepipe.transform(s.date, 'yyyy-MM-dd') < currentDate
-          )
-        )
+          s => datepipe.transform(s.date, 'yyyy-MM-dd') < currentDate)),
+        // tslint:disable-next-line:no-shadowed-variable
+        map(response => response.filter(s => s.status !== 'Done, Waiting Feedback'))
       );
   }
 
@@ -93,6 +93,6 @@ export class SessionService {
     return this.http.get<CoachingSession[]>(`${this.route}/coaches/${id}/sessions`)
       .pipe(
         // tslint:disable-next-line:no-shadowed-variable
-        map(response => response.filter(s => s.status.toLowerCase().includes('feedback'))))
+        map(response => response.filter(s => s.status.toLowerCase().includes('feedback'))));
   }
 }
