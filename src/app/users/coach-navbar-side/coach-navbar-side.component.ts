@@ -18,7 +18,8 @@ export class CoachNavbarSideComponent implements OnInit {
   ngOnInit(): void {
     // console.log(this.authserv.getUserId());
     this.id = this.authserv.getUserId();
-    this.coachService.getCoachIdbyCoacheeId(this.id).subscribe(cId => this.coachId = cId);
+    // this.coachService.getCoachIdbyCoacheeId(this.id).subscribe(cId => this.coachId = cId);
+    this.coachId = this.route.snapshot.params.id;
     console.log('coach id : ' + this.coachId + '/ id : ' + this.id);
   }
 
