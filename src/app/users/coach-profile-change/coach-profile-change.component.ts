@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./coach-profile-change.component.css']
 })
 export class CoachProfileChangeComponent implements OnInit {
+  emailString = 'mailto:xyz@example.com?Subject=profile-change-as-a-coach';
 
   constructor() { }
 

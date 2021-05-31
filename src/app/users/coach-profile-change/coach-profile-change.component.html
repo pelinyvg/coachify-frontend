@@ -1,1 +1,43 @@
-<p>coach-profile-change works!</p>
+<main>
+
+  <app-coachee-navbar-top></app-coachee-navbar-top>
+
+  <div class="row">
+
+    <app-coach-navbar-side></app-coach-navbar-side>
+
+    <div class="col s12 m10">
+      <div class="content-container">
+
+        <section class="card-panel grey lighten-5">
+          <h5>Ask for a profile change</h5>
+          <div class="divider"></div>
+          <div class="row">
+            <div class="col l2 m2 s12">
+              <img src="../../../assets/images/under_construction.png" class="responsive-img"
+                   alt="Under Construction">
+            </div>
+            <div class="col l10 m10 s12">
+              <p class="grey-text text-darken-3">This part of the application is currently still under
+                construction. In order to ask for a profile change please send an email to your administrator with
+                the following information:
+              </p>
+              <ul>
+                <li>Your full name</li>
+                <li>The list of topics (topic + grade) for which you would like a change</li>
+              </ul>
+
+              <div class="row right-align">
+                <a class="waves-effect waves-light yellow darken-2 btn-large black-text" [href]="emailString">Send Email <i
+                  class="material-icons right">send</i></a>
+
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </div>
+
+</main>
