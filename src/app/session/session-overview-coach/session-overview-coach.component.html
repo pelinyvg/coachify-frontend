@@ -36,10 +36,10 @@
                   <td>{{coachingSession.status}}</td>
                   <td>
                     <a class="waves-effect waves-light  grey lighten-2 btn black-text"
-                       *ngIf="statusRequested(coachingSession)">Accept<i
+                       *ngIf="statusRequested(coachingSession)" (click)="acceptRequestedSession(coachingSession)">Accept<i
                       class="material-icons right">assignment_turned_in</i></a>
                     <a class="waves-effect waves-light  grey lighten-2 btn black-text"
-                       *ngIf="statusRequested(coachingSession)">Decline<i
+                       *ngIf="statusRequested(coachingSession)" (click)="declineRequestedSession(coachingSession)">Decline<i
                       class="material-icons right">cancel</i></a>
                     <!--                    <a class="waves-effect waves-light  grey lighten-2 btn black-text"-->
                     <!--                       *ngIf="statusAccepted(coachingSession)">Cancel<i-->
