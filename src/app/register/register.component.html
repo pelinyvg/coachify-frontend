@@ -31,8 +31,8 @@
               </div>
               <div class="row">
                 <div class="input-field col s12">
-                  <input id="email" type="email" formControlName="email" required email style="color:red;">
-                  <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+                  <input id="email" type="email" formControlName="email" required email >
+                  <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger" style="color:red;">
                     <div *ngIf="email.errors.required">email is required</div>
                     <div *ngIf="email.errors.email"> This is not a valid email address</div>
                   </div>
@@ -52,7 +52,7 @@
               </div>
               <div class="row">
                 <div class="input-field col s12">
-                  <input id="passwordVerification" type="password" required formControlName="passwordVerification" oninput="check(this)" style="color:red;">
+                  <input id="passwordVerification" type="password" required formControlName="passwordVerification" oninput="check(this)">
 <!--                  <script language='javascript' type='text/javascript'>-->
 <!--                    function check(input) {-->
 <!--                      if (input.value !== document.getElementById('password').value) {-->

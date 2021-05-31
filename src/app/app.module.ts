@@ -37,6 +37,7 @@ import { ProfileCoachComponent } from './users/profile-coach/profile-coach.compo
 import { SessionOverviewCoachComponent } from './session/session-overview-coach/session-overview-coach.component';
 import { CoachNavbarSideComponent } from './users/coach-navbar-side/coach-navbar-side.component';
 import { WrongResetTokenComponent } from './errors/wrong-reset-token/wrong-reset-token.component';
+import { CoachProfileChangeComponent } from './users/coach-profile-change/coach-profile-change.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -67,7 +68,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     ProfileCoachComponent,
     SessionOverviewCoachComponent,
     CoachNavbarSideComponent,
-    WrongResetTokenComponent
+    WrongResetTokenComponent,
+    CoachProfileChangeComponent
   ],
   imports: [
     BrowserModule,
