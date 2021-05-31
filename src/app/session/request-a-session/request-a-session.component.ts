@@ -42,6 +42,7 @@ export class RequestASessionComponent implements OnInit {
   }
 
   onSubmit(): void {
+    // tslint:disable-next-line:triple-equals
     if (this.sessionForm.value.date == new Date() && this.sessionForm.value.time < new Date().getTime()) {
       this.sessionService.addSession(this.sessionForm.value).subscribe(() => {
         console.log(this.sessionForm.value.date);
