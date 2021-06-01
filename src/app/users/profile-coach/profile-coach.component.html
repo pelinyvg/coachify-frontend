@@ -1,1 +1,121 @@
-<p>profile-coach works!</p>
+<main>
+
+  <div>
+    <app-coachee-navbar-top></app-coachee-navbar-top>
+  </div>
+
+  <div class="row">
+    <app-coach-navbar-side></app-coach-navbar-side>
+
+    <div class="col s10 m10">
+      <div class="content-container">
+
+        <div class="col s12 m12">
+          <div class="content-container">
+
+            <section class="card-panel grey lighten-5">
+              <h5>Profile Information</h5>
+              <div class="divider"></div>
+              <div class="row">
+                <div class="col l2 m2 s12">
+                  <img src="../../../assets/images/user-placeholder.png" class="responsive-img circle"
+                       alt="Profile Picture">
+                </div>
+                <div class="col l10 m12 s12">
+                  <table class="highlight">
+                    <tbody>
+                    <tr>
+                      <td><strong>First name</strong></td>
+                      <td>{{coach?.firstName}}</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Last name</strong></td>
+                      <td>{{coach?.lastName}}</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Email</strong></td>
+                      <td>{{coach?.email}}</td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </section>
+
+            <div class="divider"></div>
+
+            <section class="card-panel grey lighten-5">
+              <h5>Coach Information</h5>
+              <div class="divider"></div>
+              <div class="row">
+                <div class="col l12 m12 s12">
+                  <table class="highlight">
+                    <tbody>
+                    <tr>
+                      <td><strong>Introduction</strong></td>
+                      <td>{{coach?.introduction}}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><strong>Availability</strong></td>
+                      <td>{{coach?.availability}}
+                      </td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </section>
+
+            <div class="divider"></div>
+
+            <section class="card-panel grey lighten-5">
+              <h5>Coaching topics</h5>
+              <div class="divider"></div>
+              <div class="row">
+                <div class="col s12">
+                  <table class="highlight">
+                    <tbody>
+                    <tr *ngFor="let topic of coach?.topicsByCoach">
+                      <td><strong>{{topic?.topicName}}</strong></td>
+                      <td>
+                        <div class="center">
+                          <div class="center expertise-order">
+                            <div *ngIf="topic.grade1; else gray1"><img src="assets/images/intermediate_yellow.png"
+                                                                       height="40"></div>
+
+                            <ng-template #gray1>
+                              <div class="expertise-img"><img src="assets/images/intermediate_grey.png" height="40">
+                              </div>
+                            </ng-template>
+
+                            <div *ngIf="topic.grade2; else gray2"><img src="assets/images/medium_yellow.png"
+                                                                       height="40"></div>
+
+                            <ng-template #gray2>
+                              <div class="expertise-img"><img src="assets/images/medium_grey.png" height="40"></div>
+                            </ng-template>
+
+                            <div *ngIf="topic.grade3; else gray3"><img src="assets/images/expert_yellow.png"
+                                                                       height="40"></div>
+
+                            <ng-template #gray3>
+                              <div class="expertise-img"><img src="assets/images/expert_gray.png" height="40"></div>
+                            </ng-template>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </section>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</main>

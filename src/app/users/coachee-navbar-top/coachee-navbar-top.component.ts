@@ -20,7 +20,7 @@ export class CoacheeNavbarTopComponent implements OnInit {
     private coachService: CoachService,
     private authService: AuthenticationService,
     private router: Router,
-    ) {
+  ) {
     this.coachId = 0;
     this.color = 'yellow darken-2';
   }
@@ -31,6 +31,7 @@ export class CoacheeNavbarTopComponent implements OnInit {
       this.coachId = coachId;
       this.isLoaded = true;
     });
+
     if (this.router.url.indexOf('/coaches/') === 0) {
       this.color = 'teal lighten-3';
     }

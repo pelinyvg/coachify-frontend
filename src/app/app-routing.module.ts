@@ -38,7 +38,7 @@ const routes: Routes = [
   {path: 'coachees/:id/sessions', component: SessionOverviewCoacheeComponent},
 
   // {path: 'coaches/:id', redirectTo: '/coaches/:id/profile-coach', pathMatch: 'full'},
-  // {path: 'coaches/:id/profile-coach', component: ProfileCoachComponent, canActivate: [LoginGuard]},
+  {path: 'coaches/:id/profile-coach', component: ProfileCoachComponent, canActivate: [LoginGuard]},
   {path: 'coaches/:id/sessions', component: SessionOverviewCoachComponent},
   {path: 'coaches/:id/profileChange', component: CoachProfileChangeComponent},
 

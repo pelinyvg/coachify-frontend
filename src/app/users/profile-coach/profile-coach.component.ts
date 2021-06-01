@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {Coach} from '../../model/coach';
+import {ActivatedRoute} from '@angular/router';
+import {CoachService} from '../../services/coach.service';
 
 @Component({
   selector: 'app-profile-coach',
@@ -7,9 +10,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileCoachComponent implements OnInit {
 
-  constructor() { }
+  title: string;
+  coach: Coach;
+
+  constructor(
+    private route: ActivatedRoute,
+    private service: CoachService
+  ) {
+  }
 
   ngOnInit(): void {
+    this.getCoach();
+  }
+
+  getCoach(): void {
+    this.service.getCoach(this.route.snapshot.params.id).subscribe(coach => {
+      this.coach = coach;
+      this.title = 'Coachify | ' + this.coach.firstName + ' ' + this.coach.lastName;
+      document.title = this.title;
+    });
   }
 
 }
