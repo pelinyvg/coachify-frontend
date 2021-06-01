@@ -32,29 +32,27 @@ export class SessionService {
 
   getSessionsUpcomingCoachee(id: number): Observable<CoachingSession[]> {
     const datepipe: DatePipe = new DatePipe('en-US');
+    const currentDate = datepipe.transform(this.currentDate, 'yyyy-MM-dd HH:mm:ss');
 
-    const currentDate = datepipe.transform(this.currentDate, 'yyyy-MM-dd');
-    console.log(currentDate);
     return this.http.get<CoachingSession[]>(`${this.route}/coachees/${id}/sessions`)
       .pipe(
         // tslint:disable-next-line:no-shadowed-variable
         map(response => response.filter(
-          s => datepipe.transform(s.date, 'yyyy-MM-dd') >= currentDate
+          s => datepipe.transform(new Date(s.date + ' ' + s.time), 'yyyy-MM-dd HH:mm:ss') >= currentDate
         )));
   }
 
   getSessionsArchiveCoachee(id: number): Observable<CoachingSession[]> {
     const datepipe: DatePipe = new DatePipe('en-US');
+    const currentDate = datepipe.transform(this.currentDate, 'yyyy-MM-dd HH:mm:ss');
 
-    const currentDate = datepipe.transform(this.currentDate, 'yyyy-MM-dd');
-    console.log(currentDate);
     return this.http.get<CoachingSession[]>(`${this.route}/coachees/${id}/sessions`)
       .pipe(
         // tslint:disable-next-line:no-shadowed-variable
         map(response => response.filter(
-          s => datepipe.transform(s.date, 'yyyy-MM-dd') < currentDate
-          )
-        )
+          s => datepipe.transform(new Date(s.date + ' ' + s.time), 'yyyy-MM-dd HH:mm:ss') < currentDate)),
+        // tslint:disable-next-line:no-shadowed-variable
+        map(response => response.filter(s => s.status !== 'Done, Waiting Feedback'))
       );
   }
 
@@ -65,21 +63,22 @@ export class SessionService {
     return this.http.get<CoachingSession[]>(`${this.route}/coaches/${id}/sessions`)
       .pipe(
         // tslint:disable-next-line:no-shadowed-variable
-        map(response => response.filter(s => dateTimePipe.transform(s.date, 'yyyy-MM-dd HH:mm:ss') >= currentDateTime))
+        map(response => response.filter(s =>
+          dateTimePipe.transform(new Date(s.date + ' ' + s.time), 'yyyy-MM-dd HH:mm:ss') >= currentDateTime))
       );
   }
 
   // map(response => response.filter(s => s.status.toLowerCase().includes('feedback')))
   getSessionsArchiveCoach(id: number): Observable<CoachingSession[]> {
     const datepipe: DatePipe = new DatePipe('en-US');
+    const currentDate = datepipe.transform(this.currentDate, 'yyyy-MM-dd HH:mm:ss');
 
-    const currentDate = datepipe.transform(this.currentDate, 'yyyy-MM-dd');
     console.log(currentDate);
     return this.http.get<CoachingSession[]>(`${this.route}/coaches/${id}/sessions`)
       .pipe(
         // tslint:disable-next-line:no-shadowed-variable
         map(response => response.filter(
-          s => datepipe.transform(s.date, 'yyyy-MM-dd') < currentDate)),
+          s => datepipe.transform(new Date(s.date + ' ' + s.time), 'yyyy-MM-dd HH:mm:ss') < currentDate)),
         // tslint:disable-next-line:no-shadowed-variable
         map(response => response.filter(s => s.status !== 'Done, Waiting Feedback'))
       );
@@ -91,6 +90,13 @@ export class SessionService {
 
   getSessionsFeedbackCoach(id: number) {
     return this.http.get<CoachingSession[]>(`${this.route}/coaches/${id}/sessions`)
+      .pipe(
+        // tslint:disable-next-line:no-shadowed-variable
+        map(response => response.filter(s => s.status.toLowerCase().includes('feedback'))));
+  }
+
+  getSessionsFeedbackCoachee(id: number) {
+    return this.http.get<CoachingSession[]>(`${this.route}/coachees/${id}/sessions`)
       .pipe(
         // tslint:disable-next-line:no-shadowed-variable
         map(response => response.filter(s => s.status.toLowerCase().includes('feedback'))));

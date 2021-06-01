@@ -14,6 +14,7 @@ export class SessionOverviewCoacheeComponent implements OnInit {
   sessions: CoachingSession[];
   sessionsUpcoming: CoachingSession[];
   sessionsArchive: CoachingSession[];
+  sessionsFeedback: CoachingSession[];
 
   constructor(private sessionService: SessionService, private route: ActivatedRoute) {
   }
@@ -38,6 +39,10 @@ export class SessionOverviewCoacheeComponent implements OnInit {
         this.sessionsArchive = sessions;
       }
     );
+  }
+
+  getFeedbackSessions(): void {
+    this.sessionService.getSessionsFeedbackCoachee(this.id).subscribe(sessions => this.sessionsFeedback = sessions);
   }
 
   statusCheck(session: CoachingSession): boolean {
