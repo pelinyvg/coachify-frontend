@@ -4,7 +4,7 @@ import {SessionService} from '../../services/session.service';
 import {CoachService} from '../../services/coach.service';
 import {CoacheeService} from '../../services/coachee.service';
 import {ActivatedRoute} from '@angular/router';
-import {Location} from '@angular/common';
+import {DatePipe, Location} from '@angular/common';
 
 @Component({
   selector: 'app-request-a-session',
@@ -13,6 +13,7 @@ import {Location} from '@angular/common';
 })
 export class RequestASessionComponent implements OnInit {
 
+  currentDate: Date = new Date();
   minDate: Date;
   timeCorrect = true;
   title = 'Coachify | Create Session';
@@ -43,8 +44,13 @@ export class RequestASessionComponent implements OnInit {
   }
 
   onSubmit(): void {
-    // tslint:disable-next-line:triple-equals
-    if (this.sessionForm.value.date == new Date() && this.sessionForm.value.time < new Date().getTime()) {
+    const datepipe: DatePipe = new DatePipe('en-US');
+    const currentDate = datepipe.transform(this.currentDate, 'yyyy-MM-dd');
+    const formDate = datepipe.transform(this.sessionForm.value.date, 'yyyy-MM-dd');
+
+    const currentTime = datepipe.transform(this.currentDate, 'HH:mm');
+
+    if (formDate > currentDate || (formDate === currentDate && this.sessionForm.value.time > currentTime)) {
       this.sessionService.addSession(this.sessionForm.value).subscribe(() => {
         console.log(this.sessionForm.value.date);
         this.location.back();
