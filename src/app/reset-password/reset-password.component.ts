@@ -24,7 +24,6 @@ export class ResetPasswordComponent implements OnInit {
       passwordVerification: ['', [Validators.required]]
     }, {validator: ConfirmedValidator('password', 'passwordVerification')}
   );
-  private snackBarMessage: string;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -69,7 +68,7 @@ export class ResetPasswordComponent implements OnInit {
       this.resetPasswordForm.reset();
       this.router.navigate([`login`]).then((navigated: boolean) => {
         if (navigated) {
-          this.snackBarService.openSnackBar('Your password has been changed correctly!', 'Close', 9999999);
+          this.snackBarService.openSnackBar('Your password has been changed correctly!', 'close', 9999999);
         }
       });
     }, (errorResponse: HttpErrorResponse) => {

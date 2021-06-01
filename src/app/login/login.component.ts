@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {InitService} from '../materialize/init.service';
 import {CoacheeService} from '../services/coachee.service';
 import {HttpErrorResponse} from '@angular/common/http';
+import {SnackBarService} from '../services/snack-bar.service';
 
 @Component({
   selector: 'app-login',
@@ -29,7 +30,8 @@ export class LoginComponent implements OnInit {
               private router: Router,
               private route: ActivatedRoute,
               private initService: InitService,
-              private coacheeService: CoacheeService
+              private coacheeService: CoacheeService,
+              private snackBarService: SnackBarService
   ) {
     this.loginForm = this.formBuilder.group({
       username: '',
@@ -76,9 +78,13 @@ export class LoginComponent implements OnInit {
   passwordReset(): void {
     console.log(this.loginForm.controls[('username')].value + ' : is the email address we received');
     this.coacheeService.createResetPasswordToken(this.loginForm.controls[('username')].value).subscribe(() => {
-      alert('If the email exists in our system then a verification email has been sent to this email address : '
-        + this.loginForm.controls[('username')].value);
-      this.router.navigateByUrl(`/home`);
+      const message = 'If the email exists in our system then a verification email has been sent to this email address : '
+        + this.loginForm.controls[('username')].value;
+      this.router.navigateByUrl(`/home`).then((navigated: boolean) => {
+        if (navigated) {
+          this.snackBarService.openSnackBar(message, 'x', 9999999);
+        }
+      });
     }, (errorResponse: HttpErrorResponse) => {
       alert('The server could not process your email. Make sure there is not a typo.');
     });
