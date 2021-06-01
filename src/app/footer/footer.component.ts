@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
-import {CoachService} from "../services/coach.service";
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-footer',
@@ -9,7 +8,7 @@ import {CoachService} from "../services/coach.service";
 })
 export class FooterComponent implements OnInit {
 
-  color:string;
+  color: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -19,7 +18,7 @@ export class FooterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    setTimeout(() => { this.ngOnInit() }, 100)
+    setTimeout(() => { this.ngOnInit(); }, 100);
     if (this.router.url.indexOf('/coaches/')  === 0) {
       this.color = 'teal lighten-3';
     } else {
