@@ -17,11 +17,13 @@ export class SessionOverviewCoachComponent implements OnInit {
   sessionsArchive: CoachingSession[];
   sessionsFeedback: CoachingSession[];
   sessionStatus: SessionStatus;
+  title = 'Coachify | Session Overview';
 
   constructor(private route: ActivatedRoute, private sessionService: SessionService) {
   }
 
   ngOnInit(): void {
+    document.title = this.title;
     this.coachId = this.route.snapshot.params.id;
     this.getUpcomingSessions();
     this.getArchiveSessions();

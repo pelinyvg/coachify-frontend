@@ -13,6 +13,7 @@ import {SnackBarService} from '../services/snack-bar.service';
 })
 export class ResetPasswordComponent implements OnInit {
 
+  title = 'Coachify | Reset';
   resetPasswordId: string;
   doesTokenExist = false;
 
@@ -36,6 +37,17 @@ export class ResetPasswordComponent implements OnInit {
     });
   }
 
+  ngOnInit(): void {
+    document.title = this.title;
+    this.coacheeService.resetPasswordIdExist(this.resetPasswordId).subscribe(boo => {
+      this.doesTokenExist = boo;
+      if (!this.doesTokenExist) {
+        this.router.navigate(['wrongResetToken']);
+      }
+    });
+    this.resetPasswordForm.reset();
+  }
+
   get registerForm(): FormGroup {
     return this.resetPasswordForm;
   }
@@ -50,16 +62,6 @@ export class ResetPasswordComponent implements OnInit {
 
   get passwordVerification() {
     return this.resetPasswordForm.get('passwordVerification');
-  }
-
-  ngOnInit(): void {
-    this.coacheeService.resetPasswordIdExist(this.resetPasswordId).subscribe(boo => {
-      this.doesTokenExist = boo;
-      if (!this.doesTokenExist) {
-        this.router.navigate(['wrongResetToken']);
-      }
-    });
-    this.resetPasswordForm.reset();
   }
 
   onSubmit(): void {

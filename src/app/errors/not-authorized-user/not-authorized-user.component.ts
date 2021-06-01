@@ -6,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./not-authorized-user.component.css']
 })
 export class NotAuthorizedUserComponent implements OnInit {
+  title = 'Coachify | Not Authorized';
 
   constructor() { }
 
   ngOnInit(): void {
+    document.title = this.title;
   }
 
 }

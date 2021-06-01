@@ -9,6 +9,8 @@ import {InitService} from '../../materialize/init.service';
   styleUrls: ['./overview-coaches.component.css']
 })
 export class OverviewCoachesComponent implements OnInit, AfterViewInit {
+
+  title = 'Coachify | Overview Coaches';
   coaches: Coach[];
   topicNames: string[];
   filteredTopic: string;
@@ -16,7 +18,6 @@ export class OverviewCoachesComponent implements OnInit, AfterViewInit {
   searchText: string;
   placeHolderTopicName: string;
   placeHolderExperience: string;
-
 
   constructor(private coachService: CoachService, private initService: InitService) {
     this.filteredTopic = '';
@@ -27,6 +28,7 @@ export class OverviewCoachesComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
+    document.title = this.title;
     this.getCoaches();
     this.getTopics();
   }

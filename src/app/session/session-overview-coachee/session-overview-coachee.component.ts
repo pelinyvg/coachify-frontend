@@ -10,6 +10,7 @@ import {CoachingSession} from '../../model/coaching-session';
 })
 export class SessionOverviewCoacheeComponent implements OnInit {
 
+  title = 'Coachify | Session Overview';
   id: number;
   sessions: CoachingSession[];
   sessionsUpcoming: CoachingSession[];
@@ -20,6 +21,7 @@ export class SessionOverviewCoacheeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    document.title = this.title;
     this.id = this.route.snapshot.params.id;
     this.getUpcomingSessions();
     this.getArchiveSessions();

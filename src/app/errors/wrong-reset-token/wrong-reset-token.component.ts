@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-wrong-reset-token',
@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WrongResetTokenComponent implements OnInit {
 
-  constructor() { }
+  title = 'Coachify | Wrong token';
+
+  constructor() {
+  }
 
   ngOnInit(): void {
+    document.title = this.title;
   }
 
 }

@@ -10,12 +10,13 @@ import {CoachService} from '../../services/coach.service';
 })
 export class CoacheeDetailOfACoachComponent implements OnInit {
 
+  title: string;
   coach: Coach;
 
   constructor(
     private route: ActivatedRoute,
-    private service: CoachService
-  ) { }
+    private service: CoachService) {
+  }
 
   ngOnInit(): void {
     this.getCoach(this.route.snapshot.params.idcoach);
@@ -24,7 +25,8 @@ export class CoacheeDetailOfACoachComponent implements OnInit {
   getCoach(id: number): void {
     this.service.getCoach(id).subscribe(coach => {
       this.coach = coach;
-      console.log(coach);
+      this.title = 'Coachify | ' + this.coach.firstName + ' ' + this.coach.lastName;
+      document.title = this.title;
     });
   }
 

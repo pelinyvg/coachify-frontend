@@ -1,8 +1,7 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {InitService} from '../materialize/init.service';
-import {AuthenticationService} from "../authentication/authentication.service";
-import {Router} from "@angular/router";
-
+import {AuthenticationService} from '../authentication/authentication.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -12,13 +11,16 @@ import {Router} from "@angular/router";
 export class HomeComponent implements OnInit, AfterViewInit {
 
   private id: number;
+  title = 'Coachify | Home';
 
   constructor(
     private initService: InitService,
     private authenticationService: AuthenticationService,
-    private router: Router) { }
+    private router: Router) {
+  }
 
   ngOnInit(): void {
+    document.title = this.title;
     if (this.authenticationService.isLoggedIn()) {
       this.id = this.authenticationService.getUserId();
       this.router.navigateByUrl(`/coachees/${this.id}/profile-coachee`);

@@ -11,6 +11,7 @@ import {AuthenticationService} from '../../authentication/authentication.service
 })
 export class ProfileCoacheeComponent implements OnInit {
 
+  title: string;
   coachee: Coachee;
   id: number;
 
@@ -34,7 +35,13 @@ export class ProfileCoacheeComponent implements OnInit {
   }
 
   getUser(id: number): void {
-    this.service.getUser(id).subscribe(coachee => this.coachee = coachee);
+    this.service.getUser(id).subscribe(
+      coachee => {
+        this.coachee = coachee;
+        this.title = 'Coachify | ' + this.coachee.firstName + ' ' + this.coachee.lastName;
+        document.title = this.title;
+      }
+    );
   }
 
 

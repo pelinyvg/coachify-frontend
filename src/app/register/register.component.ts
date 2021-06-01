@@ -12,6 +12,7 @@ import {HttpErrorResponse} from '@angular/common/http';
 })
 export class RegisterComponent implements OnInit {
   private ecoachee: Coachee;
+  title = 'Coachify | Register';
 
   private eregisterForm = this.formBuilder.group(
     {
@@ -24,6 +25,11 @@ export class RegisterComponent implements OnInit {
   );
 
   constructor(private formBuilder: FormBuilder, private coacheeService: CoacheeService, private router: Router) {
+  }
+
+  ngOnInit(): void {
+    document.title = this.title;
+    this.eregisterForm.reset();
   }
 
   get coachee(): Coachee {
@@ -52,10 +58,6 @@ export class RegisterComponent implements OnInit {
 
   get passwordVerification() {
     return this.eregisterForm.get('passwordVerification');
-  }
-
-  ngOnInit(): void {
-    this.eregisterForm.reset();
   }
 
   onSubmit(): void {

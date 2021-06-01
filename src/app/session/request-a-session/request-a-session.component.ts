@@ -15,6 +15,7 @@ export class RequestASessionComponent implements OnInit {
 
   minDate: Date;
   timeCorrect = true;
+  title = 'Coachify | Create Session';
 
   sessionForm = this.formBuilder.group(
     {
@@ -37,6 +38,7 @@ export class RequestASessionComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    document.title = this.title;
     console.log(this.minDate);
   }
 
