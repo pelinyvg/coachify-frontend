@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {SessionService} from '../../services/session.service';
 import {ActivatedRoute} from '@angular/router';
 import {CoachingSession} from '../../model/coaching-session';
+import {SessionStatus} from "../../model/session-status";
 
 @Component({
   selector: 'app-session-overview-coachee',
@@ -16,6 +17,7 @@ export class SessionOverviewCoacheeComponent implements OnInit {
   sessionsUpcoming: CoachingSession[];
   sessionsArchive: CoachingSession[];
   sessionsFeedback: CoachingSession[];
+  sessionStatus: SessionStatus;
 
   constructor(private sessionService: SessionService, private route: ActivatedRoute) {
   }
@@ -50,5 +52,10 @@ export class SessionOverviewCoacheeComponent implements OnInit {
 
   statusCheck(session: CoachingSession): boolean {
     return session.status === 'Accepted' || session.status === 'Requested';
+  }
+
+  cancelAcceptedSession(coachingSession: CoachingSession) {
+    this.sessionStatus = {status: 'Finished (Cancelled by coachee)', id: coachingSession.sessionId};
+    this.sessionService.setStatusOfSession(this.sessionStatus).subscribe(() => this.ngOnInit());
   }
 }
