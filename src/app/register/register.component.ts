@@ -1,10 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {CoacheeService} from '../services/coachee.service';
 import {Router} from '@angular/router';
 import {Coachee} from '../model/coachee';
 import {HttpErrorResponse} from '@angular/common/http';
-import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-register',
