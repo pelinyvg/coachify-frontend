@@ -3,6 +3,8 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {CoacheeService} from '../services/coachee.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {HttpErrorResponse} from '@angular/common/http';
+import {SnackBarService} from '../services/snack-bar.service';
+
 
 @Component({
   selector: 'app-reset-password',
@@ -22,10 +24,12 @@ export class ResetPasswordComponent implements OnInit {
       passwordVerification: ['', [Validators.required]]
     }, {validator: ConfirmedValidator('password', 'passwordVerification')}
   );
+  private snackBarMessage: string;
 
   constructor(
     private formBuilder: FormBuilder,
     private coacheeService: CoacheeService,
+    private snackBarService: SnackBarService,
     private router: Router,
     private activatedRoute: ActivatedRoute) {
     this.activatedRoute.queryParams.subscribe(params => {
@@ -62,11 +66,13 @@ export class ResetPasswordComponent implements OnInit {
   onSubmit(): void {
     this.resetPasswordForm.controls.resetPasswordId.setValue(this.resetPasswordId);
     this.coacheeService.changePassword(this.resetPasswordForm.value).subscribe(() => {
-      alert('Password has been changed');
       this.resetPasswordForm.reset();
-      this.router.navigate([`login`]);
+      this.router.navigate([`login`]).then((navigated: boolean) => {
+        if (navigated) {
+          this.snackBarService.openSnackBar('Your password has been changed correctly!', 'Close', 9999999);
+        }
+      });
     }, (errorResponse: HttpErrorResponse) => {
-      // alert('Server was unable to answer your request');
       this.router.navigate([`wrongResetToken`]);
     });
   }
