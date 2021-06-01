@@ -1,5 +1,5 @@
-import { Pipe, PipeTransform } from '@angular/core';
-import {Coach} from "../model/coach";
+import {Pipe, PipeTransform} from '@angular/core';
+import {Coach} from '../model/coach';
 
 @Pipe({
   name: 'textSearch'
@@ -10,8 +10,12 @@ export class TextSearchPipe implements PipeTransform {
     if (name === '') {
       return coaches;
     }
+    if (name.length < 3) {
+      return coaches;
+    }
+
     return coaches.filter(coach => coach.firstName.toLowerCase().includes(name.toLowerCase())
       || coach.lastName.toLowerCase().includes(name.toLowerCase())
-      || coach.email.toLowerCase().includes(name.toLowerCase()))
+      || coach.email.toLowerCase().includes(name.toLowerCase()));
   }
 }

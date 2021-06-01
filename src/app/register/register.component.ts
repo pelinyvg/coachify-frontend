@@ -4,6 +4,7 @@ import {CoacheeService} from '../services/coachee.service';
 import {Router} from '@angular/router';
 import {Coachee} from '../model/coachee';
 import {HttpErrorResponse} from '@angular/common/http';
+import {SnackBarService} from '../services/snack-bar.service';
 
 @Component({
   selector: 'app-register',
@@ -13,6 +14,7 @@ import {HttpErrorResponse} from '@angular/common/http';
 export class RegisterComponent implements OnInit {
   private ecoachee: Coachee;
   title = 'Coachify | Register';
+  message: string;
 
   private eregisterForm = this.formBuilder.group(
     {
@@ -24,7 +26,10 @@ export class RegisterComponent implements OnInit {
     }, {validator: ConfirmedValidator('password', 'passwordVerification')}
   );
 
-  constructor(private formBuilder: FormBuilder, private coacheeService: CoacheeService, private router: Router) {
+  constructor(private formBuilder: FormBuilder,
+              private coacheeService: CoacheeService,
+              private router: Router,
+              private snackBarService: SnackBarService) {
   }
 
   ngOnInit(): void {
@@ -63,11 +68,14 @@ export class RegisterComponent implements OnInit {
   onSubmit(): void {
     this.ecoachee = this.eregisterForm.value;
     this.coacheeService.addCoachee(this.eregisterForm.value).subscribe(() => {
-      alert('Your account has been registered. You will be redirected to the login page.');
+      this.message = 'Your account has been registered. You will be redirected to the login page.';
+      this.snackBarService.openSnackBar(this.message, 'close', 9999999);
       this.eregisterForm.reset();
       this.router.navigate([`login`]);
     }, (errorResponse: HttpErrorResponse) => {
-      alert('This email is already used');
+      // tslint:disable-next-line:max-line-length
+      this.message = 'There was an error while processing your registering. Please check your email address is not already linked to an account.';
+      this.snackBarService.openSnackBar(this.message, 'close', 9999999);
     });
   }
 }
