@@ -25,6 +25,7 @@ export class SessionOverviewCoacheeComponent implements OnInit {
     this.id = this.route.snapshot.params.id;
     this.getUpcomingSessions();
     this.getArchiveSessions();
+    this.getFeedbackSessions();
   }
 
   getUpcomingSessions(): void {
