@@ -91,7 +91,7 @@ export class SessionService {
       );
   }
 
-  acceptRequestedSessionAsCoach(sessionStatus: SessionStatus): Observable<CoachingSession> {
+  setStatusOfSession(sessionStatus: SessionStatus): Observable<CoachingSession> {
     return this.http.post<CoachingSession>(this.route + `/sessions/${sessionStatus.id}/set-status`, sessionStatus);
   }
 
@@ -100,10 +100,5 @@ export class SessionService {
       .pipe(
         // tslint:disable-next-line:no-shadowed-variable
         map(response => response.filter(s => s.status.toLowerCase().includes('feedback'))));
-  }
-
-
-  declineRequestedSessionAsCoach(sessionStatus: SessionStatus): Observable<CoachingSession> {
-    return this.http.post<CoachingSession>(this.route + `/sessions/${sessionStatus.id}/set-status`, sessionStatus);
   }
 }

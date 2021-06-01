@@ -60,11 +60,16 @@ export class SessionOverviewCoachComponent implements OnInit {
 
   acceptRequestedSession(session: CoachingSession) {
     this.sessionStatus = {status: 'Accepted', id: session.sessionId};
-    this.sessionService.acceptRequestedSessionAsCoach(this.sessionStatus).subscribe(() => this.ngOnInit());
+    this.sessionService.setStatusOfSession(this.sessionStatus).subscribe(() => this.ngOnInit());
   }
 
   declineRequestedSession(session: CoachingSession) {
     this.sessionStatus = {status: 'Finished (declined)', id: session.sessionId};
-    this.sessionService.declineRequestedSessionAsCoach(this.sessionStatus).subscribe(() => this.ngOnInit());
+    this.sessionService.setStatusOfSession(this.sessionStatus).subscribe(() => this.ngOnInit());
+  }
+
+  cancelAcceptedSession(session: CoachingSession) {
+    this.sessionStatus = {status: 'Finished (Cancelled by coach)', id: session.sessionId};
+    this.sessionService.setStatusOfSession(this.sessionStatus).subscribe(() => this.ngOnInit());
   }
 }
