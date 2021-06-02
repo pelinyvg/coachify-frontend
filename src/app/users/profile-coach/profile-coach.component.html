@@ -45,7 +45,7 @@
         <div class="divider"></div>
 
         <section class="card-panel grey lighten-5">
-          <div class="right" >
+          <div *ngIf="!openEdit" class="right" >
             <a [ngClass]="openEdit ? 'btn-large btn-floating teal lighten-5':
             'btn-large btn-floating teal lighten-3'"><i
               class="material-icons left" (click)="clickEdit()">edit</i>Edit</a>
