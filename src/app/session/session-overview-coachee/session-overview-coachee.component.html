@@ -77,35 +77,75 @@
                 <tr *ngIf="testBoolean">
                   <td colspan="7">
                     <div class="feedback">
-                      <form class="col s12">
-                        <!--                            [formGroup]="feedbackForm" (ngSubmit)="onSubmit()"-->
+                      <form class="col s12" [formGroup]="feedBackForm" (ngSubmit)="onSubmit(coachingSession.sessionId)">
 
                         <div class="row">
 
                           <div class="rating">
-                            <input type="radio" name="star" id="star1" checked>
-                            <label for="star1">
-                              <img src="https://image.flaticon.com/icons/svg/1933/1933691.svg" alt="Loved it" width="120" height="120">
+                            <input type="radio" id="explanation-star5" formControlName="explanationRating" value="5">
+                            <label for="explanation-star5">
+                              <img src="https://image.flaticon.com/icons/svg/1933/1933691.svg" alt="Loved it"
+                                   width="120" height="120">
                               <span>Loved it</span>
                             </label>
-                            <input type="radio" name="star" id="star2">
-                            <label for="star2">
-                              <img src="https://image.flaticon.com/icons/svg/1933/1933646.svg" alt="Liked it" width="120" height="120">
+                            <input type="radio" id="explanation-star4" formControlName="explanationRating" value="4">
+                            <label for="explanation-star4">
+                              <img src="https://image.flaticon.com/icons/svg/1933/1933646.svg" alt="Liked it"
+                                   width="120" height="120">
                               <span>Liked it</span>
                             </label>
-                            <input type="radio" name="star" id="star3">
-                            <label for="star3">
-                              <img src="https://image.flaticon.com/icons/svg/1933/1933511.svg" alt="It's OK" width="120" height="120">
+                            <input type="radio" id="explanation-star3" formControlName="explanationRating" value="3">
+                            <label for="explanation-star3">
+                              <img src="https://image.flaticon.com/icons/svg/1933/1933511.svg" alt="It's OK" width="120"
+                                   height="120">
                               <span>It's OK</span>
                             </label>
-                            <input type="radio" name="star" id="star4">
-                            <label for="star4">
-                              <img src="https://image.flaticon.com/icons/svg/1933/1933115.svg" alt="Disliked it" width="120" height="120">
+                            <input type="radio" id="explanation-star2" formControlName="explanationRating" value="2">
+                            <label for="explanation-star2">
+                              <img src="https://image.flaticon.com/icons/svg/1933/1933115.svg" alt="Disliked it"
+                                   width="120" height="120">
                               <span>Disliked it</span>
                             </label>
-                            <input type="radio" name="star" id="star5">
-                            <label for="star5">
-                              <img src="https://image.flaticon.com/icons/svg/1933/1933127.svg" alt="Hated it" width="120" height="120">
+                            <input type="radio" id="explanation-star1" formControlName="explanationRating" value="1">
+                            <label for="explanation-star1">
+                              <img src="https://image.flaticon.com/icons/svg/1933/1933127.svg" alt="Hated it"
+                                   width="120" height="120">
+                              <span>Hated it</span>
+                            </label>
+                          </div>
+
+                        </div>
+                        <div class="row">
+
+                          <div class="rating">
+                            <input type="radio" id="useful-star5" value="5" formControlName="usefulRating">
+                            <label for="useful-star5">
+                              <img src="https://image.flaticon.com/icons/svg/1933/1933691.svg" alt="Loved it"
+                                   width="120" height="120">
+                              <span>Loved it</span>
+                            </label>
+                            <input type="radio" id="useful-star4" value="4" formControlName="usefulRating">
+                            <label for="useful-star4">
+                              <img src="https://image.flaticon.com/icons/svg/1933/1933646.svg" alt="Liked it"
+                                   width="120" height="120">
+                              <span>Liked it</span>
+                            </label>
+                            <input type="radio" id="useful-star3" value="3" formControlName="usefulRating">
+                            <label for="useful-star3">
+                              <img src="https://image.flaticon.com/icons/svg/1933/1933511.svg" alt="It's OK" width="120"
+                                   height="120">
+                              <span>It's OK</span>
+                            </label>
+                            <input type="radio" id="useful-star2" value="2" formControlName="usefulRating">
+                            <label for="useful-star2">
+                              <img src="https://image.flaticon.com/icons/svg/1933/1933115.svg" alt="Disliked it"
+                                   width="120" height="120">
+                              <span>Disliked it</span>
+                            </label>
+                            <input type="radio" id="useful-star1" value="1" formControlName="usefulRating">
+                            <label for="useful-star1">
+                              <img src="https://image.flaticon.com/icons/svg/1933/1933127.svg" alt="Hated it"
+                                   width="120" height="120">
                               <span>Hated it</span>
                             </label>
                           </div>
@@ -114,23 +154,23 @@
                         <div class="row">
                           <div class="input-field col s12 ">
                             <textarea id="remarks" class="textareadimensions materialize-textarea"
-                                      formControlName="remarks"></textarea>
+                                      formControlName="comment1"></textarea>
                             <label for="remarks" class="labelTextArea">What did you like in the coaching
                               session?</label>
                           </div>
                           <div class="input-field col s12 ">
                             <textarea id="remark" class="textareadimensions materialize-textarea"
-                                      formControlName="remarks"></textarea>
+                                      formControlName="comment2"></textarea>
                             <label for="remark" class="labelTextArea">How could your Coach get better ?</label>
                           </div>
                         </div>
 
                         <div class="row right-align center">
-                          <button class="waves-effect waves-light yellow darken-2 btn-large black-text" type="submit">
-                          <!--                                  [disabled]="sessionForm.invalid"-->
-                          Save Feedback<i class="material-icons right">send</i></button>
-                          <button class="waves-effect waves-light yellow darken-2 btn-large black-text" type="submit">
-<!--                                  [disabled]="sessionForm.invalid"-->
+                          <button class="waves-effect waves-light yellow darken-2 btn-large black-text" type="submit"
+                                  [disabled]="feedBackForm.invalid">
+                            Save Feedback<i class="material-icons right">send</i></button>
+                          <button class="waves-effect waves-light yellow darken-2 btn-large black-text" type="submit"
+                                  [disabled]="feedBackForm.invalid">
                             Cancel Feedback<i class="material-icons right">cancel</i></button>
                         </div>
                       </form>

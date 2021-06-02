@@ -7,6 +7,7 @@ import {map} from 'rxjs/operators';
 import {DatePipe} from '@angular/common';
 import {SessionStatus} from '../model/session-status';
 import {response} from 'express';
+import {SessionFeedbackCoachee} from "../model/session-feedback-coachee";
 
 
 @Injectable({
@@ -100,5 +101,9 @@ export class SessionService {
       .pipe(
         // tslint:disable-next-line:no-shadowed-variable
         map(response => response.filter(s => s.status.toLowerCase().includes('feedback'))));
+  }
+
+  addSessionFeedback(sessionFeedBack: SessionFeedbackCoachee): Observable<SessionFeedbackCoachee> {
+    return this.http.post<SessionFeedbackCoachee>(`${this.route}/sessions/${sessionFeedBack.sessionId}/feedback-coachee`, sessionFeedBack);
   }
 }

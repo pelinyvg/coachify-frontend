@@ -3,6 +3,9 @@ import {SessionService} from '../../services/session.service';
 import {ActivatedRoute} from '@angular/router';
 import {CoachingSession} from '../../model/coaching-session';
 import {SessionStatus} from "../../model/session-status";
+import {FormBuilder, Validators} from "@angular/forms";
+import {number} from "ngx-custom-validators/src/app/number/validator";
+import {distinct} from "rxjs/operators";
 
 @Component({
   selector: 'app-session-overview-coachee',
@@ -20,9 +23,20 @@ export class SessionOverviewCoacheeComponent implements OnInit {
   sessionStatus: SessionStatus;
   testBoolean: boolean;
 
+  feedBackForm = this.formBuilder.group(
+    {
+      sessionId:[''],
+      explanationRating:['', [Validators.required]],
+      usefulRating: ['', [Validators.required]],
+      comment1: [''],
+      comment2: [''],
+    })
+
   constructor(
     private sessionService: SessionService,
-    private route: ActivatedRoute,) {
+    private route: ActivatedRoute,
+    private formBuilder: FormBuilder
+    ) {
     this.testBoolean = false;
   }
 
@@ -65,5 +79,10 @@ export class SessionOverviewCoacheeComponent implements OnInit {
   cancelAcceptedSession(coachingSession: CoachingSession) {
     this.sessionStatus = {status: 'Finished (Cancelled by coachee)', id: coachingSession.sessionId};
     this.sessionService.setStatusOfSession(this.sessionStatus).subscribe(() => this.ngOnInit());
+  }
+
+  onSubmit(sessionId: number) {
+    this.feedBackForm.controls['sessionId'].setValue(sessionId);
+    this.sessionService.addSessionFeedback(this.feedBackForm.value).subscribe((value) => console.log(value));
   }
 }
