@@ -1,13 +1,16 @@
 <div class="col s12 m2">
   <div class="content-container">
-    <h6>My Profile</h6>
+    <h6>My Coach Profile</h6>
     <div class="collection">
-      <a routerLink="/coaches/{{coachId}}/profile-coach" class="collection-item" routerLinkActive #rla1="routerLinkActive"
-         [ngClass]="rla1.isActive ? 'black-text teal lighten-3' : 'grey-text text-darken-2'">Profile Information</a>
-      <a routerLink="/coaches/{{coachId}}/sessions" class="collection-item" routerLinkActive #rla2="routerLinkActive"
-         [ngClass]="rla2.isActive ? 'black-text teal lighten-3' : 'grey-text text-darken-2'">Coaching sessions</a>
-      <a routerLink="/coaches/{{coachId}}/profileChange" class="collection-item" routerLinkActive #rla3="routerLinkActive"
-         [ngClass]="rla3.isActive ? 'black-text teal lighten-3' : 'grey-text text-darken-2'">Request a profile change</a>
+      <a routerLink="/coaches/{{coachId}}/profile-coach" routerLinkActive
+         #rla4="routerLinkActive"
+         [ngClass]="rla4.isActive ? 'black-text teal lighten-3' : 'grey-text text-darken-2'" class="collection-item">Profile Information</a>
+      <a routerLink="/coaches/{{coachId}}/sessions" routerLinkActive #rla5="routerLinkActive"
+         [ngClass]="rla5.isActive ? 'black-text teal lighten-3' : 'grey-text text-darken-2'" class="collection-item">Coaching sessions</a>
+      <a routerLink="/coaches/{{coachId}}/profileChange" routerLinkActive
+         #rla6="routerLinkActive"
+         [ngClass]="rla6.isActive ? 'black-text teal lighten-3' : 'grey-text text-darken-2'" class="collection-item">Request a profile
+        change</a>
     </div>
   </div>
 </div>
