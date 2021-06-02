@@ -34,6 +34,12 @@
                   type="submit" [disabled]="updateCoachProfileForm.invalid">Save<i
             class="material-icons right">send</i></button>
         </div>
+
+        <div class="row right-align">
+          <button class="waves-effect waves-light teal lighten-3 btn-large black-text" style="margin-right: 20px"
+                  [disabled]="updateCoachProfileForm.invalid" (click)="cancel()">Cancel<i
+            class="material-icons right">send</i></button>
+        </div>
       </form>
     </div>
   </div>

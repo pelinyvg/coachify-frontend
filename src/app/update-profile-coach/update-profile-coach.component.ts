@@ -44,4 +44,8 @@ export class UpdateProfileCoachComponent implements OnInit {
     this.updateCoachProfileForm.reset();
     window.location.reload();
   }
+
+  cancel() {
+    window.location.reload();
+  }
 }

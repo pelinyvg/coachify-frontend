@@ -50,5 +50,7 @@ export class ProfileCoachComponent implements OnInit {
 
   clickEdit() {
     this.openEdit = !this.openEdit;
+    // @ts-ignore
+    window.location = String(window.location).replace(/\#.*$/, '') + '#CoachInfo';
   }
 }
