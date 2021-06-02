@@ -26,7 +26,7 @@
         <div class="col s0 m9 l9">
           <ul class="right hide-on-med-and-down valign-wrapper">
             <li *ngIf="authenticationService.isLoggedIn()">
-              <a class='dropdown-trigger btn yellow darken-2 black-text' data-target='dropdown-profile-1' href="#" translate [translateParams]="{username: username}">menu.label.logged-in<i class="material-icons left">face</i></a>
+              <a class='dropdown-trigger btn grey lighten-2 black-text' data-target='dropdown-profile-1' href="#" translate [translateParams]="{username: username}">menu.label.logged-in<i class="material-icons left">face</i></a>
               <ul id="dropdown-profile-1" class='dropdown-content'>
                 <li><a class="waves-light red lighten-2 white-text" routerLink="/home" *ngIf="authenticationService.isLoggedIn()" (click)="logout()" translate>menu.button.log-out<i class="material-icons">power_settings_new</i></a></li>
               </ul>
