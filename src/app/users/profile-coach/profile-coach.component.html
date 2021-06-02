@@ -45,6 +45,11 @@
         <div class="divider"></div>
 
         <section class="card-panel grey lighten-5">
+          <div class="right" >
+            <a [ngClass]="openEdit ? 'btn-large btn-floating teal lighten-5':
+            'btn-large btn-floating teal lighten-3'"><i
+              class="material-icons left" (click)="clickEdit()">edit</i>Edit</a>
+          </div>
           <h5>Coach Information</h5>
           <div class="divider"></div>
           <div class="row">
@@ -66,6 +71,10 @@
             </div>
           </div>
         </section>
+
+        <div *ngIf="openEdit">
+          <app-update-profile-coach></app-update-profile-coach>
+        </div>
 
         <div class="divider"></div>
 
