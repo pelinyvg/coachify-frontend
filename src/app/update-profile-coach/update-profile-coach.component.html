@@ -1,1 +1,25 @@
-<p>update-profile-coach works!</p>
+<section class="card-panel grey lighten-5">
+  <h5>Update Information</h5>
+  <div class="divider"></div>
+  <div class="row">
+    <div class="col l12 m12 s12">
+      <form class="col s12" [formGroup]="updateCoachProfileForm" (ngSubmit)="onSubmit()">
+        <div class="input-field col s12">
+          <input id="introduction" type="text" formControlName="introduction" required>
+          <div *ngIf="introduction.invalid && (introduction.dirty || introduction.touched)" class="alert alert-danger" style="color:red;">
+            <div *ngIf="introduction.errors.required">introduction is required</div>
+          </div>
+          <label for="introduction">Introduction</label>
+        </div>
+        <div class="input-field col s12">
+          <input id="availability" type="text" formControlName="availability" required>
+          <div *ngIf="availability.invalid && (availability.dirty || availability.touched)" class="alert alert-danger" style="color:red;">
+            <div *ngIf="availability.errors.required">availability is required</div>
+          </div>
+          <label for="availability">Availability</label>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
