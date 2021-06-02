@@ -20,7 +20,9 @@ export class SessionOverviewCoacheeComponent implements OnInit {
   sessionStatus: SessionStatus;
   testBoolean: boolean;
 
-  constructor(private sessionService: SessionService, private route: ActivatedRoute) {
+  constructor(
+    private sessionService: SessionService,
+    private route: ActivatedRoute,) {
     this.testBoolean = false;
   }
 
