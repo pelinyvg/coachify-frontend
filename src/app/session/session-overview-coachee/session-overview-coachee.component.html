@@ -34,7 +34,8 @@
                   <td>{{coachingSession.time}}</td>
                   <td>{{coachingSession.location}}</td>
                   <td>{{coachingSession.status}}</td>
-                  <td><a class="waves-effect waves-light  grey lighten-2 btn black-text" *ngIf="statusCheck(coachingSession)" (click)="cancelAcceptedSession(coachingSession)">Cancel<i
+                  <td><a class="waves-effect waves-light  grey lighten-2 btn black-text"
+                         *ngIf="statusCheck(coachingSession)" (click)="cancelAcceptedSession(coachingSession)">Cancel<i
                     class="material-icons right">cancel</i></a></td>
                 </tr>
 
@@ -58,7 +59,7 @@
                   <th>Time</th>
                   <th>Location</th>
                   <th>Status</th>
-                                    <th>Actions</th>
+                  <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody *ngFor="let coachingSession of sessionsFeedback">
@@ -69,9 +70,46 @@
                   <td>{{coachingSession.time}}</td>
                   <td>{{coachingSession.location}}</td>
                   <td>{{coachingSession.status}}</td>
-
+                  <td><a class="waves-effect waves-light  grey lighten-2 btn black-text"
+                         (click)="giveFeedBack(coachingSession)">Give Feedback<i class="material-icons right">cancel</i></a>
+                  </td>
                 </tr>
+                <tr *ngIf="testBoolean">
+                  <td colspan="7">
+                    <div class="feedback">
+                      <form class="col s12" [formGroup]="feedbackForm" (ngSubmit)="onSubmit()">
+                        <div class="row">
 
+
+                        </div>
+                        <div class="row">
+                          <div class="input-field col s12 ">
+                            <textarea id="remarks" class="textareadimensions materialize-textarea"
+                                      formControlName="remarks"></textarea>
+                            <label for="remarks" class="labelTextArea">What did you like in the coaching
+                              session?</label>
+                          </div>
+                          <div class="input-field col s12 ">
+                            <textarea id="remark" class="textareadimensions materialize-textarea"
+                                      formControlName="remarks"></textarea>
+                            <label for="remark" class="labelTextArea">How could your Coach get better ?</label>
+                          </div>
+                        </div>
+
+                        <div class="row right-align center">
+                          <button class="waves-effect waves-light yellow darken-2 btn-large black-text" type="submit"
+                                  [disabled]="sessionForm.invalid"
+                          >Save Feedback<i
+                            class="material-icons right">send</i></button>
+                          <button class="waves-effect waves-light yellow darken-2 btn-large black-text" type="submit"
+                                  [disabled]="sessionForm.invalid"
+                          >Cancel Feedback<i
+                            class="material-icons right">cancel</i></button>
+                        </div>
+                      </form>
+                    </div>
+                  </td>
+                </tr>
                 </tbody>
               </table>
             </div>

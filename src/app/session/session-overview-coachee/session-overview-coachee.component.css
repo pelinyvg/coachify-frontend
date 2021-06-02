@@ -1,0 +1,18 @@
+.feedback{
+  margin-left: 100px;
+  margin-right: 100px;
+  margin-bottom: 100px;
+  margin-top: 20px;
+}
+
+.textareadimensions{
+  width: 40%;
+  height: 150px;
+  padding: 5px;
+  margin-top: 20px;
+  border:1px solid grey;
+}
+.labelTextArea{
+  font-size: 25px;
+  padding: -20px;
+}
