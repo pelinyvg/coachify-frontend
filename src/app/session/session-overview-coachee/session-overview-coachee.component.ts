@@ -18,8 +18,12 @@ export class SessionOverviewCoacheeComponent implements OnInit {
   sessionsArchive: CoachingSession[];
   sessionsFeedback: CoachingSession[];
   sessionStatus: SessionStatus;
+  testBoolean: boolean;
 
-  constructor(private sessionService: SessionService, private route: ActivatedRoute) {
+  constructor(
+    private sessionService: SessionService,
+    private route: ActivatedRoute,) {
+    this.testBoolean = false;
   }
 
   ngOnInit(): void {
@@ -28,6 +32,10 @@ export class SessionOverviewCoacheeComponent implements OnInit {
     this.getUpcomingSessions();
     this.getArchiveSessions();
     this.getFeedbackSessions();
+  }
+
+  giveFeedBack(session: CoachingSession): void {
+    this.testBoolean = this.testBoolean !== true;
   }
 
   getUpcomingSessions(): void {
