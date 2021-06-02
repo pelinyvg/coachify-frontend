@@ -14,7 +14,7 @@
                            [ngClass]="rla2.isActive ? 'black-text' : 'grey-text text-darken-2'">Find a coach</a></li>
 
         <li class="tab"><a [ngClass]="rla3.isActive ? 'black-text' : 'grey-text text-darken-2'"
-                           *ngIf="coachId !== 0" routerLink="/coaches/{{coachId}}/sessions"
+                           *ngIf="coachId !== 0" routerLink="/coaches/{{coachId}}/profile-coach"
                            routerLinkActive
                            #rla3="routerLinkActive"
         >My Coach Profile</a>
@@ -23,6 +23,3 @@
     </div>
   </div>
 </nav>
-
-
-<!--<div [ngClass]="rla3.isActive ? 'nav-content yellow darken-2' : 'nav-content green darken-2'">-->
