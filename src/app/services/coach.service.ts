@@ -31,4 +31,8 @@ export class CoachService {
   getTopics() {
     return this.http.get<string[]>(this.root + `/coaches/topicNames`);
   }
+
+  changeProfile(id: number, updateCoachProfileForm: Coach): Observable<Coach> {
+    return this.http.post<Coach>(this.root + `/coaches/${id}/coachInformation`, updateCoachProfileForm);
+  }
 }

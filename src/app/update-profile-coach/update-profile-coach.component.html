@@ -1,0 +1,41 @@
+<section class="card-panel grey lighten-5">
+  <h5>Update Information</h5>
+  <div class="divider"></div>
+  <div class="row">
+    <div class="col l12 m12 s12">
+      <form class="col s12" [formGroup]="updateCoachProfileForm" (ngSubmit)="onSubmit()">
+        <div class="input-field col s12">
+          <div>
+            <label for="introduction">Introduction</label>
+          </div>
+          <input id="introduction" type="text" formControlName="introduction" class="validate"
+                 [(ngModel)]="introductionFromServer"
+                 required>
+          <div *ngIf="introduction.invalid && (introduction.dirty || introduction.touched)" class="alert alert-danger"
+               style="color:red;">
+            <div *ngIf="introduction.errors.required">introduction is required</div>
+          </div>
+
+        </div>
+        <div class="input-field col s12">
+          <div>
+            <label for="availability">Availability</label>
+          </div>
+          <input id="availability" type="text" formControlName="availability" [(ngModel)]="availabilityFromServer"
+                 required>
+          <div *ngIf="availability.invalid && (availability.dirty || availability.touched)" class="alert alert-danger"
+               style="color:red;">
+            <div *ngIf="availability.errors.required">availability is required</div>
+          </div>
+        </div>
+
+        <div class="row right-align">
+          <button class="waves-effect waves-light teal lighten-3 btn-large black-text" style="margin-right: 20px"
+                  type="submit" [disabled]="updateCoachProfileForm.invalid">Save<i
+            class="material-icons right">send</i></button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+

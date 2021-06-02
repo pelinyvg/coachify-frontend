@@ -45,6 +45,11 @@
         <div class="divider"></div>
 
         <section class="card-panel grey lighten-5">
+          <div class="right" >
+            <a [ngClass]="openEdit ? 'btn-large btn-floating teal lighten-5':
+            'btn-large btn-floating teal lighten-3'"><i
+              class="material-icons left" (click)="clickEdit()">edit</i>Edit</a>
+          </div>
           <h5>Coach Information</h5>
           <div class="divider"></div>
           <div class="row">
@@ -67,6 +72,10 @@
           </div>
         </section>
 
+        <div *ngIf="openEdit">
+          <app-update-profile-coach></app-update-profile-coach>
+        </div>
+
         <div class="divider"></div>
 
         <section class="card-panel grey lighten-5">
@@ -81,7 +90,7 @@
                   <td>
                     <div class="center">
                       <div class="center expertise-order">
-                        <div *ngIf="topic.grade1; else gray1"><img src="assets/images/intermediate_yellow.png"
+                        <div *ngIf="topic.grade1; else gray1"><img src="assets/images/intermediate_teal.png"
                                                                    height="40"></div>
 
                         <ng-template #gray1>
@@ -89,14 +98,14 @@
                           </div>
                         </ng-template>
 
-                        <div *ngIf="topic.grade2; else gray2"><img src="assets/images/medium_yellow.png"
+                        <div *ngIf="topic.grade2; else gray2"><img src="assets/images/medium_teal.png"
                                                                    height="40"></div>
 
                         <ng-template #gray2>
                           <div class="expertise-img"><img src="assets/images/medium_grey.png" height="40"></div>
                         </ng-template>
 
-                        <div *ngIf="topic.grade3; else gray3"><img src="assets/images/expert_yellow.png"
+                        <div *ngIf="topic.grade3; else gray3"><img src="assets/images/expert_teal.png"
                                                                    height="40"></div>
 
                         <ng-template #gray3>

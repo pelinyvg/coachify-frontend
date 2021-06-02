@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Coach} from '../../model/coach';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {CoachService} from '../../services/coach.service';
+import {AuthenticationService} from '../../authentication/authentication.service';
 
 @Component({
   selector: 'app-profile-coach',
@@ -12,15 +13,31 @@ export class ProfileCoachComponent implements OnInit {
 
   title: string;
   coach: Coach;
+  openEdit = false;
+  coachId: number;
 
   constructor(
     private route: ActivatedRoute,
-    private service: CoachService
+    private service: CoachService,
+    private authService: AuthenticationService,
+    private router: Router
   ) {
   }
 
   ngOnInit(): void {
-    this.getCoach();
+    this.service.getCoachIdbyCoacheeId(this.authService.getUserId()).subscribe(
+      id => {
+        this.coachId = id;
+        console.log(this.coachId);
+        console.log(this.route.snapshot.params.id);
+        // tslint:disable-next-line:triple-equals
+        if (this.route.snapshot.params.id == this.coachId || this.authService.isAdmin()) {
+          this.getCoach();
+        } else {
+          this.router.navigate([`coachees/${this.authService.getUserId()}/not-authorized`]);
+        }
+      }
+    );
   }
 
   getCoach(): void {
@@ -31,4 +48,7 @@ export class ProfileCoachComponent implements OnInit {
     });
   }
 
+  clickEdit() {
+    this.openEdit = !this.openEdit;
+  }
 }
