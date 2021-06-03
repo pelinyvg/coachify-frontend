@@ -14,6 +14,7 @@ export class ProfileCoacheeComponent implements OnInit {
   title: string;
   coachee: Coachee;
   id: number;
+  openEdit =  false;
 
   constructor(
     private route: ActivatedRoute,
@@ -67,5 +68,11 @@ export class ProfileCoacheeComponent implements OnInit {
       case 'ADMIN':
         return 'Admin';
     }
+  }
+
+  clickEdit() {
+    this.openEdit = !this.openEdit;
+    // @ts-ignore
+    window.location = String(window.location).replace(/\#.*$/, '') + '#CoacheeInfo';
   }
 }

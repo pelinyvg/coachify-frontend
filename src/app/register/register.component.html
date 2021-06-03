@@ -52,18 +52,6 @@
               <div class="row">
                 <div class="input-field col s12">
                   <input id="passwordVerification" type="password" required formControlName="passwordVerification" oninput="check(this)">
-<!--                  <script language='javascript' type='text/javascript'>-->
-<!--                    function check(input) {-->
-<!--                      if (input.value !== document.getElementById('password').value) {-->
-<!--                        document.getElementById('passwordVerification').addClass("invalid");-->
-<!--                        //el.classList.add('invalid');-->
-<!--                        //input.setCustomValidity('Password Must be Matching.');-->
-<!--                      } else {-->
-<!--                        // input is valid &#45;&#45; reset the error message-->
-<!--                        //input.setCustomValidity('');-->
-<!--                      }-->
-<!--                    }-->
-<!--                  </script>-->
                   <div *ngIf="(passwordVerification.touched || passwordVerification.dirty) && passwordVerification.invalid" class="alert alert-danger" style="color:red;">
                     <div *ngIf="passwordVerification.errors.required">Password is required.</div>
                     <div *ngIf="passwordVerification.errors.confirmedValidator">Password and Confirm Password must match.</div>
@@ -86,20 +74,3 @@
 
   </div>
 </main>
-
-
-<!--input:not([type]).validate + label,-->
-<!--input[type=text]:not(.browser-default).validate + label,-->
-<!--input[type=password]:not(.browser-default).validate + label,-->
-<!--input[type=email]:not(.browser-default).validate + label,-->
-<!--input[type=url]:not(.browser-default).validate + label,-->
-<!--input[type=time]:not(.browser-default).validate + label,-->
-<!--input[type=date]:not(.browser-default).validate + label,-->
-<!--input[type=datetime]:not(.browser-default).validate + label,-->
-<!--input[type=datetime-local]:not(.browser-default).validate + label,-->
-<!--input[type=tel]:not(.browser-default).validate + label,-->
-<!--input[type=number]:not(.browser-default).validate + label,-->
-<!--input[type=search]:not(.browser-default).validate + label,-->
-<!--textarea.materialize-textarea.validate + label {-->
-<!--width: 100%;-->
-<!--}-->

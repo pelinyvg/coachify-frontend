@@ -10,11 +10,10 @@
       <div class="content-container">
 
         <section class="card-panel grey lighten-5">
-<!--          EDIT BUTTON          -->
-<!--          <div class="right">-->
-<!--            <a class="waves-effect waves-light btn-large btn-floating yellow darken-2"><i-->
-<!--              class="material-icons left">edit</i>Edit</a>-->
-<!--          </div>-->
+          <div class="right">
+            <a class="waves-effect waves-light btn-large btn-floating yellow darken-2"><i
+              class="material-icons left" (click)="clickEdit()">edit</i>Edit</a>
+          </div>
           <h5>Profile Information</h5>
           <div class="divider"></div>
           <div class="row">
@@ -47,6 +46,11 @@
             </div>
           </div>
         </section>
+
+        <div *ngIf="openEdit">
+          <app-update-profile-coachee></app-update-profile-coachee>
+        </div>
+
       </div>
     </div>
   </div>

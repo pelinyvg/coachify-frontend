@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
-import {CoachService} from '../services/coach.service';
-import {ActivatedRoute} from '@angular/router';
+import {CoachService} from '../../services/coach.service';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-update-profile-coach',
@@ -19,6 +19,7 @@ export class UpdateProfileCoachComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private coachService: CoachService,
+              private router: Router,
               private route: ActivatedRoute) {
   }
 
@@ -43,5 +44,11 @@ export class UpdateProfileCoachComponent implements OnInit {
     this.coachService.changeProfile(this.route.snapshot.params.id, this.updateCoachProfileForm.value).subscribe();
     this.updateCoachProfileForm.reset();
     window.location.reload();
+  }
+
+  cancel() {
+    this.updateCoachProfileForm.reset();
+    window.location.reload();
+    window.scroll(0, 0);
   }
 }
