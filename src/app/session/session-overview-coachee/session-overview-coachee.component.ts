@@ -93,4 +93,9 @@ export class SessionOverviewCoacheeComponent implements OnInit {
   hasFeedbackOfCoachee(coachingSession: CoachingSession) {
     return coachingSession.sessionFeedbackCoacheeDTO.sessionFeedbackCoacheeId === null;
   }
+
+  cancelFeedBackForm(coachingSession: CoachingSession) {
+    this.feedBackForm.reset();
+    coachingSession.editForm = false;
+  }
 }
