@@ -91,10 +91,6 @@ export class SessionOverviewCoacheeComponent implements OnInit {
   }
 
   hasFeedbackOfCoachee(coachingSession: CoachingSession) {
-    // console.log(coachingSession.sessionFeedbackCoacheeDTO.sessionId);
-    // console.log(coachingSession.sessionFeedbackCoacheeDTO.usefulRating);
-    // console.log(coachingSession.sessionFeedbackCoacheeDTO.explanationRating);
-    // console.log(coachingSession.sessionFeedbackCoacheeDTO);
     return coachingSession.sessionFeedbackCoacheeDTO.sessionFeedbackCoacheeId === null;
   }
 }
