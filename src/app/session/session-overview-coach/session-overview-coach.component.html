@@ -27,6 +27,8 @@
                 </tr>
                 </thead>
                 <tbody *ngFor="let coachingSession of sessionsUpcoming">
+
+
                 <tr>
                   <td>{{coachingSession.coacheeFirstName}} {{coachingSession.coacheeLastName}}</td>
                   <td>{{coachingSession.subject}}</td>
@@ -71,6 +73,31 @@
                 </tr>
                 </thead>
                 <tbody *ngFor="let coachingSession of sessionsFeedback">
+
+                <!--todo spinner-->
+                <div *ngIf="loading">
+                  <!--          class="waves-effect waves-light teal lighten-3 btn-large black-text margin-button disabled">-->
+                  <div class="row">
+                    <!--              <div class="col" translate>sign-in.button.sign-in</div>-->
+                    <div class="col" style="padding-top: 10px;">
+                      <div class="preloader-wrapper small active right-align">
+                        <div class="spinner-layer spinner-green-only">
+                          <div class="circle-clipper left">
+                            <div class="circle"></div>
+                          </div>
+                          <div class="gap-patch">
+                            <div class="circle"></div>
+                          </div>
+                          <div class="circle-clipper right">
+                            <div class="circle"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
                 <tr>
                   <td>{{coachingSession.coacheeFirstName}} {{coachingSession.coacheeLastName}}</td>
                   <td>{{coachingSession.subject}}</td>

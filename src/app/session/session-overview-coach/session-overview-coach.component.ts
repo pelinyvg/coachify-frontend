@@ -3,7 +3,7 @@ import {ActivatedRoute} from '@angular/router';
 import {CoachingSession} from '../../model/coaching-session';
 import {SessionService} from '../../services/session.service';
 import {SessionStatus} from '../../model/session-status';
-import {FormBuilder, Validators} from "@angular/forms";
+import {FormBuilder, Validators} from '@angular/forms';
 
 
 @Component({
@@ -21,6 +21,7 @@ export class SessionOverviewCoachComponent implements OnInit {
   showFeedbackForm: boolean;
   feedbackIsGivenByCoach: boolean;
   title = 'Coachify | Session Overview';
+  loading: boolean;
 
   feedBackForm = this.formBuilder.group(
     {
@@ -36,6 +37,7 @@ export class SessionOverviewCoachComponent implements OnInit {
     private sessionService: SessionService,
     private formBuilder: FormBuilder
   ) {
+    this.loading = true;
   }
 
   ngOnInit(): void {
@@ -55,6 +57,8 @@ export class SessionOverviewCoachComponent implements OnInit {
     this.sessionService.getSessionsFeedbackCoach(this.coachId).subscribe(sessions => {
       sessions.map((session) => session.editFormCoach = false);
       this.sessionsFeedback = sessions;
+// todo spinner
+      // this.loading = false;
     });
   }
 
