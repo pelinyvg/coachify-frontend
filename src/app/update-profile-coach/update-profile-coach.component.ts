@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
 import {CoachService} from '../services/coach.service';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 
 @Component({
   selector: 'app-update-profile-coach',
@@ -47,7 +47,16 @@ export class UpdateProfileCoachComponent implements OnInit {
   }
 
   cancel() {
+    // this.router.events.subscribe((evt) => {
+    //   if (!(evt instanceof NavigationEnd)) {
+    //     return;
+    //   }
+    //   window.scrollTo(0, 0);
+    // });
+
+
     window.location.reload();
-    // this.router.navigateByUrl(`/coaches/${this.id}/profile-coach`);
+    window.scroll(0, 0);
+    // this.router.navigateByUrl(`/coaches/${this.route.snapshot.params.id}/profile-coach`);
   }
 }
