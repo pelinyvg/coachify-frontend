@@ -1,0 +1,60 @@
+<section class="card-panel grey lighten-5">
+  <h5>Update Information</h5>
+  <div class="divider"></div>
+  <div class="row">
+    <div class="col l12 m12 s12">
+      <form class="col s12" [formGroup]="updateCoacheeProfileForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+          <div class="input-field col s6">
+            <div>
+              <label for="firstName">Firstname</label>
+            </div>
+            <input id="firstName" type="text" formControlName="firstName" [(ngModel)]="firstNameFromServer" required
+                   minlength="2">
+            <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="alert alert-danger"
+                 style="color:red;">
+              <div *ngIf="firstName.errors.required">firstname is required</div>
+              <div *ngIf="firstName.errors.minlength">firstname must be at least two characters long</div>
+            </div>
+          </div>
+
+          <div class="input-field col s6">
+            <div>
+              <label for="lastName">LastName</label>
+            </div>
+            <input id="lastName" type="text" formControlName="lastName" minlength="2" required
+                   [(ngModel)]="lastNameFromServer">
+            <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="alert alert-danger"
+                 style="color:red;">
+              <div *ngIf="lastName.errors.required">lastname is required</div>
+              <div *ngIf="lastName.errors.minlength">lastname must be at least two characters long</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field col s12">
+            <div>
+              <label for="email">Email</label>
+            </div>
+            <input id="email" type="email" formControlName="email" [(ngModel)]="emailFromServer" required email>
+            <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger"
+                 style="color:red;">
+              <div *ngIf="email.errors.required">email is required</div>
+              <div *ngIf="email.errors.email"> This is not a valid email address</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row right-align">
+          <button class="waves-effect waves-light yellow darken-2 btn-large black-text" style="margin-right: 20px"
+                  type="submit" [disabled]="updateCoacheeProfileForm.invalid">Save<i
+            class="material-icons right">send</i></button>
+          <button class="waves-effect waves-light yellow darken-2 btn-large black-text" style="margin-right: 20px"
+                  [disabled]="updateCoacheeProfileForm.invalid" (click)="cancel()">Cancel<i
+            class="material-icons right">send</i></button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

@@ -39,7 +39,8 @@ import {CoachNavbarSideComponent} from './users/coach-navbar-side/coach-navbar-s
 import {WrongResetTokenComponent} from './errors/wrong-reset-token/wrong-reset-token.component';
 import {CoachProfileChangeComponent} from './users/coach-profile-change/coach-profile-change.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-import { UpdateProfileCoachComponent } from './update-profile-coach/update-profile-coach.component';
+import {UpdateProfileCoachComponent} from './users/update-profile-coach/update-profile-coach.component';
+import {UpdateProfileCoacheeComponent} from './users/update-profile-coachee/update-profile-coachee.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -72,7 +73,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     CoachNavbarSideComponent,
     WrongResetTokenComponent,
     CoachProfileChangeComponent,
-    UpdateProfileCoachComponent
+    UpdateProfileCoachComponent,
+    UpdateProfileCoacheeComponent
   ],
   imports: [
     BrowserModule,

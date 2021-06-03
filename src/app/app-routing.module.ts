@@ -16,6 +16,7 @@ import {ProfileCoachComponent} from './users/profile-coach/profile-coach.compone
 import {SessionOverviewCoachComponent} from './session/session-overview-coach/session-overview-coach.component';
 import {WrongResetTokenComponent} from './errors/wrong-reset-token/wrong-reset-token.component';
 import {CoachProfileChangeComponent} from './users/coach-profile-change/coach-profile-change.component';
+import {UpdateProfileCoacheeComponent} from './users/update-profile-coachee/update-profile-coachee.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -41,7 +42,6 @@ const routes: Routes = [
   {path: 'coaches/:id/profile-coach', component: ProfileCoachComponent, canActivate: [LoginGuard]},
   {path: 'coaches/:id/sessions', component: SessionOverviewCoachComponent},
   {path: 'coaches/:id/profileChange', component: CoachProfileChangeComponent},
-
 
   // leave the path: ** always at the end
   {path: '**', redirectTo: '/home', pathMatch: 'full'}

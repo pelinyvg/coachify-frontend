@@ -37,4 +37,8 @@ export class CoacheeService {
     console.log('trying to send a password link to this email address :' + email);
     return this.http.post<boolean>(`${environment.backendUrl}/users/reset-password/create-token/${email}`, email);
   }
+
+  updateCoachee(id: number, user: Coachee): Observable<Coachee> {
+    return this.http.put<Coachee>(`${environment.backendUrl}/users/${id}`, user);
+  }
 }

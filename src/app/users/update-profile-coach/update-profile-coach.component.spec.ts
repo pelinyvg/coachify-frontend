@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { UpdateProfileCoachComponent } from './update-profile-coach.component';
+import {UpdateProfileCoachComponent} from './update-profile-coach.component';
 
 describe('UpdateProfileCoachComponent', () => {
   let component: UpdateProfileCoachComponent;
@@ -8,9 +8,9 @@ describe('UpdateProfileCoachComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UpdateProfileCoachComponent ]
+      declarations: [UpdateProfileCoachComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
