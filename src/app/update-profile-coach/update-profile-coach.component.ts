@@ -47,16 +47,8 @@ export class UpdateProfileCoachComponent implements OnInit {
   }
 
   cancel() {
-    // this.router.events.subscribe((evt) => {
-    //   if (!(evt instanceof NavigationEnd)) {
-    //     return;
-    //   }
-    //   window.scrollTo(0, 0);
-    // });
-
-
+    this.updateCoachProfileForm.reset();
     window.location.reload();
     window.scroll(0, 0);
-    // this.router.navigateByUrl(`/coaches/${this.route.snapshot.params.id}/profile-coach`);
   }
 }
