@@ -5,7 +5,7 @@ import {CoachingSession} from '../../model/coaching-session';
 import {SessionStatus} from "../../model/session-status";
 import {FormBuilder, Validators} from "@angular/forms";
 import {number} from "ngx-custom-validators/src/app/number/validator";
-import {distinct} from "rxjs/operators";
+import {distinct, map} from "rxjs/operators";
 
 @Component({
   selector: 'app-session-overview-coachee',
@@ -21,7 +21,9 @@ export class SessionOverviewCoacheeComponent implements OnInit {
   sessionsArchive: CoachingSession[];
   sessionsFeedback: CoachingSession[];
   sessionStatus: SessionStatus;
-  testBoolean: boolean;
+  showFeedbackForm: boolean;
+  feedbackIsGivenByCoachee: boolean;
+
 
   feedBackForm = this.formBuilder.group(
     {
@@ -37,7 +39,7 @@ export class SessionOverviewCoacheeComponent implements OnInit {
     private route: ActivatedRoute,
     private formBuilder: FormBuilder
     ) {
-    this.testBoolean = false;
+    this.showFeedbackForm = false;
   }
 
   ngOnInit(): void {
@@ -49,7 +51,8 @@ export class SessionOverviewCoacheeComponent implements OnInit {
   }
 
   giveFeedBack(session: CoachingSession): void {
-    this.testBoolean = this.testBoolean !== true;
+    // this.showFeedbackForm = this.showFeedbackForm !== true;
+    session.editForm = session.editForm === false;
   }
 
   getUpcomingSessions(): void {
@@ -69,7 +72,10 @@ export class SessionOverviewCoacheeComponent implements OnInit {
   }
 
   getFeedbackSessions(): void {
-    this.sessionService.getSessionsFeedbackCoachee(this.id).subscribe(sessions => this.sessionsFeedback = sessions);
+    this.sessionService.getSessionsFeedbackCoachee(this.id).subscribe(sessions => {
+      sessions.map((session) => session.editForm = false);
+      this.sessionsFeedback = sessions;
+    });
   }
 
   statusCheck(session: CoachingSession): boolean {
@@ -83,6 +89,10 @@ export class SessionOverviewCoacheeComponent implements OnInit {
 
   onSubmit(sessionId: number) {
     this.feedBackForm.controls['sessionId'].setValue(sessionId);
-    this.sessionService.addSessionFeedback(this.feedBackForm.value).subscribe((value) => console.log(value));
+    this.sessionService.addSessionFeedback(this.feedBackForm.value).subscribe(() =>  window.location.reload());
+  }
+
+  hasFeedbackOfCoachee(coachingSession: CoachingSession) {
+    return coachingSession.sessionFeedbackCoacheeDTO !== null;
   }
 }
