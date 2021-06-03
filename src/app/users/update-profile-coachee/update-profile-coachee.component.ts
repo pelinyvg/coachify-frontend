@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
 import {CoacheeService} from '../../services/coachee.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {AuthenticationService} from '../../authentication/authentication.service';
 
 @Component({
   selector: 'app-update-profile-coachee',
@@ -23,7 +24,8 @@ export class UpdateProfileCoacheeComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private coacheeService: CoacheeService,
               private router: Router,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private authenticationService: AuthenticationService) {
   }
 
   ngOnInit(): void {
@@ -58,7 +60,14 @@ export class UpdateProfileCoacheeComponent implements OnInit {
       .subscribe(
         () => {
           this.updateCoacheeProfileForm.reset();
-          window.location.reload();
+          // tslint:disable-next-line:triple-equals
+          if (this.updateCoacheeProfileForm.value.email != this.emailFromServer) {
+            this.authenticationService.logout();
+            // this.router.navigateByUrl('/login');
+          } else {
+            window.location.reload();
+          }
+
         }
       );
   }
