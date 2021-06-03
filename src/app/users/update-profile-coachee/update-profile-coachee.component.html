@@ -38,6 +38,7 @@
               <label for="email">Email</label>
             </div>
             <input id="email" type="email" formControlName="email" [(ngModel)]="emailFromServer" required email>
+            <div *ngIf="(email.touched || email.dirty)" class="alert alert-danger" style="color:red;">You will be automatically logged out if you change the email</div>
             <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger"
                  style="color:red;">
               <div *ngIf="email.errors.required">email is required</div>
