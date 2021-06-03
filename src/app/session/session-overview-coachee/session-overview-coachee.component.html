@@ -62,7 +62,7 @@
                   <th>Actions</th>
                 </tr>
                 </thead>
-                <tbody *ngFor="let coachingSession of sessionsFeedback">
+                <tbody *ngFor="let coachingSession of sessionsFeedback"><a id="sessionAnchor{{coachingSession.sessionId}}"></a>
                 <tr>
                   <td>{{coachingSession.coachFirstName}} {{coachingSession.coachLastName}}</td>
                   <td>{{coachingSession.subject}}</td>
