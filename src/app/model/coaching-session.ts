@@ -1,4 +1,5 @@
 import {Time} from '@angular/common';
+import {SessionFeedbackCoachee} from "./session-feedback-coachee";
 
 export interface CoachingSession {
   sessionId: number;
@@ -14,4 +15,6 @@ export interface CoachingSession {
   location: string;
   remarks: string;
   status?: string;
+  sessionFeedbackCoacheeDTO?: SessionFeedbackCoachee;
+  editForm: boolean;
 }

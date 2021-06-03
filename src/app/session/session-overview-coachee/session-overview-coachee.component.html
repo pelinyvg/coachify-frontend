@@ -71,10 +71,10 @@
                   <td>{{coachingSession.location}}</td>
                   <td>{{coachingSession.status}}</td>
                   <td><a class="waves-effect waves-light  grey lighten-2 btn black-text"
-                         (click)="giveFeedBack(coachingSession)">Give Feedback<i class="material-icons right">cancel</i></a>
+                         (click)="giveFeedBack(coachingSession)" *ngIf="coachingSession.sessionFeedbackCoacheeDTO != null">Give Feedback<i class="material-icons right">cancel</i></a>
                   </td>
                 </tr>
-                <tr *ngIf="testBoolean">
+                <tr *ngIf="coachingSession.editForm">
                   <td colspan="7">
                     <div class="feedback">
                       <form class="col s12" [formGroup]="feedBackForm" (ngSubmit)="onSubmit(coachingSession.sessionId)">
