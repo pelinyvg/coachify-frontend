@@ -2,10 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {SessionService} from '../../services/session.service';
 import {ActivatedRoute} from '@angular/router';
 import {CoachingSession} from '../../model/coaching-session';
-import {SessionStatus} from "../../model/session-status";
-import {FormBuilder, Validators} from "@angular/forms";
-import {number} from "ngx-custom-validators/src/app/number/validator";
-import {distinct, map} from "rxjs/operators";
+import {FormBuilder, Validators} from '@angular/forms';
+import {SessionStatus} from '../../model/session-status';
 
 @Component({
   selector: 'app-session-overview-coachee',
@@ -27,18 +25,18 @@ export class SessionOverviewCoacheeComponent implements OnInit {
 
   feedBackForm = this.formBuilder.group(
     {
-      sessionId:[''],
-      explanationRating:['', [Validators.required]],
+      sessionId: [''],
+      explanationRating: ['', [Validators.required]],
       usefulRating: ['', [Validators.required]],
       comment1: [''],
       comment2: [''],
-    })
+    });
 
   constructor(
     private sessionService: SessionService,
     private route: ActivatedRoute,
     private formBuilder: FormBuilder
-    ) {
+  ) {
     this.showFeedbackForm = false;
   }
 
@@ -88,11 +86,15 @@ export class SessionOverviewCoacheeComponent implements OnInit {
   }
 
   onSubmit(sessionId: number) {
-    this.feedBackForm.controls['sessionId'].setValue(sessionId);
-    this.sessionService.addSessionFeedback(this.feedBackForm.value).subscribe(() =>  window.location.reload());
+    this.feedBackForm.controls.sessionId.setValue(sessionId);
+    this.sessionService.addSessionFeedback(this.feedBackForm.value).subscribe(() => window.location.reload());
   }
 
   hasFeedbackOfCoachee(coachingSession: CoachingSession) {
-    return coachingSession.sessionFeedbackCoacheeDTO !== null;
+    // console.log(coachingSession.sessionFeedbackCoacheeDTO.sessionId);
+    // console.log(coachingSession.sessionFeedbackCoacheeDTO.usefulRating);
+    // console.log(coachingSession.sessionFeedbackCoacheeDTO.explanationRating);
+    // console.log(coachingSession.sessionFeedbackCoacheeDTO);
+    return coachingSession.sessionFeedbackCoacheeDTO.sessionFeedbackCoacheeId === null;
   }
 }
