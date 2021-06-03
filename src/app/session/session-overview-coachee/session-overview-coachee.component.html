@@ -62,7 +62,7 @@
                   <th>Actions</th>
                 </tr>
                 </thead>
-                <tbody *ngFor="let coachingSession of sessionsFeedback">
+                <tbody *ngFor="let coachingSession of sessionsFeedback"><a id="sessionAnchor{{coachingSession.sessionId}}"></a>
                 <tr>
                   <td>{{coachingSession.coachFirstName}} {{coachingSession.coachLastName}}</td>
                   <td>{{coachingSession.subject}}</td>
@@ -72,7 +72,7 @@
                   <td>{{coachingSession.status}}</td>
                   <td><a class="waves-effect waves-light  grey lighten-2 btn black-text"
                          (click)="giveFeedBack(coachingSession)" *ngIf="hasFeedbackOfCoachee(coachingSession)">Give
-                    Feedback<i class="material-icons right">cancel</i></a>
+                    Feedback<i class="material-icons right">feedback</i></a>
                   </td>
                 </tr>
                 <tr *ngIf="coachingSession.editFormCoachee">
