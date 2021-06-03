@@ -8,6 +8,7 @@ import {DatePipe} from '@angular/common';
 import {SessionStatus} from '../model/session-status';
 import {response} from 'express';
 import {SessionFeedbackCoachee} from '../model/session-feedback-coachee';
+import {SessionFeedbackCoach} from "../model/session-feedback-coach";
 
 
 @Injectable({
@@ -107,7 +108,10 @@ export class SessionService {
         map(response => response.filter(s => s.status.toLowerCase().includes('feedback'))));
   }
 
-  addSessionFeedback(sessionFeedBack: SessionFeedbackCoachee): Observable<SessionFeedbackCoachee> {
+  addSessionFeedbackOfCoachee(sessionFeedBack: SessionFeedbackCoachee): Observable<SessionFeedbackCoachee> {
     return this.http.post<SessionFeedbackCoachee>(`${this.route}/sessions/${sessionFeedBack.sessionId}/feedback-coachee`, sessionFeedBack);
+  }
+  addSessionFeedbackOfCoach(sessionFeedBack: SessionFeedbackCoach): Observable<SessionFeedbackCoach> {
+    return this.http.post<SessionFeedbackCoach>(`${this.route}/sessions/${sessionFeedBack.sessionId}/feedback-coach`, sessionFeedBack);
   }
 }

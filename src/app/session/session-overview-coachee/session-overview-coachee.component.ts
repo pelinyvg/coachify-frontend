@@ -50,9 +50,10 @@ export class SessionOverviewCoacheeComponent implements OnInit {
 
   giveFeedBack(session: CoachingSession): void {
     // this.showFeedbackForm = this.showFeedbackForm !== true;
-    session.editForm = session.editForm === false;
+    session.editFormCoachee = session.editFormCoachee === false;
     // @ts-ignore
     window.location = String(window.location).replace(/\#.*$/, '') + `#sessionAnchor${session.sessionId}`;
+
   }
 
   getUpcomingSessions(): void {
@@ -73,7 +74,7 @@ export class SessionOverviewCoacheeComponent implements OnInit {
 
   getFeedbackSessions(): void {
     this.sessionService.getSessionsFeedbackCoachee(this.id).subscribe(sessions => {
-      sessions.map((session) => session.editForm = false);
+      sessions.map((session) => session.editFormCoachee = false);
       this.sessionsFeedback = sessions;
     });
   }
@@ -89,8 +90,9 @@ export class SessionOverviewCoacheeComponent implements OnInit {
 
   onSubmit(sessionId: number) {
     this.feedBackForm.controls.sessionId.setValue(sessionId);
-    this.sessionService.addSessionFeedback(this.feedBackForm.value).subscribe(() => window.location.reload());
+    this.sessionService.addSessionFeedbackOfCoachee(this.feedBackForm.value).subscribe(() => window.location.reload());
     this.resetUrlAnchor();
+
   }
 
   hasFeedbackOfCoachee(coachingSession: CoachingSession) {
@@ -99,7 +101,7 @@ export class SessionOverviewCoacheeComponent implements OnInit {
 
   cancelFeedBackForm(coachingSession: CoachingSession) {
     this.feedBackForm.reset();
-    coachingSession.editForm = false;
+    coachingSession.editFormCoachee = false;
     this.resetUrlAnchor();
   }
 

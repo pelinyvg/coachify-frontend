@@ -3,6 +3,7 @@ import {ActivatedRoute} from '@angular/router';
 import {CoachingSession} from '../../model/coaching-session';
 import {SessionService} from '../../services/session.service';
 import {SessionStatus} from '../../model/session-status';
+import {FormBuilder, Validators} from "@angular/forms";
 
 
 @Component({
@@ -17,9 +18,24 @@ export class SessionOverviewCoachComponent implements OnInit {
   sessionsArchive: CoachingSession[];
   sessionsFeedback: CoachingSession[];
   sessionStatus: SessionStatus;
+  showFeedbackForm: boolean;
+  feedbackIsGivenByCoach: boolean;
   title = 'Coachify | Session Overview';
 
-  constructor(private route: ActivatedRoute, private sessionService: SessionService) {
+  feedBackForm = this.formBuilder.group(
+    {
+      sessionId: [''],
+      rating1: ['', [Validators.required]],
+      rating2: ['', [Validators.required]],
+      comment1: [''],
+      comment2: [''],
+    });
+
+  constructor(
+    private route: ActivatedRoute,
+    private sessionService: SessionService,
+    private formBuilder: FormBuilder
+  ) {
   }
 
   ngOnInit(): void {
@@ -30,8 +46,16 @@ export class SessionOverviewCoachComponent implements OnInit {
     this.getFeedbackSessions();
   }
 
+  giveFeedBack(session: CoachingSession): void {
+    // this.showFeedbackForm = this.showFeedbackForm !== true;
+    session.editFormCoach = session.editFormCoach === false;
+  }
+
   getFeedbackSessions(): void {
-    this.sessionService.getSessionsFeedbackCoach(this.coachId).subscribe(sessions => this.sessionsFeedback = sessions);
+    this.sessionService.getSessionsFeedbackCoach(this.coachId).subscribe(sessions => {
+      sessions.map((session) => session.editFormCoach = false);
+      this.sessionsFeedback = sessions;
+    });
   }
 
   getUpcomingSessions(): void {
@@ -56,6 +80,20 @@ export class SessionOverviewCoachComponent implements OnInit {
 
   statusRequested(session: CoachingSession): boolean {
     return session.status === 'Requested';
+  }
+
+  onSubmit(sessionId: number) {
+    this.feedBackForm.controls.sessionId.setValue(sessionId);
+    this.sessionService.addSessionFeedbackOfCoach(this.feedBackForm.value).subscribe(() => window.location.reload());
+  }
+
+  hasFeedbackOfCoach(coachingSession: CoachingSession) {
+    return coachingSession.sessionFeedbackCoachDTO.sessionFeedbackCoachId === null;
+  }
+
+  cancelFeedBackForm(coachingSession: CoachingSession) {
+    this.feedBackForm.reset();
+    coachingSession.editFormCoach = false;
   }
 
   acceptRequestedSession(session: CoachingSession) {

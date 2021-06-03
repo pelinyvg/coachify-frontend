@@ -75,7 +75,7 @@
                     Feedback<i class="material-icons right">cancel</i></a>
                   </td>
                 </tr>
-                <tr *ngIf="coachingSession.editForm">
+                <tr *ngIf="coachingSession.editFormCoachee">
                   <td colspan="7">
                     <div class="feedback">
                       <form class="col s12" [formGroup]="feedBackForm" (ngSubmit)="onSubmit(coachingSession.sessionId)">

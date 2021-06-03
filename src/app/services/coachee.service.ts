@@ -39,6 +39,7 @@ export class CoacheeService {
   }
 
   updateCoachee(id: number, user: Coachee): Observable<Coachee> {
+    console.log('user changes :' + user.firstName + ' / ' + user.lastName);
     return this.http.put<Coachee>(`${environment.backendUrl}/users/${id}`, user);
   }
 }
