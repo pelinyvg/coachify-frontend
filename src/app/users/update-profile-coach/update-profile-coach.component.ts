@@ -49,6 +49,7 @@ export class UpdateProfileCoachComponent implements OnInit {
   cancel() {
     this.updateCoachProfileForm.reset();
     this.resetUrlAnchor();
+    window.location.reload();
   }
 
   resetUrlAnchor() {

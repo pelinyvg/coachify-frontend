@@ -53,6 +53,7 @@ export class UpdateProfileCoacheeComponent implements OnInit {
   cancel() {
     this.updateCoacheeProfileForm.reset();
     this.resetUrlAnchor();
+    window.location.reload();
   }
 
   onSubmit() {
