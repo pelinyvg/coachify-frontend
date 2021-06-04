@@ -59,12 +59,12 @@ export class UpdateProfileCoacheeComponent implements OnInit {
     this.coacheeService.updateCoachee(this.route.snapshot.params.id, this.updateCoacheeProfileForm.value)
       .subscribe(
         () => {
-          this.updateCoacheeProfileForm.reset();
           // tslint:disable-next-line:triple-equals
-          if (this.updateCoacheeProfileForm.value.email != this.emailFromServer) {
+          if (this.authenticationService.getUsername() !== this.email.value) {
             this.authenticationService.logout();
-            // this.router.navigateByUrl('/login');
+            this.router.navigateByUrl('/login');
           } else {
+            this.updateCoacheeProfileForm.reset();
             window.location.reload();
           }
 

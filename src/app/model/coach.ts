@@ -9,6 +9,5 @@ export interface Coach {
   coachee: Coachee;
   firstName: string;
   lastName: string;
-  image: string;
   email: string;
 }
