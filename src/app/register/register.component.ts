@@ -68,7 +68,7 @@ export class RegisterComponent implements OnInit {
   onSubmit(): void {
     this.ecoachee = this.eregisterForm.value;
     this.coacheeService.addCoachee(this.eregisterForm.value).subscribe(() => {
-      this.message = 'Your account has been registered. You will be redirected to the login page.';
+      this.message = 'Your account has been registered.';
       this.snackBarService.openSnackBar(this.message, 'close', 9999999);
       this.eregisterForm.reset();
       this.router.navigate([`login`]);
