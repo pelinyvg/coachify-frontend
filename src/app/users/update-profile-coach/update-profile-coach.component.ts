@@ -48,7 +48,12 @@ export class UpdateProfileCoachComponent implements OnInit {
 
   cancel() {
     this.updateCoachProfileForm.reset();
-    window.location.reload();
-    window.scroll(0, 0);
+    this.resetUrlAnchor();
+  }
+
+  resetUrlAnchor() {
+    // @ts-ignore
+    window.location = String(window.location).replace(/\#.*$/, '') + '#';
+    window.history.replaceState({}, '', window.location.href.slice(0, -1));
   }
 }

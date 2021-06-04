@@ -51,8 +51,8 @@ export class UpdateProfileCoacheeComponent implements OnInit {
   }
 
   cancel() {
-    window.location.reload();
-    window.scroll(0, 0);
+    this.updateCoacheeProfileForm.reset();
+    this.resetUrlAnchor();
   }
 
   onSubmit() {
@@ -70,5 +70,11 @@ export class UpdateProfileCoacheeComponent implements OnInit {
 
         }
       );
+  }
+
+  resetUrlAnchor() {
+    // @ts-ignore
+    window.location = String(window.location).replace(/\#.*$/, '') + '#';
+    window.history.replaceState({}, '', window.location.href.slice(0, -1));
   }
 }
