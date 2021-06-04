@@ -6,7 +6,6 @@ import {environment} from '../../environments/environment';
 import {map} from 'rxjs/operators';
 import {DatePipe} from '@angular/common';
 import {SessionStatus} from '../model/session-status';
-import {response} from 'express';
 import {SessionFeedbackCoachee} from '../model/session-feedback-coachee';
 import {SessionFeedbackCoach} from "../model/session-feedback-coach";
 
@@ -62,9 +61,7 @@ export class SessionService {
     return this.http.get<CoachingSession[]>(`${this.route}/coachees/${id}/sessions`)
       .pipe(
         // tslint:disable-next-line:no-shadowed-variable
-        map(response => response.filter(s => s.status.toLowerCase().includes('feedback')))
-        // // tslint:disable-next-line:no-shadowed-variable
-        // map(response => console.log(response))
+        map(response => response.filter(s => s.status.toLowerCase().includes('done, waiting feedback')))
       )
       ;
   }
@@ -105,7 +102,7 @@ export class SessionService {
     return this.http.get<CoachingSession[]>(`${this.route}/coaches/${id}/sessions`)
       .pipe(
         // tslint:disable-next-line:no-shadowed-variable
-        map(response => response.filter(s => s.status.toLowerCase().includes('feedback'))));
+        map(response => response.filter(s => s.status.toLowerCase().includes('done, waiting feedback'))));
   }
 
   addSessionFeedbackOfCoachee(sessionFeedBack: SessionFeedbackCoachee): Observable<SessionFeedbackCoachee> {

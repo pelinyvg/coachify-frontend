@@ -1,0 +1,101 @@
+.feedback {
+  margin: 20px 100px 100px;
+}
+
+.textareadimensions {
+  width: 100%;
+  height: 150px;
+  padding: 5px;
+  margin-top: 20px;
+  border: 1px solid grey;
+}
+
+.labelTextArea {
+  font-size: 25px;
+}
+
+.label {
+  font-size: 16px;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.img-rating {
+  width: 60px;
+  height: 60px;
+}
+
+.padding-button {
+  margin-left: 20px;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  font-family: Roboto, sans-serif;
+  color: #fafafa;
+  background-color: #20152d;
+}
+
+.rating {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: row-reverse;
+}
+
+.rating input {
+  appearance: none;
+}
+
+.rating label {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80px;
+  height: 64px;
+  text-align: center;
+  transition: 0.4s;
+  filter: grayscale(100%);
+  cursor: pointer;
+  opacity: 1;
+}
+
+.rating img {
+  margin-bottom: 12px;
+}
+
+.rating span {
+  display: block;
+  width: max-content;
+  margin-left: auto;
+  margin-right: auto;
+  transform: translatey(12px) scale(0.4);
+  font-weight: 600;
+  font-size: 20px;
+  white-space: nowrap;
+  opacity: 0;
+  transition: 0.4s;
+}
+
+.rating:hover label {
+  width: 80px;
+  opacity: 0.2;
+}
+
+.rating input:hover + label, .rating input:checked + label {
+  width: 80px;
+  opacity: 1;
+  filter: grayscale(0);
+}
+
+.rating input:hover + label span, .rating input:checked + label span {
+  transform: none;
+  opacity: 1;
+}
