@@ -43,6 +43,7 @@ export class UpdateProfileCoachComponent implements OnInit {
   onSubmit() {
     this.coachService.changeProfile(this.route.snapshot.params.id, this.updateCoachProfileForm.value).subscribe();
     this.updateCoachProfileForm.reset();
+    this.resetUrlAnchor();
     window.location.reload();
   }
 

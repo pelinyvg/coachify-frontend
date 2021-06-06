@@ -66,6 +66,7 @@ export class UpdateProfileCoacheeComponent implements OnInit {
             this.router.navigateByUrl('/login');
           } else {
             this.updateCoacheeProfileForm.reset();
+            this.resetUrlAnchor();
             window.location.reload();
           }
 

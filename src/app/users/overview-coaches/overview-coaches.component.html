@@ -53,7 +53,7 @@
                       <div *ngFor="let topic of coach.topicsByCoach">
 <!--                        <div *ngFor="let topic of coach.topicsByCoach | experienceFilter: experience">-->
                         <tr>
-                          <td><strong>{{topic.topicName}}</strong></td>
+                          <td><strong>{{topic.topicName}}:</strong></td>
                           <td *ngIf="topic.grade1">Intermediate</td>
                           <td *ngIf="topic.grade2">Medium</td>
                           <td *ngIf="topic.grade3">Expert</td>

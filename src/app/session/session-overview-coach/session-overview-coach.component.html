@@ -73,31 +73,6 @@
                 </tr>
                 </thead>
                 <tbody *ngFor="let coachingSession of sessionsFeedback">
-
-<!--                &lt;!&ndash;todo spinner&ndash;&gt;-->
-<!--                <div *ngIf="loading">-->
-<!--                  &lt;!&ndash;          class="waves-effect waves-light teal lighten-3 btn-large black-text margin-button disabled">&ndash;&gt;-->
-<!--                  <div class="row">-->
-<!--                    &lt;!&ndash;              <div class="col" translate>sign-in.button.sign-in</div>&ndash;&gt;-->
-<!--                    <div class="col" style="padding-top: 10px;">-->
-<!--                      <div class="preloader-wrapper small active right-align">-->
-<!--                        <div class="spinner-layer spinner-yellow-only">-->
-<!--                          <div class="circle-clipper left">-->
-<!--                            <div class="circle"></div>-->
-<!--                          </div>-->
-<!--                          <div class="gap-patch">-->
-<!--                            <div class="circle"></div>-->
-<!--                          </div>-->
-<!--                          <div class="circle-clipper right">-->
-<!--                            <div class="circle"></div>-->
-<!--                          </div>-->
-<!--                        </div>-->
-<!--                      </div>-->
-<!--                    </div>-->
-<!--                  </div>-->
-<!--                </div>-->
-
-
                 <tr>
                   <td>{{coachingSession.coacheeFirstName}} {{coachingSession.coacheeLastName}}</td>
                   <td>{{coachingSession.subject}}</td>
@@ -116,7 +91,8 @@
                       <form class="col s12" [formGroup]="feedBackForm" (ngSubmit)="onSubmit(coachingSession.sessionId)">
 
                         <div class="row">
-                          <label for="explanation-rating" class="label">Was the explanation by your coach clear?</label>
+                          <label for="explanation-rating" class="label">Was the Coachee well prepared for the coaching
+                            session?</label>
                           <div class="rating" id="explanation-rating">
                             <input type="radio" id="explanation-star5" formControlName="rating1" value="5">
                             <label for="explanation-star5">
@@ -153,7 +129,8 @@
                         </div>
                         <div class="row">
 
-                          <label for="useful-rating" class="label">Was the coaching session useful?</label>
+                          <label for="useful-rating" class="label">Was the Coachee willing to learn and make
+                            progress?</label>
                           <div class="rating" id="useful-rating">
                             <input type="radio" id="useful-star5" value="5" formControlName="rating2">
                             <label for="useful-star5">
@@ -198,7 +175,7 @@
                           <div class="input-field col s12 ">
                             <textarea id="remark" class="textareadimensions materialize-textarea"
                                       formControlName="comment2"></textarea>
-                            <label for="remark" class="labelTextArea">How could your Coach get better ?</label>
+                            <label for="remark" class="labelTextArea">How could your Coachee get better?</label>
                           </div>
                         </div>
 

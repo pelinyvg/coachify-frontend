@@ -21,7 +21,6 @@ export class SessionOverviewCoachComponent implements OnInit {
   showFeedbackForm: boolean;
   feedbackIsGivenByCoach: boolean;
   title = 'Coachify | Session Overview';
-  loading: boolean;
 
   feedBackForm = this.formBuilder.group(
     {
@@ -37,7 +36,6 @@ export class SessionOverviewCoachComponent implements OnInit {
     private sessionService: SessionService,
     private formBuilder: FormBuilder
   ) {
-    this.loading = true;
   }
 
   ngOnInit(): void {
@@ -57,8 +55,6 @@ export class SessionOverviewCoachComponent implements OnInit {
     this.sessionService.getSessionsFeedbackCoach(this.coachId).subscribe(sessions => {
       sessions.map((session) => session.editFormCoach = false);
       this.sessionsFeedback = sessions;
-// todo spinner
-      // this.loading = false;
     });
   }
 
